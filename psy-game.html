@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>СТОП СКАМ — Игра о цифровой безопасности</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d14;
+    --surface: #111520;
+    --surface2: #181e2e;
+    --border: #1e2640;
+    --accent: #00e5ff;
+    --accent2: #ff3b6b;
+    --accent3: #ffe500;
+    --good: #00e096;
+    --bad: #ff3b6b;
+    --text: #e8eaf6;
+    --muted: #6b7394;
+    --radius: 16px;
+    --font-head: 'Unbounded', sans-serif;
+    --font-body: 'Mulish', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 9999; opacity: .4;
+  }
+
+  /* ─── SCREENS ─── */
+  .screen { display: none; min-height: 100vh; }
+  .screen.active { display: flex; flex-direction: column; }
+
+  /* ─── HOME SCREEN ─── */
+  #screen-home {
+    align-items: center; justify-content: center;
+    padding: 40px 20px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,229,255,.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(255,59,107,.06) 0%, transparent 60%),
+      var(--bg);
+  }
+  .home-inner { max-width: 700px; width: 100%; text-align: center; }
+  .badge {
+    display: inline-block;
+    background: rgba(0,229,255,.1);
+    border: 1px solid rgba(0,229,255,.3);
+    color: var(--accent);
+    font-family: var(--font-head);
+    font-size: 11px;
+    letter-spacing: .15em;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .home-title {
+    font-family: var(--font-head);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -.02em;
+    margin-bottom: 12px;
+  }
+  .home-title .accent-cyan { color: var(--accent); }
+  .home-title .accent-red { color: var(--accent2); }
+  .home-sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 48px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .missions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .mission-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: all .25s;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  .mission-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--card-color, var(--accent));
+    opacity: 0; transition: opacity .25s;
+  }
+  .mission-card:hover {
+    border-color: var(--card-color, var(--accent));
+    transform: translateY(-3px);
+    background: var(--surface2);
+  }
+  .mission-card:hover::before { opacity: 1; }
+  .mission-icon { font-size: 2rem; margin-bottom: 10px; }
+  .mission-num {
+    font-family: var(--font-head);
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--card-color, var(--accent));
+    margin-bottom: 4px;
+  }
+  .mission-name {
+    font-family: var(--font-head);
+    font-size: .85rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+  .mission-desc {
+    font-size: .75rem;
+    color: var(--muted);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+  .mission-locked {
+    position: absolute; inset: 0;
+    background: rgba(10,13,20,.6);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    border-radius: var(--radius);
+    backdrop-filter: blur(2px);
+  }
+  .btn-start {
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-head);
+    font-size: .9rem;
+    font-weight: 700;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    letter-spacing: .04em;
+    transition: all .2s;
+    box-shadow: 0 0 40px rgba(0,229,255,.2);
+  }
+  .btn-start:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 60px rgba(0,229,255,.35);
+  }
+
+  /* ─── GAME SCREEN ─── */
+  #screen-game {
+    flex-direction: column;
+    background: var(--bg);
+  }
+  .game-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .game-mission-label {
+    font-family: var(--font-head);
+    font-size: .7rem;
+    color: var(--muted);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .game-mission-title {
+    font-family: var(--font-head);
+    font-size: .95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .score-display {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-head);
+    font-size: .85rem;
+  }
+  .score-display .score-num {
+    color: var(--accent3);
+    font-weight: 700;
+  }
+  .btn-back {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: .8rem;
+    padding: 6px 14px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-back:hover { border-color: var(--text); color: var(--text); }
+
+  /* ─── STORYBOARD ─── */
+  .storyboard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 20px 80px;
+  }
+  /* Progress bar */
+  .progress-bar {
+    height: 3px;
+    background: var(--border);
+    border-radius: 100px;
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 100px;
+    transition: width .4s ease;
+  }
+
+  /* Scene */
+  .scene { display: none; flex-direction: column; gap: 20px; animation: fadeUp .4s ease; }
+  .scene.active { display: flex; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scene header - context strip */
+  .scene-context {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .78rem;
+    color: var(--muted);
+    padding: 10px 16px;
+    background: var(--surface);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent);
+  }
+  .scene-context.warn { border-color: var(--accent3); }
+  .scene-context.danger { border-color: var(--accent2); }
+
+  /* Message bubbles */
+  .messages { display: flex; flex-direction: column; gap: 10px; }
+  .msg {
+    max-width: 75%;
+    padding: 14px 18px;
+    border-radius: 18px;
+    font-size: .92rem;
+    line-height: 1.55;
+    position: relative;
+  }
+  .msg.them {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+  }
+  .msg.me {
+    background: rgba(0,229,255,.1);
+    border: 1px solid rgba(0,229,255,.2);
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+  }
+  .msg.system {
+    background: rgba(255,229,0,.06);
+    border: 1px solid rgba(255,229,0,.2);
+    color: var(--accent3);
+    font-size: .82rem;
+    text-align: center;
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  .msg.scam {
+    background: rgba(255,59,107,.08);
+    border: 1px solid rgba(255,59,107,.25);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+  }
+  .msg-sender {
+    font-size: .72rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .msg-sender.bad { color: var(--accent2); }
+  .msg-sender.neutral { color: var(--muted); }
+
+  /* Illustration cards */
+  .scene-visual {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .visual-header {
+    padding: 12px 18px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+    font-size: .78rem;
+    color: var(--muted);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #febc2e; }
+  .dot.g { background: #28c840; }
+  .visual-body {
+    padding: 20px 18px;
+    background: var(--surface);
+    font-size: .85rem;
+    line-height: 1.6;
+  }
+  .visual-body .highlight {
+    display: inline;
+    background: rgba(255,59,107,.2);
+    border: 1px solid rgba(255,59,107,.4);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: #ff8ca8;
+    font-weight: 600;
+  }
+  .visual-body .hl-good {
+    background: rgba(0,224,150,.1);
+    border: 1px solid rgba(0,224,150,.3);
+    color: var(--good);
+  }
+  .visual-body .hl-warn {
+    background: rgba(255,229,0,.1);
+    border: 1px solid rgba(255,229,0,.3);
+    color: var(--accent3);
+  }
+
+  /* Choices */
+  .choices { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+  .choice-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: .9rem;
+    padding: 16px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: left;
+    transition: all .2s;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .choice-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    background: var(--surface2);
+    transform: translateX(4px);
+  }
+  .choice-btn:disabled { opacity: .5; cursor: default; }
+  .choice-letter {
+    flex-shrink: 0;
+    width: 26px; height: 26px;
+    border-radius: 8px;
+    background: var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head);
+    font-size: .72rem;
+    font-weight: 700;
+  }
+  .choice-btn.correct { border-color: var(--good); background: rgba(0,224,150,.08); }
+  .choice-btn.wrong { border-color: var(--bad); background: rgba(255,59,107,.08); }
+  .choice-btn.correct .choice-letter { background: var(--good); color: var(--bg); }
+  .choice-btn.wrong .choice-letter { background: var(--bad); color: white; }
+
+  /* Feedback */
+  .feedback-box {
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    display: none; flex-direction: column; gap: 10px;
+    animation: fadeUp .3s ease;
+  }
+  .feedback-box.show { display: flex; }
+  .feedback-box.good {
+    background: rgba(0,224,150,.06);
+    border: 1px solid rgba(0,224,150,.25);
+  }
+  .feedback-box.bad {
+    background: rgba(255,59,107,.06);
+    border: 1px solid rgba(255,59,107,.25);
+  }
+  .feedback-title {
+    font-family: var(--font-head);
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .feedback-box.good .feedback-title { color: var(--good); }
+  .feedback-box.bad .feedback-title { color: var(--bad); }
+  .feedback-text {
+    font-size: .9rem;
+    line-height: 1.6;
+    color: var(--text);
+  }
+  .fact-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(0,229,255,.06);
+    border: 1px solid rgba(0,229,255,.2);
+    color: var(--accent);
+    font-size: .78rem;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-weight: 600;
+  }
+  .btn-next {
+    align-self: flex-start;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-head);
+    font-size: .8rem;
+    font-weight: 700;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    letter-spacing: .05em;
+    transition: all .2s;
+    margin-top: 6px;
+  }
+  .btn-next:hover { transform: scale(1.04); box-shadow: 0 0 30px rgba(0,229,255,.25); }
+
+  /* ─── RESULT SCREEN ─── */
+  #screen-result {
+    align-items: center; justify-content: center;
+    padding: 40px 20px;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,224,150,.08) 0%, transparent 60%),
+      var(--bg);
+  }
+  .result-inner { max-width: 560px; width: 100%; text-align: center; }
+  .result-emoji { font-size: 5rem; margin-bottom: 20px; line-height: 1; }
+  .result-title {
+    font-family: var(--font-head);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 12px;
+  }
+  .result-score {
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+  .result-score span { color: var(--accent3); font-size: 2rem; }
+  .result-tips {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+  .result-tips h3 {
+    font-family: var(--font-head);
+    font-size: .85rem;
+    color: var(--accent);
+    margin-bottom: 14px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .tip-item {
+    display: flex; gap: 10px;
+    font-size: .88rem;
+    line-height: 1.5;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .tip-item:last-child { border-bottom: none; }
+  .tip-item .tip-icon { flex-shrink: 0; }
+  .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: var(--font-head);
+    font-size: .8rem;
+    padding: 12px 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+  .typing::after {
+    content: '●●●';
+    animation: pulse 1.2s infinite;
+    font-size: .5rem;
+    vertical-align: middle;
+    color: var(--muted);
+    margin-left: 6px;
+  }
+
+  /* ─── MISSION SELECT MODAL ─── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(10,13,20,.85);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 480px;
+    width: 100%;
+    animation: fadeUp .3s ease;
+  }
+  .modal-tag {
+    font-family: var(--font-head);
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .modal-title {
+    font-family: var(--font-head);
+    font-size: 1.4rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .modal-desc {
+    font-size: .9rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .modal-meta {
+    display: flex; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .meta-pill {
+    font-size: .78rem;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+  }
+  .btn-play {
+    width: 100%;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-head);
+    font-size: .9rem;
+    font-weight: 700;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all .2s;
+    margin-bottom: 10px;
+  }
+  .btn-play:hover { box-shadow: 0 0 30px rgba(0,229,255,.3); }
+  .btn-cancel {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: var(--font-body);
+    font-size: .85rem;
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-cancel:hover { border-color: var(--text); color: var(--text); }
+
+  @media (max-width: 480px) {
+    .missions-grid { grid-template-columns: 1fr 1fr; }
+    .msg { max-width: 88%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════
+     HOME SCREEN
+═══════════════════════════════════ -->
+<div id="screen-home" class="screen active">
+  <div class="home-inner">
+    <div class="badge">🛡 Цифровая безопасность · 5 миссий</div>
+    <h1 class="home-title">
+      СТОП<br>
+      <span class="accent-cyan">СКАМ</span><span class="accent-red">!</span>
+    </h1>
+    <p class="home-sub">Образовательная игра о том, как мошенники вербуют подростков — и как их распознать. Пройди 5 реальных сценариев и защити себя.</p>
+
+    <div class="missions-grid">
+      <div class="mission-card" style="--card-color:#ff3b6b" onclick="openModal('dropper')">
+        <div class="mission-icon">💸</div>
+        <div class="mission-num">Миссия 01</div>
+        <div class="mission-name">Лёгкие деньги</div>
+        <div class="mission-desc">Дропперство и незаконные переводы</div>
+      </div>
+      <div class="mission-card" style="--card-color:#ffe500" onclick="openModal('gosuslugi')">
+        <div class="mission-icon">🏛️</div>
+        <div class="mission-num">Миссия 02</div>
+        <div class="mission-name">Цветочный магазин</div>
+        <div class="mission-desc">Взлом Госуслуг через доверие</div>
+      </div>
+      <div class="mission-card" style="--card-color:#b46fff" onclick="openModal('klad')">
+        <div class="mission-icon">📦</div>
+        <div class="mission-num">Миссия 03</div>
+        <div class="mission-name">Клад</div>
+        <div class="mission-desc">Вербовка через закладки</div>
+      </div>
+      <div class="mission-card" style="--card-color:#ff7043" onclick="openModal('terror')">
+        <div class="mission-icon">⚠️</div>
+        <div class="mission-num">Миссия 04</div>
+        <div class="mission-name">Обиженный герой</div>
+        <div class="mission-desc">Склонение к экстремизму</div>
+      </div>
+      <div class="mission-card" style="--card-color:#00e5ff" onclick="openModal('bully')">
+        <div class="mission-icon">💬</div>
+        <div class="mission-num">Миссия 05</div>
+        <div class="mission-name">Кибербуллинг</div>
+        <div class="mission-desc">Давление и шантаж в сети</div>
+      </div>
+    </div>
+
+    <button class="btn-start" onclick="openModal('dropper')">▶ Начать с Миссии 1</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     MISSION MODAL
+═══════════════════════════════════ -->
+<div id="modal-overlay" class="modal-overlay">
+  <div class="modal-box">
+    <div id="modal-tag" class="modal-tag"></div>
+    <div id="modal-title" class="modal-title"></div>
+    <div id="modal-desc" class="modal-desc"></div>
+    <div class="modal-meta">
+      <div id="modal-scenes" class="meta-pill"></div>
+      <div id="modal-diff" class="meta-pill"></div>
+    </div>
+    <button class="btn-play" id="modal-play-btn">▶ Начать миссию</button>
+    <button class="btn-cancel" onclick="closeModal()">Отмена</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     GAME SCREEN
+═══════════════════════════════════ -->
+<div id="screen-game" class="screen">
+  <div class="game-topbar">
+    <div>
+      <div class="game-mission-label" id="topbar-mission-label">Миссия 01</div>
+      <div class="game-mission-title" id="topbar-mission-title">Лёгкие деньги</div>
+    </div>
+    <div class="score-display">⭐ <span class="score-num" id="score-display">0</span></div>
+    <button class="btn-back" onclick="goHome()">← На главную</button>
+  </div>
+
+  <div class="storyboard">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div id="scenes-container"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     RESULT SCREEN
+═══════════════════════════════════ -->
+<div id="screen-result" class="screen">
+  <div class="result-inner">
+    <div class="result-emoji" id="result-emoji">🏆</div>
+    <h2 class="result-title" id="result-title">Отличная работа!</h2>
+    <div class="result-score">Очки: <span id="result-score-num">0</span></div>
+    <div class="result-tips" id="result-tips"></div>
+    <div class="btn-group">
+      <button class="btn-start" onclick="goHome()">Все миссии</button>
+      <button class="btn-secondary" id="btn-next-mission" onclick="nextMission()">Следующая миссия →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+// MISSIONS DATA
+// ═══════════════════════════════════════════
+const MISSIONS = {
+
+  dropper: {
+    id: 'dropper',
+    label: 'МИССИЯ 01 · ДРОППЕРСТВО',
+    title: 'Лёгкие деньги',
+    color: '#ff3b6b',
+    desc: 'Незнакомец в интернете предлагает получать деньги просто так — пропуская переводы через свою карту. Звучит легко? Узнай, чем это кончается.',
+    scenes: 6, diff: 'Начальный',
+    tips: [
+      { icon: '⚖️', text: 'Дроппер — юридически пособник преступника. Уголовная ответственность с 14 лет.' },
+      { icon: '🏦', text: 'Банк заблокирует карту, долг придётся возвращать годами.' },
+      { icon: '🚔', text: 'Полиция отслеживает транзакции — вычислить дроппера легко.' },
+    ],
+    storyboard: [
+      {
+        type: 'context',
+        variant: 'normal',
+        text: '📱 ВКонтакте. Тебе 15 лет. Приходит сообщение от незнакомого аккаунта «Антон Бизнес».'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Антон Бизнес', senderCls: 'bad', text: 'Привет! Ищу надёжного человека для удалённой работы. Без опыта, платим 5 000–10 000 ₽ в день. Интересно?' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Что ты ответишь?',
+        choices: [
+          { letter: 'А', text: 'Расскажи подробнее, что нужно делать', correct: false },
+          { letter: 'Б', text: 'Звучит как мошенничество. Блокирую и сообщаю родителям', correct: true },
+          { letter: 'В', text: 'Откуда у тебя мой контакт?', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Верно!', text: 'Никогда не общайся с незнакомцами, предлагающими лёгкие деньги онлайн. Это классическая схема вербовки дроппера. Правильно заблокировать и рассказать взрослым.', fact: '💡 В 2023 году поймано более 20 000 дропперов — большинство не знали, что совершают преступление' },
+          wrong: { title: '⚠️ Осторожно!', text: 'Ты продолжил общение. Мошенник получил твоё внимание — именно это ему и нужно. Посмотрим, что будет дальше...', fact: '💡 Мошенники специально ищут подростков — их легче убедить и они меньше знают о законах' }
+        }
+      },
+      {
+        type: 'context',
+        variant: 'warn',
+        text: '⚠️ Ты продолжил разговор. Антон объясняет «работу».'
+      },
+      {
+        type: 'visual',
+        title: 'Скриншот переписки · ВКонтакте',
+        lines: [
+          { text: 'Антон: Нужно просто принимать деньги на карту и отправлять дальше.' },
+          { text: 'Антон: 10% комиссия с каждого перевода — твои.', hl: 'warn' },
+          { text: 'Антон: Без оформления, без налогов. Полностью анонимно.', hl: 'bad' },
+          { text: 'Антон: Скинь номер карты и паспортные данные для «регистрации в системе».', hl: 'bad' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Что это за схема?',
+        choices: [
+          { letter: 'А', text: 'Нормальная удалённая работа — главное не раскрывать пин-код', correct: false },
+          { letter: 'Б', text: 'Дропперская схема для отмывания краденых денег — это уголовно наказуемо', correct: true },
+          { letter: 'В', text: 'Это сетевой маркетинг', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Ты разгадал схему!', text: 'Именно! Деньги, которые будут проходить через твою карту — краденые. Ты становишься звеном в преступной цепочке. Даже «незнание» не освобождает от ответственности по закону.', fact: '⚖️ Статья 174.1 УК РФ — легализация преступных доходов. До 7 лет лишения свободы.' },
+          wrong: { title: '❌ Это ловушка!', text: 'Это не работа. Через твою карту будут проходить деньги, украденные у других людей. Ты станешь соучастником мошенничества.', fact: '🚔 Следователи запрашивают данные карты — тебя найдут по первому же переводу' }
+        }
+      }
+    ]
+  },
+
+  gosuslugi: {
+    id: 'gosuslugi',
+    label: 'МИССИЯ 02 · ФИШИНГ',
+    title: 'Цветочный магазин',
+    color: '#ffe500',
+    desc: 'Звонок из «службы поддержки» Госуслуг. Или не из Госуслуг? Разберись, как мошенники используют невинный повод — доставку цветов — чтобы захватить твой аккаунт.',
+    scenes: 6, diff: 'Средний',
+    tips: [
+      { icon: '🔐', text: 'Настоящие сотрудники Госуслуг никогда не спрашивают коды из СМС.' },
+      { icon: '📞', text: 'Если сомневаешься — сбрось звонок и перезвони на официальный номер самостоятельно.' },
+      { icon: '🌸', text: 'Схема «цветочный магазин» — реальная мошенническая схема 2022–2024 годов.' },
+    ],
+    storyboard: [
+      {
+        type: 'context',
+        variant: 'normal',
+        text: '📞 Тебе приходит звонок с незнакомого номера. Ты берёшь трубку.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Звонящий', senderCls: 'bad', text: 'Добрый день! Беспокоит интернет-магазин «Цветочный Мир». Вы делали заказ на букет для доставки?' },
+          { cls: 'them', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Нет, я ничего не заказывал...' },
+          { cls: 'scam', sender: 'Звонящий', senderCls: 'bad', text: 'Странно! Возможно, кто-то использует ваши данные. Нам пришлось направить запрос в Госуслуги. Сейчас вам придёт код — продиктуйте его, чтобы отменить мошеннический заказ.' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'На твой телефон приходит СМС с кодом от Госуслуг. Что делаешь?',
+        choices: [
+          { letter: 'А', text: 'Диктую код, раз это поможет отменить заказ', correct: false },
+          { letter: 'Б', text: 'Кладу трубку. Код от Госуслуг нельзя никому говорить — это пароль доступа к аккаунту', correct: true },
+          { letter: 'В', text: 'Прошу подождать и иду спросить у родителей', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Правильно!', text: 'Код из СМС — это одноразовый пароль. Назвав его незнакомцу, ты отдаёшь контроль над своим аккаунтом Госуслуг, к которому привязаны паспорт, СНИЛС, банки и многое другое.', fact: '🌸 Схема «цветочный магазин» — звонок якобы из магазина, чтобы усыпить бдительность' },
+          wrong: { title: '❌ Аккаунт угнан!', text: 'Ты продиктовал код — мошенник вошёл в твои Госуслуги. Теперь он может оформить кредит, сменить данные или украсть документы.', fact: '🔐 НИКОГДА не называй коды из СМС — даже «сотрудникам» банка или госслужб' }
+        }
+      },
+      {
+        type: 'context',
+        variant: 'warn',
+        text: '🔍 Разберём, как работает эта схема изнутри.'
+      },
+      {
+        type: 'visual',
+        title: 'КАК РАБОТАЕТ СХЕМА',
+        lines: [
+          { text: '1. Мошенник звонит под предлогом «отмены заказа» или «подтверждения данных»' },
+          { text: '2. Запрашивает код из СМС от Госуслуг якобы «для проверки»', hl: 'bad' },
+          { text: '3. Использует код для входа в аккаунт жертвы', hl: 'bad' },
+          { text: '4. Получает доступ к документам, налогам, кредитной истории', hl: 'bad' },
+          { text: '✅ Защита: сбросить звонок, войти на gosuslugi.ru самому и проверить', hl: 'good' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Если ты уже назвал код — что делать НЕМЕДЛЕННО?',
+        choices: [
+          { letter: 'А', text: 'Ничего, наверное, само пройдёт', correct: false },
+          { letter: 'Б', text: 'Войти на Госуслуги, сменить пароль и сообщить в техподдержку', correct: true },
+          { letter: 'В', text: 'Ждать звонка обратно от этого же человека', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Верные действия!', text: 'Немедленно: смени пароль на gosuslugi.ru, включи двухфакторную аутентификацию, проверь историю входов в аккаунт. Сообщи родителям и на горячую линию Госуслуг: 8-800-100-70-10.', fact: '📞 Горячая линия Госуслуг: 8-800-100-70-10 (бесплатно)' },
+          wrong: { title: '❌ Каждая минута важна!', text: 'Пока ты ждёшь — мошенник уже в твоём аккаунте. Смени пароль прямо сейчас!', fact: '⏱ За несколько минут мошенник может оформить кредит на твоё имя' }
+        }
+      }
+    ]
+  },
+
+  klad: {
+    id: 'klad',
+    label: 'МИССИЯ 03 · ЗАКЛАДКИ',
+    title: 'Лёгкий Клад',
+    color: '#b46fff',
+    desc: 'В интернете предлагают хорошо заплатить за «раскладку посылок». Это выглядит безобидно — пока не понимаешь, что именно ты раскладываешь.',
+    scenes: 5, diff: 'Средний',
+    tips: [
+      { icon: '🚫', text: 'Раскладка закладок — это соучастие в наркоторговле. Реальный срок от 8 лет.' },
+      { icon: '📱', text: 'Вербовщики ищут жертв в играх, Discord, Telegram — везде, где есть подростки.' },
+      { icon: '🆘', text: 'Если тебя уже втянули — обратись в полицию или на горячую линию 8-800-2000-122.' },
+    ],
+    storyboard: [
+      {
+        type: 'context',
+        variant: 'normal',
+        text: '🎮 Discord-сервер игры. Тебе пишет новый участник.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Stranger228', senderCls: 'bad', text: 'Хей, ты из [твой город]? Есть заработок — 3 000 ₽ в час. Просто раскладывать «посылки» по адресам. Нужен человек рядом с Лесной ул.' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Что это за «посылки» скорее всего?',
+        choices: [
+          { letter: 'А', text: 'Курьерская доставка интернет-магазина', correct: false },
+          { letter: 'Б', text: 'Наркотики — это вербовка в закладчики', correct: true },
+          { letter: 'В', text: 'Листовки или промо-товары', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Верно распознал!', text: 'Схема «закладчик» — человек прячет наркотики в тайниках («закладках»), покупатели находят их по адресам. Вербовщики специально ищут несовершеннолетних, считая, что им дадут меньший срок. Это неправда.', fact: '⚖️ За закладку наркотиков — до 15 лет лишения свободы даже для несовершеннолетних' },
+          wrong: { title: '❌ Это ловушка!', text: 'Настоящие курьерские сервисы так не вербуют — через игровые чаты анонимные незнакомцы. Это наркоторговля.', fact: '🚨 Сотни подростков попали за решётку, поверив, что это «просто курьерка»' }
+        }
+      },
+      {
+        type: 'context',
+        variant: 'danger',
+        text: '🚨 Stranger228 продолжает давить.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Stranger228', senderCls: 'bad', text: 'Тебе 14? Ты несовершеннолетний, тебе ничего не будет. Один рейс — и у тебя 3 тысячи. Никто не узнает.' },
+          { cls: 'scam', sender: 'Stranger228', senderCls: 'bad', text: 'Все так делают. Это просто работа.' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Что из этого — правда?',
+        choices: [
+          { letter: 'А', text: 'Несовершеннолетним действительно дают меньше, можно рискнуть', correct: false },
+          { letter: 'Б', text: 'Всё — ложь. Несовершеннолетним тоже дают реальные сроки, а вербовщик получит ещё и за вовлечение ребёнка', correct: true },
+          { letter: 'В', text: 'Если всего один раз — наверное безопасно', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Отлично!', text: 'Миф о "несовершеннолетии как защите" — это приманка. Суды дают реальные сроки. Вербовщик знает это и специально лжёт, чтобы ты не боялся. Заблокируй, расскажи взрослым или позвони на горячую линию.', fact: '📞 Горячая линия психологической помощи: 8-800-2000-122 (бесплатно, анонимно)' },
+          wrong: { title: '❌ Это ложь!', text: 'Мошенник использует твой возраст против тебя. Несовершеннолетние получают реальные сроки в воспитательных колониях. «Один раз» не существует — тебя запишут и будут шантажировать.', fact: '📹 Вербовщики фиксируют первую закладку на фото — потом шантажируют' }
+        }
+      }
+    ]
+  },
+
+  terror: {
+    id: 'terror',
+    label: 'МИССИЯ 04 · ЭКСТРЕМИЗМ',
+    title: 'Обиженный герой',
+    color: '#ff7043',
+    desc: 'Кто-то в сети понимает тебя лучше всех. Жалеет. Называет героем. Но постепенно разговоры становятся опаснее...',
+    scenes: 5, diff: 'Сложный',
+    tips: [
+      { icon: '🧠', text: 'Вербовщики в деструктивные группы сначала «дружат», потом медленно меняют взгляды.' },
+      { icon: '🚩', text: 'Красные флаги: «только мы понимаем тебя», «обычные люди — враги», «ты избранный».' },
+      { icon: '📢', text: 'Если тебя или друга склоняют к насилию — сообщи в ФСБ: fsb.ru или 8 (800) 224-22-22.' },
+    ],
+    storyboard: [
+      {
+        type: 'context',
+        variant: 'normal',
+        text: '💬 Telegram. Тебе грустно после конфликта в школе. Незнакомец начал переписку.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Видел твой пост. Слушай, я понимаю тебя. Школа — это тюрьма, учителя издеваются, одноклассники не уважают. Я сам через это прошёл.' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Ты не один. У нас есть закрытый чат — там настоящие люди, которые не предают.' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Что настораживает в этом сообщении?',
+        choices: [
+          { letter: 'А', text: 'Ничего — человек просто хочет помочь', correct: false },
+          { letter: 'Б', text: 'Незнакомец читал мои посты и сразу предлагает «закрытое сообщество» — это манипуляция', correct: true },
+          { letter: 'В', text: 'Он говорит слишком правильно — наверное это бот', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Хорошая интуиция!', text: 'Вербовщики деструктивных групп используют технику «ловли на боли»: находят людей в уязвимом состоянии и предлагают «понимание». Закрытое сообщество — следующий шаг изоляции.', fact: '🧠 Техника называется love bombing — «бомбардировка любовью» для вербовки' },
+          wrong: { title: '⚠️ Будь внимательнее!', text: 'Незнакомец знает твои посты, называет тебя «не одиноким» и зовёт в закрытый чат — это классическая схема вербовки. Настоящие друзья так не действуют.', fact: '🚩 «Закрытое сообщество только для избранных» — красный флаг любой секты или экстремистской группы' }
+        }
+      },
+      {
+        type: 'context',
+        variant: 'danger',
+        text: '🚨 Через 2 недели переписки тон меняется.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Слова ничего не меняют. Настоящий герой действует. История помнит только тех, кто сделал что-то большое.' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Есть план. Тебе нужно только быть в нужном месте в нужное время. Ты готов войти в историю?' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Что нужно сделать ПРЯМО СЕЙЧАС?',
+        choices: [
+          { letter: 'А', text: 'Уточнить подробности «плана»', correct: false },
+          { letter: 'Б', text: 'Немедленно прекратить общение, сохранить скриншоты и сообщить взрослым или в полицию', correct: true },
+          { letter: 'В', text: 'Написать в чат, что не согласен, и попробовать переубедить других', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Правильное решение!', text: 'Это уже склонение к совершению насильственного акта. Немедленно: сохрани скриншоты, выйди из чата, расскажи родителям или учителю, сообщи в полицию или ФСБ. Это не предательство — это спасение жизней, в том числе своей.', fact: '📢 Сообщить анонимно в ФСБ: fsb.ru или 8-800-224-22-22 (бесплатно)' },
+          wrong: { title: '❌ Опасно!', text: 'Уточнение деталей уже делает тебя потенциально причастным. Не вступай в диалог — выходи и сообщай.', fact: '⚖️ Недонесение о подготовке теракта — уголовная статья. Сообщить — твоя защита.' }
+        }
+      }
+    ]
+  },
+
+  bully: {
+    id: 'bully',
+    label: 'МИССИЯ 05 · КИБЕРБУЛЛИНГ',
+    title: 'Кибербуллинг',
+    color: '#00e5ff',
+    desc: 'Бывший одноклассник начинает давить, угрожать и распространять слухи. Что делать, когда травля переходит в онлайн?',
+    scenes: 5, diff: 'Начальный',
+    tips: [
+      { icon: '📸', text: 'Всегда делай скриншоты угроз — это доказательства.' },
+      { icon: '🔕', text: 'Блокировка хулигана — не слабость, а защита своих границ.' },
+      { icon: '💬', text: 'Кибербуллинг — это не норма. Расскажи взрослым или психологу.' },
+    ],
+    storyboard: [
+      {
+        type: 'context',
+        variant: 'normal',
+        text: '📸 Instagram. Бывший одноклассник Денис начинает писать тебе агрессивные комментарии.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'хаха смотрите какой лузер. все знают что ты — нытик. твои фоточки — позорище' },
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'если ответишь — скину всем твою переписку с *** 😂 молчи и может оставлю в покое' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Как лучше всего ответить на это?',
+        choices: [
+          { letter: 'А', text: 'Ответить агрессивно — показать что не боюсь', correct: false },
+          { letter: 'Б', text: 'Сделать скриншот, заблокировать и рассказать родителям или классному руководителю', correct: true },
+          { letter: 'В', text: 'Просто игнорировать и надеяться, что само прекратится', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Правильный порядок действий!', text: 'Скриншот = доказательство. Блокировка = защита от дальнейших атак. Взрослый = человек с реальными полномочиями остановить ситуацию. Молчать в одиночестве — худшая стратегия.', fact: '📊 72% жертв кибербуллинга, которые рассказали взрослым, сообщили что ситуация улучшилась' },
+          wrong: { title: '⚠️ Так только хуже!', text: 'Агрессивный ответ даёт хулигану то, чего он хочет — реакцию. Молчание не остановит его. Нужны скриншоты и помощь взрослых.', fact: '🚩 Шантаж перепиской — это уже статья 163 УК РФ (вымогательство)' }
+        }
+      },
+      {
+        type: 'context',
+        variant: 'warn',
+        text: '📊 Разберём: что делать если травля продолжается в разных местах?'
+      },
+      {
+        type: 'visual',
+        title: 'ПЛАН ДЕЙСТВИЙ ПРИ КИБЕРБУЛЛИНГЕ',
+        lines: [
+          { text: '1. Не отвечай агрессору — это его питает', hl: 'bad' },
+          { text: '2. Сделай скриншоты ВСЕГО — это доказательства', hl: 'good' },
+          { text: '3. Заблокируй во всех соцсетях и мессенджерах', hl: 'good' },
+          { text: '4. Сообщи о нарушении администрации платформы', hl: 'good' },
+          { text: '5. Расскажи родителям или доверенному взрослому', hl: 'good' },
+          { text: '6. При угрозах — обратись в полицию', hl: 'good' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Друг говорит: «не плачься взрослым, сам разберись — иначе слабак». Что ответить?',
+        choices: [
+          { letter: 'А', text: 'Он прав, надо разобраться самому', correct: false },
+          { letter: 'Б', text: 'Рассказать взрослым — не слабость. Это умный способ использовать доступные ресурсы', correct: true },
+          { letter: 'В', text: 'Лучше вообще ничего не делать', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Верно!', text: 'Обратиться за помощью — это не слабость, это стратегия. Взрослые могут поговорить с родителями хулигана, школой, полицией — у них есть рычаги, которых нет у тебя. Справляться в одиночку с системной травлей — лишнее страдание.', fact: '💬 Психологическая помощь подросткам: 8-800-2000-122 (бесплатно, круглосуточно)' },
+          wrong: { title: '❌ Это не так!', text: 'Кибербуллинг — системная проблема, не личная слабость. Молчание и одиночная борьба только усугубляют ситуацию.', fact: '🧠 Без помощи взрослых кибербуллинг прекращается в 5 раз реже' }
+        }
+      }
+    ]
+  }
+};
+
+const MISSION_ORDER = ['dropper', 'gosuslugi', 'klad', 'terror', 'bully'];
+
+// ═══════════════════════════════════════════
+// GAME STATE
+// ═══════════════════════════════════════════
+let state = {
+  currentMission: null,
+  currentScene: 0,
+  score: 0,
+  totalChoices: 0,
+  correctChoices: 0,
+  selectedModal: null
+};
+
+// ═══════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+}
+
+function goHome() { showScreen('home'); }
+
+// ═══════════════════════════════════════════
+// MODAL
+// ═══════════════════════════════════════════
+function openModal(missionId) {
+  const m = MISSIONS[missionId];
+  state.selectedModal = missionId;
+  document.getElementById('modal-tag').textContent = m.label;
+  document.getElementById('modal-tag').style.color = m.color;
+  document.getElementById('modal-title').textContent = m.title;
+  document.getElementById('modal-desc').textContent = m.desc;
+  document.getElementById('modal-scenes').textContent = `${m.scenes} сцен`;
+  document.getElementById('modal-diff').textContent = `Уровень: ${m.diff}`;
+  document.getElementById('modal-play-btn').style.background = m.color;
+  document.getElementById('modal-play-btn').style.color = '#0a0d14';
+  document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal-overlay').classList.remove('open');
+}
+
+document.getElementById('modal-play-btn').addEventListener('click', () => {
+  closeModal();
+  startMission(state.selectedModal);
+});
+
+// ═══════════════════════════════════════════
+// START MISSION
+// ═══════════════════════════════════════════
+function startMission(missionId) {
+  const m = MISSIONS[missionId];
+  state.currentMission = missionId;
+  state.currentScene = 0;
+  state.score = 0;
+  state.totalChoices = 0;
+  state.correctChoices = 0;
+
+  document.getElementById('topbar-mission-label').textContent = m.label;
+  document.getElementById('topbar-mission-title').textContent = m.title;
+  document.getElementById('score-display').textContent = '0';
+
+  renderMission(m);
+  showScreen('game');
+  updateProgress(0, m.storyboard.length);
+}
+
+// ═══════════════════════════════════════════
+// RENDER MISSION
+// ═══════════════════════════════════════════
+function renderMission(mission) {
+  const container = document.getElementById('scenes-container');
+  container.innerHTML = '';
+
+  mission.storyboard.forEach((scene, idx) => {
+    const div = document.createElement('div');
+    div.className = 'scene' + (idx === 0 ? ' active' : '');
+    div.id = `scene-${idx}`;
+    div.innerHTML = buildScene(scene, idx, mission);
+    container.appendChild(div);
+  });
+}
+
+function buildScene(scene, idx, mission) {
+  let html = '';
+
+  if (scene.type === 'context') {
+    html += `<div class="scene-context ${scene.variant === 'warn' ? 'warn' : scene.variant === 'danger' ? 'danger' : ''}">
+      ${scene.text}
+    </div>`;
+    html += nextBtn(idx, mission);
+  }
+
+  if (scene.type === 'messages') {
+    html += `<div class="messages">`;
+    scene.msgs.forEach(msg => {
+      html += `<div class="msg ${msg.cls}">
+        ${msg.sender ? `<div class="msg-sender ${msg.senderCls}">${msg.sender}</div>` : ''}
+        ${msg.text}
+      </div>`;
+    });
+    html += `</div>`;
+    html += nextBtn(idx, mission);
+  }
+
+  if (scene.type === 'visual') {
+    html += `<div class="scene-visual">
+      <div class="visual-header">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span>${scene.title}</span>
+      </div>
+      <div class="visual-body">`;
+    scene.lines.forEach(line => {
+      if (line.hl === 'bad') html += `<div style="margin-bottom:8px">👉 <span class="highlight">${line.text}</span></div>`;
+      else if (line.hl === 'good') html += `<div style="margin-bottom:8px">👉 <span class="highlight hl-good">${line.text}</span></div>`;
+      else if (line.hl === 'warn') html += `<div style="margin-bottom:8px">👉 <span class="highlight hl-warn">${line.text}</span></div>`;
+      else html += `<div style="margin-bottom:8px; color:var(--muted)">${line.text}</div>`;
+    });
+    html += `</div></div>`;
+    html += nextBtn(idx, mission);
+  }
+
+  if (scene.type === 'choice') {
+    html += `<div class="messages"><div class="msg system">❓ ${scene.question}</div></div>`;
+    html += `<div class="choices" id="choices-${idx}">`;
+    scene.choices.forEach((c, ci) => {
+      html += `<button class="choice-btn" onclick="handleChoice(${idx}, ${ci}, ${c.correct}, '${mission.id}')" id="choice-${idx}-${ci}">
+        <span class="choice-letter">${c.letter}</span>
+        <span>${c.text}</span>
+      </button>`;
+    });
+    html += `</div>`;
+    html += `<div class="feedback-box" id="feedback-${idx}">
+      <div class="feedback-title" id="fb-title-${idx}"></div>
+      <div class="feedback-text" id="fb-text-${idx}"></div>
+      <div class="fact-pill" id="fb-fact-${idx}"></div>
+      ${idx < mission.storyboard.length - 1
+        ? `<button class="btn-next" onclick="advanceScene(${idx + 1}, ${mission.storyboard.length})">Далее →</button>`
+        : `<button class="btn-next" onclick="finishMission('${mission.id}')">Завершить миссию 🏁</button>`
+      }
+    </div>`;
+  }
+
+  return html;
+}
+
+function nextBtn(idx, mission) {
+  const isLast = idx === mission.storyboard.length - 1;
+  if (isLast) return `<button class="btn-next" onclick="finishMission('${mission.id}')">Завершить миссию 🏁</button>`;
+  return `<button class="btn-next" onclick="advanceScene(${idx + 1}, ${mission.storyboard.length})">Далее →</button>`;
+}
+
+// ═══════════════════════════════════════════
+// HANDLE CHOICE
+// ═══════════════════════════════════════════
+function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
+  const mission = MISSIONS[missionId];
+  const scene = mission.storyboard[sceneIdx];
+
+  // Disable all choices
+  const btns = document.querySelectorAll(`#choices-${sceneIdx} .choice-btn`);
+  btns.forEach(b => b.disabled = true);
+
+  // Style chosen button
+  document.getElementById(`choice-${sceneIdx}-${choiceIdx}`).classList.add(isCorrect ? 'correct' : 'wrong');
+
+  // Show correct if wrong
+  if (!isCorrect) {
+    scene.choices.forEach((c, ci) => {
+      if (c.correct) document.getElementById(`choice-${sceneIdx}-${ci}`).classList.add('correct');
+    });
+  }
+
+  // Score
+  state.totalChoices++;
+  if (isCorrect) {
+    state.correctChoices++;
+    state.score += 100;
+    document.getElementById('score-display').textContent = state.score;
+  }
+
+  // Feedback
+  const fb = isCorrect ? scene.feedback.correct : scene.feedback.wrong;
+  const fbBox = document.getElementById(`feedback-${sceneIdx}`);
+  fbBox.classList.add('show', isCorrect ? 'good' : 'bad');
+  document.getElementById(`fb-title-${sceneIdx}`).textContent = fb.title;
+  document.getElementById(`fb-text-${sceneIdx}`).textContent = fb.text;
+  document.getElementById(`fb-fact-${sceneIdx}`).textContent = fb.fact;
+}
+
+// ═══════════════════════════════════════════
+// ADVANCE SCENE
+// ═══════════════════════════════════════════
+function advanceScene(nextIdx, total) {
+  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
+  const next = document.getElementById(`scene-${nextIdx}`);
+  if (next) {
+    next.classList.add('active');
+    next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  updateProgress(nextIdx, total);
+}
+
+function updateProgress(current, total) {
+  const pct = total > 1 ? (current / (total - 1)) * 100 : 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// ═══════════════════════════════════════════
+// FINISH MISSION
+// ═══════════════════════════════════════════
+function finishMission(missionId) {
+  const mission = MISSIONS[missionId];
+  const pct = state.totalChoices > 0 ? Math.round((state.correctChoices / state.totalChoices) * 100) : 100;
+
+  let emoji, title;
+  if (pct === 100) { emoji = '🏆'; title = 'Мастер безопасности!'; }
+  else if (pct >= 60) { emoji = '✅'; title = 'Хорошая работа!'; }
+  else { emoji = '📚'; title = 'Есть что изучить'; }
+
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-score-num').textContent = state.score;
+
+  // Tips
+  const tipsHtml = `
+    <h3>🛡 Запомни на будущее</h3>
+    ${mission.tips.map(t => `
+      <div class="tip-item">
+        <span class="tip-icon">${t.icon}</span>
+        <span>${t.text}</span>
+      </div>
+    `).join('')}
+  `;
+  document.getElementById('result-tips').innerHTML = tipsHtml;
+
+  // Next mission button
+  const curIdx = MISSION_ORDER.indexOf(missionId);
+  const nextBtn = document.getElementById('btn-next-mission');
+  if (curIdx < MISSION_ORDER.length - 1) {
+    const nextId = MISSION_ORDER[curIdx + 1];
+    nextBtn.style.display = 'inline-block';
+    nextBtn.dataset.next = nextId;
+  } else {
+    nextBtn.style.display = 'none';
+  }
+
+  showScreen('result');
+}
+
+function nextMission() {
+  const nextId = document.getElementById('btn-next-mission').dataset.next;
+  if (nextId) openModal(nextId);
+  else goHome();
+}
+
+// Close modal on overlay click
+document.getElementById('modal-overlay').addEventListener('click', (e) => {
+  if (e.target === document.getElementById('modal-overlay')) closeModal();
+});
+</script>
+</body>
+</html>

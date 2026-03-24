@@ -680,7 +680,7 @@
       <div class="game-mission-label" id="topbar-mission-label">Миссия 01</div>
       <div class="game-mission-title" id="topbar-mission-title">Лёгкие деньги</div>
     </div>
-    <div class="score-display">⭐ <span class="score-num" id="score-display">0</span></div>
+    <div class="score-display">🏆 Общий: <span class="score-num" id="total-score-display">0</span> | ⭐ Миссия: <span class="score-num" id="mission-score-display">0</span></div>
     <button class="btn-back" onclick="goHome()">← На главную</button>
   </div>
 
@@ -720,7 +720,7 @@ const MISSIONS = {
     title: 'Лёгкие деньги',
     color: '#ff3b6b',
     desc: 'Незнакомец в интернете предлагает получать деньги просто так — пропуская переводы через свою карту. Звучит легко? Узнай, чем это кончается.',
-    scenes: 9, diff: 'Начальный',
+    scenes: 11, diff: 'Начальный',
     tips: [
       { icon: '⚖️', text: 'Дроппер — юридически пособник преступника. Уголовная ответственность с 14 лет.' },
       { icon: '🏦', text: 'Банк заблокирует карту, долг придётся возвращать годами.' },
@@ -1110,7 +1110,35 @@ function showScreen(id) {
   document.getElementById('screen-' + id).classList.add('active');
 }
 
-function goHome() { showScreen('home'); }
+function goHome() { 
+  showScreen('home'); 
+}
+
+function startMission(missionId) {
+  const m = MISSIONS[missionId];
+  state.currentMission = missionId;
+  state.currentScene = 0;
+  state.missionScore = 0;
+  state.totalChoices = 0;
+  state.correctChoices = 0;
+  state.maxPossibleScore = 0;
+  
+  // Count max possible score for this mission
+  m.storyboard.forEach(scene => {
+    if (scene.type === 'choice') {
+      state.maxPossibleScore += 100;
+    }
+  });
+
+  document.getElementById('topbar-mission-label').textContent = m.label;
+  document.getElementById('topbar-mission-title').textContent = m.title;
+  document.getElementById('mission-score-display').textContent = '0';
+  document.getElementById('total-score-display').textContent = state.totalScore;
+
+  renderMission(m);
+  showScreen('game');
+  updateProgress(0, m.storyboard.length);
+}
 
 // ═══════════════════════════════════════════
 // MODAL
@@ -1137,34 +1165,6 @@ document.getElementById('modal-play-btn').addEventListener('click', () => {
   closeModal();
   startMission(state.selectedModal);
 });
-
-// ═══════════════════════════════════════════
-// START MISSION
-// ═══════════════════════════════════════════
-function startMission(missionId) {
-  const m = MISSIONS[missionId];
-  state.currentMission = missionId;
-  state.currentScene = 0;
-  state.missionScore = 0;
-  state.totalChoices = 0;
-  state.correctChoices = 0;
-  state.maxPossibleScore = 0;
-  
-  // Count max possible score for this mission
-  m.storyboard.forEach(scene => {
-    if (scene.type === 'choice') {
-      state.maxPossibleScore += 100;
-    }
-  });
-
-  document.getElementById('topbar-mission-label').textContent = m.label;
-  document.getElementById('topbar-mission-title').textContent = m.title;
-  document.getElementById('score-display').textContent = '0';
-
-  renderMission(m);
-  showScreen('game');
-  updateProgress(0, m.storyboard.length);
-}
 
 // ═══════════════════════════════════════════
 // RENDER MISSION
@@ -1277,7 +1277,7 @@ function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
   if (isCorrect) {
     state.correctChoices++;
     state.missionScore += 100;
-    document.getElementById('score-display').textContent = state.missionScore;
+    document.getElementById('mission-score-display').textContent = state.missionScore;
   }
 
   // Feedback
@@ -1325,7 +1325,7 @@ function finishMission(missionId) {
 
   document.getElementById('result-emoji').textContent = emoji;
   document.getElementById('result-title').textContent = title;
-  document.getElementById('result-score-num').textContent = state.missionScore;
+  document.getElementById('result-score-num').textContent = state.totalScore + ' (+' + state.missionScore + ' в этой миссии)';
 
   // Tips
   const tipsHtml = `
@@ -1423,6 +1423,7 @@ function showFinalResults() {
 function resetGame() {
   state.totalScore = 0;
   state.completedMissions = [];
+  document.getElementById('total-score-display').textContent = '0';
   goHome();
 }
 

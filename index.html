@@ -720,7 +720,7 @@ const MISSIONS = {
     title: 'Лёгкие деньги',
     color: '#ff3b6b',
     desc: 'Незнакомец в интернете предлагает получать деньги просто так — пропуская переводы через свою карту. Звучит легко? Узнай, чем это кончается.',
-    scenes: 6, diff: 'Начальный',
+    scenes: 9, diff: 'Начальный',
     tips: [
       { icon: '⚖️', text: 'Дроппер — юридически пособник преступника. Уголовная ответственность с 14 лет.' },
       { icon: '🏦', text: 'Банк заблокирует карту, долг придётся возвращать годами.' },
@@ -777,6 +777,35 @@ const MISSIONS = {
         feedback: {
           correct: { title: '✅ Ты разгадал схему!', text: 'Именно! Деньги, которые будут проходить через твою карту — краденые. Ты становишься звеном в преступной цепочке. Даже «незнание» не освобождает от ответственности по закону.', fact: '⚖️ Статья 174.1 УК РФ — легализация преступных доходов. До 7 лет лишения свободы.' },
           wrong: { title: '❌ Это ловушка!', text: 'Это не работа. Через твою карту будут проходить деньги, украденные у других людей. Ты станешь соучастником мошенничества.', fact: '🚔 Следователи запрашивают данные карты — тебя найдут по первому же переводу' }
+        }
+      },
+      {
+        type: 'context',
+        variant: 'danger',
+        text: '🚨 Что происходит когда ты соглашаешься...'
+      },
+      {
+        type: 'visual',
+        title: 'ХРОНИКА СОБЫТИЙ',
+        lines: [
+          { text: 'День 1: Ты получаешь первый перевод — 50 000 ₽. Отправляешь 45 000 ₽ дальше.', hl: 'warn' },
+          { text: 'День 3: На карте уже 200 000 ₽. Ты чувствуешь себя богатым!', hl: 'warn' },
+          { text: 'День 5: Карта заблокирована банком. Звонок от следователя.', hl: 'bad' },
+          { text: 'День 7: Родители в шоке — на тебе висит уголовное дело.', hl: 'bad' },
+          { text: 'Итог: 150 000 ₽ придётся возвращать жертвам мошенничества годами.', hl: 'bad' },
+        ]
+      },
+      {
+        type: 'choice',
+        question: 'Как можно было этого избежать?',
+        choices: [
+          { letter: 'А', text: 'Просто не начинать — блокировать первое же сообщение о «лёгких деньгах»', correct: true },
+          { letter: 'Б', text: 'Быстрее выводить деньги, чтобы банк не заметил', correct: false },
+          { letter: 'В', text: 'Использовать чужую карту вместо своей', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Именно так!', text: 'Лучшая защита — не вступать в игру. Первое сообщение с предложением «лёгких денег» должно быть немедленно заблокировано. Расскажи об этом друзьям — возможно, ты спасёшь кого-то от ошибки.', fact: '🛡 95% дропперов вербуются через соцсети и мессенджеры' },
+          wrong: { title: '❌ Это только усугубит!', text: 'Быстрое выведение денег или использование чужой карты — это дополнительные статьи УК РФ. Банковские системы мониторинга видят всё.', fact: '👁 Банки используют ИИ для отслеживания подозрительных транзакций в реальном времени' }
         }
       }
     ]
@@ -1064,10 +1093,13 @@ const MISSION_ORDER = ['dropper', 'gosuslugi', 'klad', 'terror', 'bully'];
 let state = {
   currentMission: null,
   currentScene: 0,
-  score: 0,
+  missionScore: 0,
+  totalScore: 0,
   totalChoices: 0,
   correctChoices: 0,
-  selectedModal: null
+  selectedModal: null,
+  completedMissions: [],
+  maxPossibleScore: 0
 };
 
 // ═══════════════════════════════════════════
@@ -1113,9 +1145,17 @@ function startMission(missionId) {
   const m = MISSIONS[missionId];
   state.currentMission = missionId;
   state.currentScene = 0;
-  state.score = 0;
+  state.missionScore = 0;
   state.totalChoices = 0;
   state.correctChoices = 0;
+  state.maxPossibleScore = 0;
+  
+  // Count max possible score for this mission
+  m.storyboard.forEach(scene => {
+    if (scene.type === 'choice') {
+      state.maxPossibleScore += 100;
+    }
+  });
 
   document.getElementById('topbar-mission-label').textContent = m.label;
   document.getElementById('topbar-mission-title').textContent = m.title;
@@ -1236,8 +1276,8 @@ function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
   state.totalChoices++;
   if (isCorrect) {
     state.correctChoices++;
-    state.score += 100;
-    document.getElementById('score-display').textContent = state.score;
+    state.missionScore += 100;
+    document.getElementById('score-display').textContent = state.missionScore;
   }
 
   // Feedback
@@ -1273,6 +1313,10 @@ function updateProgress(current, total) {
 function finishMission(missionId) {
   const mission = MISSIONS[missionId];
   const pct = state.totalChoices > 0 ? Math.round((state.correctChoices / state.totalChoices) * 100) : 100;
+  
+  // Add mission score to total
+  state.totalScore += state.missionScore;
+  state.completedMissions.push({ id: missionId, score: state.missionScore, maxScore: state.maxPossibleScore });
 
   let emoji, title;
   if (pct === 100) { emoji = '🏆'; title = 'Мастер безопасности!'; }
@@ -1281,7 +1325,7 @@ function finishMission(missionId) {
 
   document.getElementById('result-emoji').textContent = emoji;
   document.getElementById('result-title').textContent = title;
-  document.getElementById('result-score-num').textContent = state.score;
+  document.getElementById('result-score-num').textContent = state.missionScore;
 
   // Tips
   const tipsHtml = `
@@ -1301,9 +1345,14 @@ function finishMission(missionId) {
   if (curIdx < MISSION_ORDER.length - 1) {
     const nextId = MISSION_ORDER[curIdx + 1];
     nextBtn.style.display = 'inline-block';
+    nextBtn.textContent = 'Следующая миссия →';
     nextBtn.dataset.next = nextId;
+    nextBtn.onclick = nextMission;
   } else {
-    nextBtn.style.display = 'none';
+    // Last mission - show final results button
+    nextBtn.style.display = 'inline-block';
+    nextBtn.textContent = '🏁 Итоги игры';
+    nextBtn.onclick = showFinalResults;
   }
 
   showScreen('result');
@@ -1313,6 +1362,68 @@ function nextMission() {
   const nextId = document.getElementById('btn-next-mission').dataset.next;
   if (nextId) openModal(nextId);
   else goHome();
+}
+
+function showFinalResults() {
+  const totalMaxScore = state.completedMissions.reduce((sum, m) => sum + m.maxScore, 0);
+  const percentage = totalMaxScore > 0 ? Math.round((state.totalScore / totalMaxScore) * 100) : 0;
+  
+  let emoji, title, message;
+  if (percentage >= 90) { 
+    emoji = '🏆'; 
+    title = 'ЛЕГЕНДАРНЫЙ ЗАЩИТНИК!'; 
+    message = 'Ты прошёл все миссии с блестящим результатом! Теперь ты настоящий эксперт по цифровой безопасности.';
+  } else if (percentage >= 70) { 
+    emoji = '🥈'; 
+    title = 'ОПЫТНЫЙ БОЕЦ!'; 
+    message = 'Отличная работа! Ты хорошо разбираешься в основах безопасности, но есть куда расти.';
+  } else if (percentage >= 50) { 
+    emoji = '🥉'; 
+    title = 'НАЧИНАЮЩИЙ ЗАЩИТНИК'; 
+    message = 'Неплохо! Но стоит ещё раз пройти некоторые миссии и запомнить правила безопасности.';
+  } else { 
+    emoji = '📚'; 
+    title = 'УЧИСЬ И ЗАЩИЩАЙСЯ'; 
+    message = 'Рекомендуем пройти миссии ещё раз. Знания о безопасности могут спасти тебя от реальных мошенников!';
+  }
+  
+  document.getElementById('result-emoji').textContent = emoji;
+  document.getElementById('result-title').textContent = title;
+  
+  let breakdownHtml = `<p style="font-size: 1rem; color: var(--text); margin-bottom: 20px;">${message}</p>`;
+  breakdownHtml += `<div style="background: var(--surface2); border-radius: 12px; padding: 20px; margin-bottom: 20px;">`;
+  breakdownHtml += `<div style="font-family: var(--font-head); font-size: 1.5rem; color: var(--accent3); margin-bottom: 10px;">${state.totalScore} / ${totalMaxScore} очков</div>`;
+  breakdownHtml += `<div style="font-size: 0.9rem; color: var(--muted);">Общий результат: ${percentage}%</div>`;
+  breakdownHtml += `</div>`;
+  
+  breakdownHtml += `<div style="text-align: left; margin-bottom: 20px;">`;
+  breakdownHtml += `<h4 style="font-family: var(--font-head); font-size: 0.85rem; color: var(--accent); margin-bottom: 12px; text-transform: uppercase;">Результаты по миссиям:</h4>`;
+  state.completedMissions.forEach((m, idx) => {
+    const mInfo = MISSIONS[m.id];
+    const mPct = m.maxScore > 0 ? Math.round((m.score / m.maxScore) * 100) : 0;
+    breakdownHtml += `
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border);">
+        <span style="font-size: 0.85rem; color: var(--text);">${idx + 1}. ${mInfo.title}</span>
+        <span style="font-family: var(--font-head); font-size: 0.85rem; color: ${mPct >= 80 ? 'var(--good)' : mPct >= 50 ? 'var(--accent3)' : 'var(--bad)'};">${m.score}/${m.maxScore} (${mPct}%)</span>
+      </div>
+    `;
+  });
+  breakdownHtml += `</div>`;
+  
+  document.getElementById('result-tips').innerHTML = breakdownHtml;
+  
+  const nextBtn = document.getElementById('btn-next-mission');
+  nextBtn.style.display = 'inline-block';
+  nextBtn.textContent = '🔄 Пройти заново';
+  nextBtn.onclick = resetGame;
+  
+  showScreen('result');
+}
+
+function resetGame() {
+  state.totalScore = 0;
+  state.completedMissions = [];
+  goHome();
 }
 
 // Close modal on overlay click

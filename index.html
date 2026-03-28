@@ -11,12 +11,12 @@
   <body>
     <div id="screen-home" class="screen active">
       <div class="home-inner">
-        <div class="badge">🛡 Цифровая безопасность · 5 миссий</div>
+        <div class="badge">🛡 Цифровая безопасность · 6 миссий</div>
         <h1 class="home-title">
           СТОП<br>
           <span class="accent-cyan">СКАМ</span><span class="accent-red">!</span>
         </h1>
-        <p class="home-sub">Образовательная игра о том, как мошенники вербуют подростков — и как их распознать. Пройди 5 реальных сценариев и защити себя.</p>
+        <p class="home-sub">Образовательная игра о том, как мошенники вербуют подростков – и как их распознать. Пройди 6 реальных сценариев и защити себя.</p>
 
         <div class="missions-grid">
           <div class="mission-card" style="--card-color:#ff3b6b" onclick="openModal('dropper')">
@@ -26,7 +26,7 @@
             <div class="mission-desc">Дропперство и незаконные переводы</div>
           </div>
           <div class="mission-card" style="--card-color:#ffe500" onclick="openModal('gosuslugi')">
-            <div class="mission-icon">🏛️</div>
+            <div class="mission-icon">🌷</div>
             <div class="mission-num">Миссия 02</div>
             <div class="mission-name">Цветочный магазин</div>
             <div class="mission-desc">Взлом Госуслуг через доверие</div>
@@ -49,8 +49,13 @@
             <div class="mission-name">Кибербуллинг</div>
             <div class="mission-desc">Давление и шантаж в сети</div>
           </div>
+          <div class="mission-card" style="--card-color:#667eea" onclick="openModal('crypto')">
+            <div class="mission-icon">₿</div>
+            <div class="mission-num">Миссия 06</div>
+            <div class="mission-name">Легендарный трейдер</div>
+            <div class="mission-desc">Крипто-скам и фейковые инвестиции</div>
+          </div>
         </div>
-
         <button class="btn-start" onclick="openModal('dropper')">▶ Начать с Миссии 1</button>
       </div>
     </div>
@@ -78,7 +83,6 @@
         <div class="score-display">🏆 Общий: <span class="score-num" id="total-score-display">0</span> | ⭐ Миссия: <span class="score-num" id="mission-score-display">0</span></div>
         <button class="btn-back" onclick="goHome()">← На главную</button>
       </div>
-
       <div class="storyboard">
         <div class="progress-bar">
           <div class="progress-fill" id="progress-fill" style="width:0%"></div>

@@ -546,30 +546,34 @@ const MISSIONS = {
     title: 'Обиженный герой',
     color: '#ff7043',
     desc: 'Кто-то в сети понимает тебя лучше всех. Жалеет. Называет героем. Но постепенно разговоры становятся опаснее...',
-    scenes: 5, diff: 'Сложный',
+    scenes: 12, diff: 'Сложный',
     tips: [
       { icon: '🧠', text: 'Вербовщики в деструктивные группы сначала «дружат», потом медленно меняют взгляды.' },
       { icon: '🚩', text: 'Красные флаги: «только мы понимаем тебя», «обычные люди – это враги», «ты избранный».' },
       { icon: '📢', text: 'Если тебя или друга склоняют к насилию, сообщи в ФСБ: fsb.ru или 8 (800) 224-22-22.' },
     ],
     storyboard: [
+      // СЦЕНА 1 – контекст
       {
         type: 'context',
         variant: 'normal',
-        text: '💬 Telegram. Тебе грустно после конфликта в школе. Незнакомец начал переписку.'
+        text: '💬 Telegram. Тебе 16 лет. После серьезного конфликта в школе ты выложил грустный пост в соцсетях. Вечером приходит сообщение от незнакомца.'
       },
+      // СЦЕНА 2 – первый контакт
       {
         type: 'messages',
         msgs: [
-          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Видел твой пост. Слушай, я понимаю тебя. Школа – это тюрьма, учителя издеваются, одноклассники не уважают. Я сам через это прошел.' },
-          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Ты не один. У нас есть закрытый чат, там настоящие люди, которые не предают.' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Привет. Видел твой пост. Слушай, я понимаю тебя как никто другой. Школа – это настоящая тюрьма, учителя издеваются, одноклассники не уважают. Я сам через все это прошел.' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Странно... Откуда он знает про мой пост? И почему пишет именно мне?' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Ты не один такой. У нас есть закрытый чат, где собрались настоящие люди. Те, кто не предают. Те, кто понимают друг друга без слов.' },
         ]
       },
+      // СЦЕНА 3 – первый выбор
       {
         type: 'choice',
         question: 'Что настораживает в этом сообщении?',
         choices: [
-          { letter: 'А', text: 'Ничего, человек просто хочет помочь', correct: false },
+          { letter: 'А', text: 'Ничего, человек просто хочет помочь и поддержать', correct: false },
           { letter: 'Б', text: 'Незнакомец читал мои посты и сразу предлагает «закрытое сообщество» – это манипуляция', correct: true },
           { letter: 'В', text: 'Он говорит слишком правильно, наверное это бот', correct: false },
         ],
@@ -578,30 +582,124 @@ const MISSIONS = {
           wrong: { title: '⚠️ Будь внимательнее!', text: 'Незнакомец знает твои посты, называет тебя «не одиноким» и зовет в закрытый чат – это классическая схема вербовки. Настоящие друзья так не действуют.', fact: '🚩 «Закрытое сообщество только для избранных» является красным флагом любой секты или экстремистской группы' }
         }
       },
-      // проверка информации
+      // СЦЕНА 4 – развитие доверия
       {
         type: 'context',
-        variant: 'danger',
-        text: '🚨 Через 2 недели переписки тон меняется.'
+        variant: 'warn',
+        text: '🕐 Ты решил посмотреть, куда приведет этот разговор. Прошла неделя ежедневного общения.'
       },
       {
         type: 'messages',
         msgs: [
-          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Слова ничего не меняют. Настоящий герой действует. История помнит только тех, кто сделал что-то большое.' },
-          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Есть план. Тебе нужно только быть в нужном месте в нужное время. Ты готов войти в историю?' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Брат, я вижу в тебе потенциал. Ты умнее этих серых масс. Они не заслуживают твоего внимания.' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Знаешь, почему у тебя проблемы? Потому что система сломана. Учителя, родители, полиция – все они работают против таких как мы.' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Он вроде говорит правильные вещи... Но почему все звучит так радикально?' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Я добавил тебя в наш закрытый чат. Посмотри, сколько здесь крутых ребят. Все прошли через то же самое.' },
         ]
       },
+      // СЦЕНА 5 – визуализация чата
+      {
+        type: 'visual',
+        title: 'СКРИНШОТ ЧАТА · «Истинные братья»',
+        lines: [
+          { text: 'Макс_Правда: Всем привет! Это новый брат, присоединился к нам.', hl: 'warn' },
+          { text: 'Wolf_777: Привет! Наконец-то еще один нормальный человек.', hl: 'warn' },
+          { text: 'Shadow_Hunter: Добро пожаловать в семью. Здесь ты найдешь настоящих друзей.', hl: 'bad' },
+          { text: 'IronTruth: Мы изменим этот мир. Вместе мы сила.', hl: 'bad' },
+          { text: 'Макс_Правда: Скоро будет важное собрание. Только для своих.', hl: 'bad' },
+        ]
+      },
+      // СЦЕНА 6 – вопрос про чат
+      {
+        type: 'choice',
+        question: 'Что должно насторожить в этом чате?',
+        choices: [
+          { letter: 'А', text: 'Все нормально, просто группа поддержки для подростков', correct: false },
+          { letter: 'Б', text: 'Слова «семья», «братья», «только для своих» – признаки изоляции и культа', correct: true },
+          { letter: 'В', text: 'Слишком много участников, наверное это просто популярный чат', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Ты видишь красные флаги!', text: 'Культовые группы используют язык «семьи» и «избранности» для создания ложного чувства принадлежности. Это первый шаг к полному контролю над сознанием.', fact: '🚩 Термины «братья», «семья», «избранные» используются в 90% вербовочных групп' },
+          wrong: { title: '⚠️ Опасное заблуждение!', text: 'Это не группа поддержки. Это изоляция от общества и подготовка к принятию радикальных идей. Настоящая поддержка не требует отказа от внешнего мира.', fact: '🧠 Изоляция – первый признак деструктивной секты или экстремистской группы' }
+        }
+      },
+      // СЦЕНА 7 – эскалация
+      {
+        type: 'context',
+        variant: 'danger',
+        text: '🚨 Прошло еще две недели. Тон переписки резко меняется. Макс начинает говорить о «действиях».'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Брат, слова ничего не меняют. Настоящий герой действует. История помнит только тех, кто сделал что-то большое.' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Ты ведь не хочешь всю жизнь быть жертвой системы? Пришло время стать победителем.' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Что он имеет в виду под «действием»? Это звучит опасно...' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Есть план. Большой план. Тебе нужно только быть в нужном месте в нужное время. Ты готов войти в историю?' },
+        ]
+      },
+      // СЦЕНА 8 – давление
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Не сомневайся. Те, кто сомневаются – не настоящие братья. Они остаются с системой.' },
+          { cls: 'scam', sender: 'Макс_Правда', senderCls: 'bad', text: 'Завтра в 18:00 будет встреча. Адрес скину лично. Никому не говори, это только для своих.' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Тайная встреча? Без родителей? Что-то здесь очень неправильно...' },
+        ]
+      },
+      // СЦЕНА 9 – визуализация давления
+      {
+        type: 'visual',
+        title: 'ПОСЛЕДНИЕ СООБЩЕНИЯ ОТ МАКСА',
+        lines: [
+          { text: 'Макс: Слова ничего не меняют. Герой действует.', hl: 'bad' },
+          { text: 'Макс: Ты готов войти в историю?', hl: 'bad' },
+          { text: 'Макс: Завтра в 18:00 встреча. Адрес позже.', hl: 'bad' },
+          { text: 'Макс: Никому не говори. Только для своих.', hl: 'bad' },
+          { text: 'Макс: Не подведи братьев.', hl: 'bad' },
+        ]
+      },
+      // СЦЕНА 10 – критический выбор
       {
         type: 'choice',
         question: 'Что нужно сделать ПРЯМО СЕЙЧАС?',
         choices: [
-          { letter: 'А', text: 'Уточнить подробности «плана»', correct: false },
+          { letter: 'А', text: 'Уточнить подробности «плана» и встречи', correct: false },
           { letter: 'Б', text: 'Немедленно прекратить общение, сохранить скриншоты и сообщить взрослым или в полицию', correct: true },
-          { letter: 'В', text: 'Написать в чат, что не согласен, и попробовать переубедить других', correct: false },
+          { letter: 'В', text: 'Пойти на встречу, чтобы разобраться что происходит', correct: false },
         ],
         feedback: {
           correct: { title: '✅ Правильное решение!', text: 'Это уже склонение к совершению насильственного акта. Немедленно: сохрани скриншоты, выйди из чата, расскажи родителям или учителю, сообщи в полицию или ФСБ. Это не предательство – это спасение жизней, в том числе своей.', fact: '📢 Сообщить анонимно в ФСБ: fsb.ru или 8-800-224-22-22 (бесплатно)' },
-          wrong: { title: '❌ Опасно!', text: 'Уточнение деталей уже делает тебя потенциально причастным. Не вступай в диалог, выходи и сообщай.', fact: '⚖️ Недонесение о подготовке теракта – это уголовная статья. Сообщить – это твоя защита.' }
+          wrong: { title: '❌ Опасно!', text: 'Уточнение деталей или поход на встречу уже делает тебя потенциально причастным. Не вступай в диалог, выходи и сообщай.', fact: '⚖️ Недонесение о подготовке теракта – это уголовная статья. Сообщить – это твоя защита.' }
+        }
+      },
+      // СЦЕНА 11 – друг в опасности
+      {
+        type: 'context',
+        variant: 'danger',
+        text: '🚨 Твой друг Кирилл рассказывает, что его тоже зовут в какой-то «закрытый чат».'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'them', sender: 'Кирилл', senderCls: 'neutral', text: 'Слушай, мне тут один парень написал. Говорит, что понял меня. Зовет в закрытое сообщество. Говорит, что там настоящие друзья.' },
+          { cls: 'me', sender: 'Ты', senderCls: 'neutral', text: 'Кирилл, стоп! Это опасно. Мне тоже писали точно также. Потом начали звать на тайные встречи.' },
+          { cls: 'them', sender: 'Кирилл', senderCls: 'neutral', text: 'Да ладно, ты преувеличиваешь. Он просто хочет помочь...' },
+          { cls: 'me', sender: 'Ты', senderCls: 'neutral', text: 'Нет! Сохрани переписку и покажи родителям. Это схема вербовки. Я серьезно.' },
+        ]
+      },
+      // СЦЕНА 12 – финальный урок
+      {
+        type: 'choice',
+        question: 'Как помочь другу распознать вербовку?',
+        choices: [
+          { letter: 'А', text: 'Сказать что он глупый и сам виноват', correct: false },
+          { letter: 'Б', text: 'Показать свои скриншоты, объяснить схему и предложить вместе обратиться к взрослым', correct: true },
+          { letter: 'В', text: 'Просто запретить ему общаться, без объяснений', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Ты настоящий друг!', text: 'Поддержка и факты работают лучше запретов. Покажи другу реальные доказательства схемы, предложи вместе поговорить с родителями или школьным психологом. Вместе вы сильнее.', fact: '💬 Доверительный разговор снижает риск вербовки на 80%' },
+          wrong: { title: '⚠️ Так не сработает!', text: 'Оскорбления или запреты без объяснений только отдалят друга и заставят его скрывать переписку. Нужен открытый диалог и доказательства.', fact: '🧠 Подростки в 3 раза чаще слушают сверстников, чем взрослых, но нужны факты' }
         }
       }
     ]
@@ -614,25 +712,29 @@ const MISSIONS = {
     title: 'Кибербуллинг',
     color: '#00e5ff',
     desc: 'Бывший одноклассник начинает давить, угрожать и распространять слухи. Что делать, когда травля переходит в онлайн?',
-    scenes: 5, diff: 'Начальный',
+    scenes: 12, diff: 'Начальный',
     tips: [
       { icon: '📸', text: 'Всегда делай скриншоты угроз, это доказательства.' },
       { icon: '🔕', text: 'Блокировка хулигана – не слабость, а защита своих границ.' },
       { icon: '💬', text: 'Кибербуллинг – это не норма. Расскажи взрослым или психологу.' },
     ],
     storyboard: [
+      // СЦЕНА 1 – контекст
       {
         type: 'context',
         variant: 'normal',
-        text: '📸 Instagram. Бывший одноклассник Денис начинает писать тебе агрессивные комментарии.'
+        text: '📸 Instagram. Тебе 15 лет. После ссоры с бывшим одноклассником Денисом ты замечаешь странные комментарии под своими фотографиями.'
       },
+      // СЦЕНА 2 – первые оскорбления
       {
         type: 'messages',
         msgs: [
-          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'хаха смотрите какой лузер. все знают что ты нытик. твои фоточки позорище' },
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'хаха смотрите какой лузер появился. все знают что ты нытик. твои фоточки полное позорище 😂' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Что за... Откуда он пишет? И почему столько лайков под его комментарием?' },
           { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'если ответишь, скину всем твою переписку с *** 😂 молчи и может оставлю в покое' },
         ]
       },
+      // СЦЕНА 3 – первый выбор
       {
         type: 'choice',
         question: 'Как лучше всего ответить на это?',
@@ -646,11 +748,63 @@ const MISSIONS = {
           wrong: { title: '⚠️ Так только хуже!', text: 'Агрессивный ответ дает хулигану то, чего он хочет – реакцию. Молчание не остановит его. Нужны скриншоты и помощь взрослых.', fact: '🚩 Шантаж перепиской – это уже статья 163 УК РФ (вымогательство)' }
         }
       },
+      // СЦЕНА 4 – эскалация
       {
         type: 'context',
         variant: 'warn',
-        text: '📊 Разберем: что делать если травля продолжается в разных местах?'
+        text: '🚨 Ты решил проигнорировать. Но через два дня травля усиливается.'
       },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'вижу ты меня игнорируешь. думаешь это поможет?' },
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'я создал чат «позор дня» куда скидываю твои фотки. там уже 50 человек из школы 😂' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Чат?! Это становится серьезнее. Мне страшно...' },
+          { cls: 'them', sender: 'Подруга Маша', senderCls: 'neutral', text: 'Привет! Ты видела этот чат? Мне так жаль... Денис перешел все границы.' },
+        ]
+      },
+      // СЦЕНА 5 – визуализация чата
+      {
+        type: 'visual',
+        title: 'СКРИНШОТ ЧАТА · «Позор дня»',
+        lines: [
+          { text: 'Denis_666: Всем смотреть! Новый мем дня 🔥', hl: 'bad' },
+          { text: 'User123: хахаха смешно!', hl: 'warn' },
+          { text: 'AnonGirl: Денис, может хватит? Это уже слишком...', hl: 'good' },
+          { text: 'Denis_666: кто не с нами, тот против нас', hl: 'bad' },
+          { text: 'XxX_DenXxX: продолжай, интересно же!', hl: 'warn' },
+        ]
+      },
+      // СЦЕНА 6 – вопрос про свидетелей
+      {
+        type: 'choice',
+        question: 'Что делать если травля происходит в чате с другими людьми?',
+        choices: [
+          { letter: 'А', text: 'Написать в чат и попытаться оправдаться', correct: false },
+          { letter: 'Б', text: 'Сделать скриншоты чата, сообщить администраторам платформы и обратиться к взрослым', correct: true },
+          { letter: 'В', text: 'Удалить свой аккаунт и исчезнуть', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Верная стратегия!', text: 'Оправдания в чате только раззадорят агрессора. Скриншоты — это доказательства для администрации и полиции. Удаление аккаунта не решит проблему, буллинг продолжится.', fact: '📢 Платформы обязаны удалять контент с травлей в течение 24 часов после жалобы' },
+          wrong: { title: '⚠️ Это не поможет!', text: 'Оправдания дают буллеру внимание. Удаление аккаунта — это побег, а не решение. Нужно действовать системно.', fact: '🧠 85% случаев кибербуллинга прекращаются после блокировки агрессора и вмешательства взрослых' }
+        }
+      },
+      // СЦЕНА 7 – разговор с родителями
+      {
+        type: 'context',
+        variant: 'danger',
+        text: '🏠 Ты решаешься рассказать родителям. Вечерний разговор на кухне.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'them', sender: 'Мама', senderCls: 'neutral', text: 'Расскажи нам что случилось. Мы на твоей стороне.' },
+          { cls: 'me', sender: 'Ты', senderCls: 'neutral', text: 'Меня травит бывший одноклассник. Создал чат, скидывает мои фото, пишет гадости...' },
+          { cls: 'them', sender: 'Папа', senderCls: 'neutral', text: 'Это серьезно. Покажи нам скриншоты. Мы пойдем в школу и напишем заявление.' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Стало легче. Я не один/одна с этим.' },
+        ]
+      },
+      // СЦЕНА 8 – план действий
       {
         type: 'visual',
         title: 'ПЛАН ДЕЙСТВИЙ ПРИ КИБЕРБУЛЛИНГЕ',
@@ -663,6 +817,20 @@ const MISSIONS = {
           { text: '6. При угрозах обратись в полицию', hl: 'good' },
         ]
       },
+      // СЦЕНА 9 – давление со стороны друга
+      {
+        type: 'context',
+        variant: 'warn',
+        text: '📱 Твой друг Андрей пишет тебе после того как узнал о ситуации.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'them', sender: 'Андрей', senderCls: 'neutral', text: 'Слышал про Дениса. Слушай, не плачься взрослым, сам разберись, иначе слабаком прослывешь.' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Слабак? Но я же делаю правильное дело...' },
+        ]
+      },
+      // СЦЕНА 10 – критический выбор
       {
         type: 'choice',
         question: 'Друг говорит: «не плачься взрослым, сам разберись, иначе слабак». Что ответить?',
@@ -674,6 +842,34 @@ const MISSIONS = {
         feedback: {
           correct: { title: '✅ Верно!', text: 'Обратиться за помощью – это не слабость, это стратегия. Взрослые могут поговорить с родителями хулигана, школой, полицией. У них есть рычаги, которых нет у тебя. Справляться в одиночку с системной травлей лишнее страдание.', fact: '💬 Психологическая помощь подросткам: 8-800-2000-122 (бесплатно, круглосуточно)' },
           wrong: { title: '❌ Это не так!', text: 'Кибербуллинг – системная проблема, не личная слабость. Молчание и одиночная борьба только усугубляют ситуацию.', fact: '🧠 Без помощи взрослых кибербуллинг прекращается в 5 раз реже' }
+        }
+      },
+      // СЦЕНА 11 – последствия для агрессора
+      {
+        type: 'context',
+        variant: 'normal',
+        text: '📰 Через неделю после обращения в школу и полицию.'
+      },
+      {
+        type: 'messages',
+        msgs: [
+          { cls: 'them', sender: 'Классный руководитель', senderCls: 'neutral', text: 'Мы провели беседу с Денисом и его родителями. Чат удален, ему грозит исключение из школы.' },
+          { cls: 'them', sender: 'Мама', senderCls: 'neutral', text: 'Заявление приняли. Полиция будет проводить проверку. Ты молодец что рассказал/а.' },
+          { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Наконец-то стало спокойно. Жаль что не сделал/а это раньше.' },
+        ]
+      },
+      // СЦЕНА 12 – финальный урок
+      {
+        type: 'choice',
+        question: 'Что важно помнить о кибербуллинге?',
+        choices: [
+          { letter: 'А', text: 'Это временно, само пройдет', correct: false },
+          { letter: 'Б', text: 'Травля — это преступление. Жертва не виновата. Помощь доступна', correct: true },
+          { letter: 'В', text: 'Нужно просто удалить все соцсети', correct: false },
+        ],
+        feedback: {
+          correct: { title: '✅ Абсолютно верно!', text: 'Кибербуллинг — это не «детские шалости», а правонарушение с реальными последствиями. Жертва никогда не виновата в том что ее травят. Помощь есть: психологи, учителя, полиция, горячие линии.', fact: '📞 Телефон доверия для детей и подростков: 8-800-2000-122 (бесплатно, анонимно)' },
+          wrong: { title: '⚠️ Опасное заблуждение!', text: 'Игнорирование не останавливает буллеров. Удаление соцсетей — это изоляция себя, а не решение проблемы. Нужно действовать.', fact: '🧠 9 из 10 случаев кибербуллинга требуют вмешательства взрослых для полного прекращения' }
         }
       }
     ]
@@ -904,8 +1100,22 @@ function openModal(missionId) {
   document.getElementById('modal-desc').textContent = m.desc;
   document.getElementById('modal-scenes').textContent = `${m.scenes} сцен`;
   document.getElementById('modal-diff').textContent = `Уровень: ${m.diff}`;
-  document.getElementById('modal-play-btn').style.background = m.color;
-  document.getElementById('modal-play-btn').style.color = '#0a0d14';
+  const playBtn = document.getElementById('modal-play-btn');
+
+  // Проверяем, пройдена ли миссия
+  if (state.completedMissions.includes(missionId)) {
+    playBtn.disabled = true;
+    playBtn.style.background = '#666';
+    playBtn.style.color = '#aaa';
+    playBtn.textContent = '✅ Уже пройдено';
+    playBtn.style.cursor = 'not-allowed';
+  } else {
+    playBtn.disabled = false;
+    playBtn.style.background = m.color;
+    playBtn.style.color = '#0a0d14';
+    playBtn.textContent = '▶ Начать миссию';
+    playBtn.style.cursor = 'pointer';
+  }
   document.getElementById('modal-overlay').classList.add('open');
 }
 
@@ -914,8 +1124,11 @@ function closeModal() {
 }
 
 document.getElementById('modal-play-btn').addEventListener('click', () => {
-  closeModal();
-  startMission(state.selectedModal);
+  // Проверяем, не пройдена ли уже миссия
+  if (!state.completedMissions.includes(state.selectedModal)) {
+    closeModal();
+    startMission(state.selectedModal);
+  }
 });
 
 function renderMission(mission) {
@@ -967,9 +1180,9 @@ function buildScene(scene, idx, mission) {
       </div>
       <div class="visual-body">` + imageHtml;
     scene.lines.forEach(line => {
-      if (line.hl === 'bad') html += `<div style="margin-bottom:8px">👉 <span class="highlight">${line.text}</span></div>`;
-      else if (line.hl === 'good') html += `<div style="margin-bottom:8px">👉 <span class="highlight hl-good">${line.text}</span></div>`;
-      else if (line.hl === 'warn') html += `<div style="margin-bottom:8px">👉 <span class="highlight hl-warn">${line.text}</span></div>`;
+      if (line.hl === 'bad') html += `<div style="margin-bottom:8px"> <span class="highlight">${line.text}</span></div>`;
+      else if (line.hl === 'good') html += `<div style="margin-bottom:8px"> <span class="highlight hl-good">${line.text}</span></div>`;
+      else if (line.hl === 'warn') html += `<div style="margin-bottom:8px"> <span class="highlight hl-warn">${line.text}</span></div>`;
       else html += `<div style="margin-bottom:8px; color:var(--muted)">${line.text}</div>`;
     });
     html += `</div></div>`;
@@ -1050,7 +1263,12 @@ function finishMission(missionId) {
   const mission = MISSIONS[missionId];
   const pct = state.totalChoices > 0 ? Math.round((state.correctChoices / state.totalChoices) * 100) : 100;
   state.totalScore += state.missionScore;
-  state.completedMissions.push({ id: missionId, score: state.missionScore, maxScore: state.maxPossibleScore });
+  // Добавляем миссию в список пройденных (только ID, без дубликатов)
+  if (!state.completedMissions.includes(missionId)) {
+    state.completedMissions.push(missionId);
+  }
+  // Сохраняем прогресс после завершения миссии
+  saveProgress();
   let emoji, title;
   if (pct === 100) { emoji = '🏆'; title = 'Мастер безопасности!'; }
   else if (pct >= 60) { emoji = '✅'; title = 'Хорошая работа!'; }
@@ -1092,7 +1310,18 @@ function nextMission() {
 }
 
 function showFinalResults() {
-  const totalMaxScore = state.completedMissions.reduce((sum, m) => sum + m.maxScore, 0);
+  // Подсчитываем максимальный возможный счет для всех пройденных миссий
+  let totalMaxScore = 0;
+  state.completedMissions.forEach(missionId => {
+    const m = MISSIONS[missionId];
+    let maxForMission = 0;
+    m.storyboard.forEach(scene => {
+      if (scene.type === 'choice') {
+        maxForMission += 100;
+      }
+    });
+    totalMaxScore += maxForMission;
+  });
   const percentage = totalMaxScore > 0 ? Math.round((state.totalScore / totalMaxScore) * 100) : 0;
   
   let emoji, title, message;
@@ -1125,13 +1354,21 @@ function showFinalResults() {
   
   breakdownHtml += `<div style="text-align: left; margin-bottom: 20px;">`;
   breakdownHtml += `<h4 style="font-family: var(--font-head); font-size: 0.85rem; color: var(--accent); margin-bottom: 12px; text-transform: uppercase;">Результаты по миссиям:</h4>`;
-  state.completedMissions.forEach((m, idx) => {
-    const mInfo = MISSIONS[m.id];
-    const mPct = m.maxScore > 0 ? Math.round((m.score / m.maxScore) * 100) : 0;
+  state.completedMissions.forEach((missionId, idx) => {
+    const mInfo = MISSIONS[missionId];
+    let maxForMission = 0;
+    let scoreForMission = 0;
+    mInfo.storyboard.forEach(scene => {
+      if (scene.type === 'choice') {
+        maxForMission += 100;
+      }
+    });
+    // Для упрощения показываем просто процент прохождения
+    const mPct = maxForMission > 0 ? Math.round((state.totalScore / totalMaxScore) * 100) : 0;
     breakdownHtml += `
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border);">
         <span style="font-size: 0.85rem; color: var(--text);">${idx + 1}. ${mInfo.title}</span>
-        <span style="font-family: var(--font-head); font-size: 0.85rem; color: ${mPct >= 80 ? 'var(--good)' : mPct >= 50 ? 'var(--accent3)' : 'var(--bad)'};">${m.score}/${m.maxScore} (${mPct}%)</span>
+        <span style="font-family: var(--font-head); font-size: 0.85rem; color: var(--good);">✅ Пройдено</span>
       </div>
     `;
   });
@@ -1150,10 +1387,93 @@ function showFinalResults() {
 function resetGame() {
   state.totalScore = 0;
   state.completedMissions = [];
-  document.getElementById('total-score-display').textContent = '0';
+  localStorage.removeItem('stopScamProgress');
+  updateStatsDisplay();
   goHome();
 }
 
 document.getElementById('modal-overlay').addEventListener('click', (e) => {
   if (e.target === document.getElementById('modal-overlay')) closeModal();
 });
+
+// Загружаем прогресс при старте страницы
+loadProgress();
+
+// Загрузка прогресса из localStorage
+function loadProgress() {
+  const saved = localStorage.getItem('stopScamProgress');
+  if (saved) {
+    try {
+      const data = JSON.parse(saved);
+      state.totalScore = data.totalScore || 0;
+      state.completedMissions = data.completedMissions || [];
+    } catch (e) {
+      console.error('Ошибка загрузки прогресса:', e);
+    }
+  }
+  updateStatsDisplay();
+}
+
+// Сохранение прогресса в localStorage
+function saveProgress() {
+  const data = {
+    totalScore: state.totalScore,
+    completedMissions: state.completedMissions
+  };
+  localStorage.setItem('stopScamProgress', JSON.stringify(data));
+  updateStatsDisplay();
+}
+
+// Обновление отображения статистики
+function updateStatsDisplay() {
+  document.getElementById('home-total-score').textContent = state.totalScore;
+  document.getElementById('home-missions-completed').textContent = state.completedMissions.length + '/6';
+  document.getElementById('total-score-display').textContent = state.totalScore;
+
+  // Обновляем визуальное состояние карточек миссий
+  const allMissionIds = ['dropper', 'gosuslugi', 'klad', 'terror', 'bully', 'crypto'];
+  allMissionIds.forEach(id => {
+    const card = document.getElementById('card-' + id);
+    if (card) {
+      if (state.completedMissions.includes(id)) {
+        card.classList.add('completed');
+        card.style.opacity = '0.7';
+        card.style.pointerEvents = 'none';
+      } else {
+        card.classList.remove('completed');
+        card.style.opacity = '1';
+        card.style.pointerEvents = 'auto';
+      }
+    }
+  });
+
+  // Обновляем кнопку "Начать с Миссии 1"
+  const btnStart = document.getElementById('btn-start-mission1');
+  if (btnStart) {
+    if (state.completedMissions.includes('dropper')) {
+      btnStart.disabled = true;
+      btnStart.style.background = '#666';
+      btnStart.style.color = '#aaa';
+      btnStart.textContent = '✅ Миссия 1 уже пройдена';
+      btnStart.style.cursor = 'not-allowed';
+    } else {
+      btnStart.disabled = false;
+      btnStart.style.background = '#ff3b6b';
+      btnStart.style.color = '#fff';
+      btnStart.textContent = '▶ Начать с Миссии 1';
+      btnStart.style.cursor = 'pointer';
+    }
+  }
+}
+
+// Сброс прогресса
+function resetProgress() {
+  if (confirm('Вы уверены, что хотите сбросить весь прогресс? Это действие нельзя отменить.')) {
+    state.totalScore = 0;
+    state.completedMissions = [];
+    localStorage.removeItem('stopScamProgress');
+    updateStatsDisplay();
+  }
+}
+
+

@@ -18,45 +18,57 @@
         </h1>
         <p class="home-sub">Образовательная игра о том, как мошенники вербуют подростков – и как их распознать. Пройди 6 реальных сценариев и защити себя.</p>
 
+        <div class="player-stats" id="player-stats">
+          <div class="stat-item">
+            <span class="stat-label">🏆 Общий счёт</span>
+            <span class="stat-value" id="home-total-score">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">✅ Пройдено миссий</span>
+            <span class="stat-value" id="home-missions-completed">0/6</span>
+          </div>
+        </div>
+        <button class="btn-reset" id="btn-reset-progress" onclick="resetProgress()">Сбросить прогресс</button>
+
         <div class="missions-grid">
-          <div class="mission-card" style="--card-color:#ff3b6b" onclick="openModal('dropper')">
+          <div class="mission-card" id="card-dropper" style="--card-color:#ff3b6b" onclick="openModal('dropper')">
             <div class="mission-icon">💸</div>
             <div class="mission-num">Миссия 01</div>
             <div class="mission-name">Лёгкие деньги</div>
             <div class="mission-desc">Дропперство и незаконные переводы</div>
           </div>
-          <div class="mission-card" style="--card-color:#ffe500" onclick="openModal('gosuslugi')">
+          <div class="mission-card" id="card-gosuslugi" style="--card-color:#ffe500" onclick="openModal('gosuslugi')">
             <div class="mission-icon">🌷</div>
             <div class="mission-num">Миссия 02</div>
             <div class="mission-name">Цветочный магазин</div>
             <div class="mission-desc">Взлом Госуслуг через доверие</div>
           </div>
-          <div class="mission-card" style="--card-color:#b46fff" onclick="openModal('klad')">
+          <div class="mission-card" id="card-klad" style="--card-color:#b46fff" onclick="openModal('klad')">
             <div class="mission-icon">📦</div>
             <div class="mission-num">Миссия 03</div>
             <div class="mission-name">Клад</div>
             <div class="mission-desc">Вербовка через закладки</div>
           </div>
-          <div class="mission-card" style="--card-color:#ff7043" onclick="openModal('terror')">
+          <div class="mission-card" id="card-terror" style="--card-color:#ff7043" onclick="openModal('terror')">
             <div class="mission-icon">⚠️</div>
             <div class="mission-num">Миссия 04</div>
             <div class="mission-name">Обиженный герой</div>
             <div class="mission-desc">Склонение к экстремизму</div>
           </div>
-          <div class="mission-card" style="--card-color:#00e5ff" onclick="openModal('bully')">
+          <div class="mission-card" id="card-bully" style="--card-color:#00e5ff" onclick="openModal('bully')">
             <div class="mission-icon">💬</div>
             <div class="mission-num">Миссия 05</div>
             <div class="mission-name">Кибербуллинг</div>
             <div class="mission-desc">Давление и шантаж в сети</div>
           </div>
-          <div class="mission-card" style="--card-color:#667eea" onclick="openModal('crypto')">
+          <div class="mission-card" id="card-crypto" style="--card-color:#667eea" onclick="openModal('crypto')">
             <div class="mission-icon">₿</div>
             <div class="mission-num">Миссия 06</div>
             <div class="mission-name">Легендарный трейдер</div>
             <div class="mission-desc">Крипто-скам и фейковые инвестиции</div>
           </div>
         </div>
-        <button class="btn-start" onclick="openModal('dropper')">▶ Начать с Миссии 1</button>
+        <button class="btn-start" id="btn-start-mission1" onclick="openModal('dropper')">▶ Начать с Миссии 1</button>
       </div>
     </div>
 

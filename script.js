@@ -1057,7 +1057,11 @@ let state = {
   correctChoices: 0,
   selectedModal: null,
   completedMissions: [],
-  maxPossibleScore: 0
+  maxPossibleScore: 0,
+  lives: 3,
+  timerInterval: null,
+  timeLeft: 15,
+  timerActive: false
 };
 
 function showScreen(id) {
@@ -1066,6 +1070,8 @@ function showScreen(id) {
 }
 
 function goHome() { 
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerActive = false;
   showScreen('home'); 
 }
 
@@ -1077,6 +1083,10 @@ function startMission(missionId) {
   state.totalChoices = 0;
   state.correctChoices = 0;
   state.maxPossibleScore = 0;
+  state.lives = 3;
+  state.timeLeft = 15;
+  state.timerActive = false;
+  if (state.timerInterval) clearInterval(state.timerInterval);
   m.storyboard.forEach(scene => {
     if (scene.type === 'choice') {
       state.maxPossibleScore += 100;
@@ -1086,6 +1096,7 @@ function startMission(missionId) {
   document.getElementById('topbar-mission-title').textContent = m.title;
   document.getElementById('mission-score-display').textContent = '0';
   document.getElementById('total-score-display').textContent = state.totalScore;
+  updateLivesDisplay();
   renderMission(m);
   showScreen('game');
   updateProgress(0, m.storyboard.length);
@@ -1142,6 +1153,10 @@ function renderMission(mission) {
     div.innerHTML = buildScene(scene, idx, mission);
     container.appendChild(div);
   });
+  // Проверяем первую сцену - если это выбор, запускаем таймер
+  if (mission.storyboard.length > 0 && mission.storyboard[0].type === 'choice') {
+    startTimer();
+  }
 }
 
 function buildScene(scene, idx, mission) {
@@ -1220,6 +1235,9 @@ function nextBtn(idx, mission) {
 }
 
 function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerActive = false;
+
   const mission = MISSIONS[missionId];
   const scene = mission.storyboard[sceneIdx];
   const btns = document.querySelectorAll(`#choices-${sceneIdx} .choice-btn`);
@@ -1248,6 +1266,15 @@ function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
     scoreEl.classList.add('score-pop');
     setTimeout(() => scoreEl.classList.remove('score-pop'), 300);
     SoundManager.playScore();
+  } else {
+    state.lives--;
+    updateLivesDisplay();
+    if (state.lives <= 0) {
+      setTimeout(() => {
+        gameOver();
+        return;
+      }, 1000);
+    }
   }
   const fb = isCorrect ? scene.feedback.correct : scene.feedback.wrong;
   const fbBox = document.getElementById(`feedback-${sceneIdx}`);
@@ -1258,6 +1285,8 @@ function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
 }
 
 function advanceScene(nextIdx, total) {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerActive = false;
   document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
   const next = document.getElementById(`scene-${nextIdx}`);
   if (next) {
@@ -1265,6 +1294,16 @@ function advanceScene(nextIdx, total) {
     next.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
   updateProgress(nextIdx, total);
+  // Проверяем, есть ли следующая сцена с выбором - запускаем таймер
+  const mission = MISSIONS[state.currentMission];
+  if (nextIdx < total) {
+    const scene = mission.storyboard[nextIdx];
+    if (scene && scene.type === 'choice') {
+      startTimer();
+    }
+  } else {
+    finishMission(state.currentMission);
+  }
 }
 
 function updateProgress(current, total) {
@@ -1273,6 +1312,8 @@ function updateProgress(current, total) {
 }
 
 function finishMission(missionId) {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerActive = false;
   const mission = MISSIONS[missionId];
   const pct = state.totalChoices > 0 ? Math.round((state.correctChoices / state.totalChoices) * 100) : 100;
   state.totalScore += state.missionScore;
@@ -1612,3 +1653,148 @@ document.addEventListener('click', (e) => {
     SoundManager.playClick();
   }
 });
+
+// === СИСТЕМА ЖИЗНЕЙ И ТАЙМЕРА ===
+
+function updateLivesDisplay() {
+  const livesEl = document.getElementById('lives-count');
+  if (livesEl) {
+    livesEl.textContent = state.lives;
+    // Анимация при потере жизни
+    if (state.lives < 3) {
+      livesEl.parentElement.classList.add('life-lost');
+      setTimeout(() => livesEl.parentElement.classList.remove('life-lost'), 300);
+    }
+  }
+}
+
+function startTimer() {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+
+  state.timeLeft = 15;
+  state.timerActive = true;
+
+  // Показываем таймер
+  const timerContainer = document.getElementById('timer-container');
+  if (timerContainer) timerContainer.classList.add('active');
+
+  updateTimerDisplay();
+
+  state.timerInterval = setInterval(() => {
+    state.timeLeft -= 0.1;
+    updateTimerDisplay();
+
+    if (state.timeLeft <= 0) {
+      clearInterval(state.timerInterval);
+      state.timerActive = false;
+      handleTimeOut();
+    }
+  }, 100);
+}
+
+function updateTimerDisplay() {
+  const timerBar = document.getElementById('timer-bar');
+  const timerText = document.getElementById('timer-text');
+  const timerContainer = document.getElementById('timer-container');
+
+  if (!timerBar || !timerText || !timerContainer) return;
+
+  const percentage = (state.timeLeft / 15) * 100;
+  timerBar.style.width = percentage + '%';
+  timerText.textContent = Math.ceil(state.timeLeft);
+
+  // Меняем цвет в зависимости от оставшегося времени
+  if (state.timeLeft <= 5) {
+    timerBar.style.background = 'linear-gradient(90deg, #ff3b6b, #ff7043)';
+    timerBar.style.boxShadow = '0 0 15px rgba(255,59,107,.8)';
+    timerText.style.color = '#ff3b6b';
+  } else if (state.timeLeft <= 10) {
+    timerBar.style.background = 'linear-gradient(90deg, #ffe500, #ff7043)';
+    timerBar.style.boxShadow = '0 0 15px rgba(255,229,0,.5)';
+    timerText.style.color = '#ffe500';
+  } else {
+    timerBar.style.background = 'linear-gradient(90deg, #00e096, #ffe500)';
+    timerBar.style.boxShadow = '0 0 15px rgba(0,224,150,.5)';
+    timerText.style.color = '#00e096';
+  }
+}
+
+function handleTimeOut() {
+  // Время вышло - теряем жизнь и показываем правильный ответ
+  SoundManager.playWrong();
+  state.lives--;
+  updateLivesDisplay();
+
+  // Скрываем таймер
+  const timerContainer = document.getElementById('timer-container');
+  if (timerContainer) timerContainer.classList.remove('active');
+
+  if (state.lives <= 0) {
+    gameOver();
+    return;
+  }
+
+  // Находим текущую сцену с выбором и показываем правильный ответ
+  const currentScene = document.querySelector('.scene.active');
+  if (currentScene) {
+    const choiceBtns = currentScene.querySelectorAll('.choice-btn');
+    choiceBtns.forEach(btn => btn.disabled = true);
+
+    // Подсвечиваем правильный ответ
+    const sceneIdx = parseInt(currentScene.id.replace('scene-', ''));
+    const mission = MISSIONS[state.currentMission];
+    const scene = mission.storyboard[sceneIdx];
+
+    if (scene && scene.choices) {
+      scene.choices.forEach((c, ci) => {
+        if (c.correct) {
+          const btn = document.getElementById(`choice-${sceneIdx}-${ci}`);
+          if (btn) btn.classList.add('correct');
+        }
+      });
+    }
+
+    // Показываем feedback
+    const fbBox = currentScene.querySelector('.feedback-box');
+    if (fbBox) {
+      fbBox.classList.add('show', 'bad');
+      const fb = scene.feedback.wrong;
+      currentScene.querySelector(`#fb-title-${sceneIdx}`).textContent = '⏰ Время вышло!';
+      currentScene.querySelector(`#fb-text-${sceneIdx}`).textContent = fb.text;
+      currentScene.querySelector(`#fb-fact-${sceneIdx}`).textContent = fb.fact;
+    }
+  }
+}
+
+function gameOver() {
+  if (state.timerInterval) clearInterval(state.timerInterval);
+  state.timerActive = false;
+
+  showScreen('result');
+  document.getElementById('result-emoji').textContent = '💔';
+  document.getElementById('result-title').textContent = 'Жизни закончились!';
+  document.getElementById('result-score-num').textContent = `Счёт: ${state.totalScore}`;
+  document.getElementById('result-tips').innerHTML = `
+    <h3>😔 Не сдавайся!</h3>
+    <div class="tip-item">
+      <span class="tip-icon">💡</span>
+      <span>Попробуй ещё раз! С каждым разом ты становишься лучше.</span>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">⏱️</span>
+      <span>Обращай внимание на таймер - не трать слишком много времени.</span>
+    </div>
+    <div class="tip-item">
+      <span class="tip-icon">🎯</span>
+      <span>Внимательно читай вопросы и варианты ответов.</span>
+    </div>
+  `;
+
+  const nextBtn = document.getElementById('btn-next-mission');
+  nextBtn.style.display = 'inline-block';
+  nextBtn.textContent = '↻ Попробовать снова';
+  nextBtn.onclick = () => {
+    openModal(state.currentMission);
+  };
+}
+

@@ -93,11 +93,16 @@
           <div class="game-mission-title" id="topbar-mission-title">Лёгкие деньги</div>
         </div>
         <div class="score-display">🏆 Общий: <span class="score-num" id="total-score-display">0</span> | ⭐ Миссия: <span class="score-num" id="mission-score-display">0</span></div>
+        <div class="lives-display">❤️ <span id="lives-count">3</span></div>
         <button class="btn-back" onclick="goHome()">← На главную</button>
       </div>
       <div class="storyboard">
         <div class="progress-bar">
           <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+        </div>
+        <div class="timer-container hidden" id="timer-container">
+          <div class="timer-bar" id="timer-bar"></div>
+          <div class="timer-text" id="timer-text">15</div>
         </div>
         <div id="scenes-container"></div>
       </div>

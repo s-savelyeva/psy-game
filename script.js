@@ -1224,7 +1224,16 @@ function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
   const scene = mission.storyboard[sceneIdx];
   const btns = document.querySelectorAll(`#choices-${sceneIdx} .choice-btn`);
   btns.forEach(b => b.disabled = true);
-  document.getElementById(`choice-${sceneIdx}-${choiceIdx}`).classList.add(isCorrect ? 'correct' : 'wrong');
+  const selectedBtn = document.getElementById(`choice-${sceneIdx}-${choiceIdx}`);
+  selectedBtn.classList.add(isCorrect ? 'correct' : 'wrong');
+
+  // Звуковые эффекты
+  if (isCorrect) {
+    SoundManager.playCorrect();
+    createParticles(selectedBtn);
+  } else {
+    SoundManager.playWrong();
+  }
   if (!isCorrect) {
     scene.choices.forEach((c, ci) => {
       if (c.correct) document.getElementById(`choice-${sceneIdx}-${ci}`).classList.add('correct');
@@ -1234,7 +1243,11 @@ function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
   if (isCorrect) {
     state.correctChoices++;
     state.missionScore += 100;
-    document.getElementById('mission-score-display').textContent = state.missionScore;
+    const scoreEl = document.getElementById('mission-score-display');
+    scoreEl.textContent = state.missionScore;
+    scoreEl.classList.add('score-pop');
+    setTimeout(() => scoreEl.classList.remove('score-pop'), 300);
+    SoundManager.playScore();
   }
   const fb = isCorrect ? scene.feedback.correct : scene.feedback.wrong;
   const fbBox = document.getElementById(`feedback-${sceneIdx}`);
@@ -1396,9 +1409,6 @@ document.getElementById('modal-overlay').addEventListener('click', (e) => {
   if (e.target === document.getElementById('modal-overlay')) closeModal();
 });
 
-// Загружаем прогресс при старте страницы
-loadProgress();
-
 // Загрузка прогресса из localStorage
 function loadProgress() {
   const saved = localStorage.getItem('stopScamProgress');
@@ -1477,3 +1487,128 @@ function resetProgress() {
 }
 
 
+// === ЗВУКОВАЯ СИСТЕМА ===
+const SoundManager = {
+  enabled: true,
+  audioContext: null,
+
+  init() {
+    try {
+      this.audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    } catch (e) {
+      console.log('Web Audio API not supported');
+    }
+  },
+
+  playTone(freq, type, duration, volume = 0.1) {
+    if (!this.enabled || !this.audioContext) return;
+    const osc = this.audioContext.createOscillator();
+    const gain = this.audioContext.createGain();
+    osc.connect(gain);
+    gain.connect(this.audioContext.destination);
+    osc.frequency.value = freq;
+    osc.type = type;
+    gain.gain.setValueAtTime(volume, this.audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, this.audioContext.currentTime + duration);
+    osc.start();
+    osc.stop(this.audioContext.currentTime + duration);
+  },
+
+  playCorrect() {
+    this.playTone(523.25, 'sine', 0.15, 0.1);
+    setTimeout(() => this.playTone(659.25, 'sine', 0.15, 0.1), 80);
+    setTimeout(() => this.playTone(783.99, 'sine', 0.2, 0.1), 160);
+  },
+
+  playWrong() {
+    this.playTone(150, 'sawtooth', 0.3, 0.08);
+    setTimeout(() => this.playTone(100, 'sawtooth', 0.4, 0.08), 150);
+  },
+
+  playClick() {
+    this.playTone(800, 'sine', 0.05, 0.03);
+  },
+
+  playSuccess() {
+    this.playTone(523.25, 'sine', 0.1, 0.1);
+    setTimeout(() => this.playTone(659.25, 'sine', 0.1, 0.1), 100);
+    setTimeout(() => this.playTone(783.99, 'sine', 0.1, 0.1), 200);
+    setTimeout(() => this.playTone(1046.50, 'sine', 0.2, 0.1), 300);
+  },
+
+  playScore() {
+    this.playTone(880, 'sine', 0.1, 0.05);
+    setTimeout(() => this.playTone(1174.66, 'sine', 0.15, 0.05), 100);
+  },
+
+  toggle() {
+    this.enabled = !this.enabled;
+    localStorage.setItem('stopScamSound', this.enabled ? 'on' : 'off');
+    return this.enabled;
+  }
+};
+
+
+
+// === ЭФФЕКТЫ ЧАСТИЦ ===
+function createParticles(element) {
+  const rect = element.getBoundingClientRect();
+  const colors = ['#00e5ff', '#00e096', '#ffe500'];
+
+  for (let i = 0; i < 12; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = (rect.left + rect.width / 2) + 'px';
+    particle.style.top = (rect.top + rect.height / 2) + 'px';
+    particle.style.width = Math.random() * 8 + 4 + 'px';
+    particle.style.height = particle.style.width;
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+    particle.style.borderRadius = '50%';
+
+    const angle = (Math.PI * 2 * i) / 12;
+    const velocity = Math.random() * 60 + 40;
+    const tx = Math.cos(angle) * velocity;
+    const ty = Math.sin(angle) * velocity - 50;
+
+    particle.style.transform = `translate(${tx}px, ${ty}px)`;
+    document.body.appendChild(particle);
+
+    setTimeout(() => particle.remove(), 1000);
+  }
+}
+
+// Добавляем звуковой индикатор в DOM
+function addSoundToggle() {
+  const toggle = document.createElement('button');
+  toggle.className = 'sound-indicator';
+  toggle.id = 'sound-toggle';
+  toggle.innerHTML = '🔊';
+  toggle.onclick = () => {
+    const enabled = SoundManager.toggle();
+    toggle.textContent = enabled ? '🔊' : '🔇';
+    toggle.classList.toggle('muted', !enabled);
+  };
+  document.body.appendChild(toggle);
+
+  // Загружаем состояние звука
+  const savedSound = localStorage.getItem('stopScamSound');
+  if (savedSound === 'off') {
+    SoundManager.enabled = false;
+    toggle.textContent = '🔇';
+    toggle.classList.add('muted');
+  }
+}
+
+// Инициализация при загрузке страницы
+window.addEventListener('DOMContentLoaded', () => {
+  SoundManager.init();
+  addSoundToggle();
+  loadProgress();
+});
+
+// Добавляем звуки для кнопок
+document.addEventListener('click', (e) => {
+  if (e.target.closest('button')) {
+    SoundManager.playClick();
+  }
+});

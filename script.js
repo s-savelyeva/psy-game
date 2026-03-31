@@ -1072,6 +1072,11 @@ function showScreen(id) {
 function goHome() { 
   if (state.timerInterval) clearInterval(state.timerInterval);
   state.timerActive = false;
+  const timerContainer = document.getElementById('timer-container');
+  if (timerContainer) {
+    timerContainer.classList.remove('active');
+    timerContainer.classList.add('hidden');
+  }
   showScreen('home'); 
 }
 
@@ -1124,6 +1129,7 @@ function openModal(missionId) {
     playBtn.disabled = false;
     playBtn.style.background = m.color;
     playBtn.style.color = '#0a0d14';
+    playBtn.style.setProperty('--glow-color', m.color);
     playBtn.textContent = '▶ Начать миссию';
     playBtn.style.cursor = 'pointer';
   }
@@ -1237,6 +1243,10 @@ function nextBtn(idx, mission) {
 function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
   if (state.timerInterval) clearInterval(state.timerInterval);
   state.timerActive = false;
+
+  // Скрываем таймер сразу после выбора ответа
+  const timerContainer = document.getElementById('timer-container');
+  if (timerContainer) { timerContainer.classList.remove('active'); timerContainer.classList.add('hidden'); }
 
   const mission = MISSIONS[missionId];
   const scene = mission.storyboard[sceneIdx];
@@ -1422,7 +1432,7 @@ function showFinalResults() {
     breakdownHtml += `
       <div style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border);">
         <span style="font-size: 0.85rem; color: var(--text);">${idx + 1}. ${mInfo.title}</span>
-        <span style="font-family: var(--font-head); font-size: 0.85rem; color: var(--good);">✅ Пройдено</span>
+        <span style="font-family: var(--font-head); font-size: 0.85rem; color: var(--good);">Пройдено</span>
       </div>
     `;
   });
@@ -1503,13 +1513,13 @@ function updateStatsDisplay() {
   if (btnStart) {
     if (state.completedMissions.includes('dropper')) {
       btnStart.disabled = true;
-      btnStart.style.background = '#666';
-      btnStart.style.color = '#aaa';
-      btnStart.textContent = '✅ Миссия 1 уже пройдена';
+      btnStart.style.background = '#0090a0';
+      btnStart.style.color = '#c4c4c4';
+      btnStart.textContent = 'Миссия 1 уже пройдена';
       btnStart.style.cursor = 'not-allowed';
     } else {
       btnStart.disabled = false;
-      btnStart.style.background = '#ff3b6b';
+      btnStart.style.background = '#00d5ec';
       btnStart.style.color = '#fff';
       btnStart.textContent = '▶ Начать с Миссии 1';
       btnStart.style.cursor = 'pointer';
@@ -1670,16 +1680,16 @@ function updateLivesDisplay() {
 
 function startTimer() {
   if (state.timerInterval) clearInterval(state.timerInterval);
-
   state.timeLeft = 15;
   state.timerActive = true;
 
   // Показываем таймер
   const timerContainer = document.getElementById('timer-container');
-  if (timerContainer) timerContainer.classList.add('active');
-
+  if (timerContainer) {
+    timerContainer.classList.remove('hidden');
+    timerContainer.classList.add('active');
+  }
   updateTimerDisplay();
-
   state.timerInterval = setInterval(() => {
     state.timeLeft -= 0.1;
     updateTimerDisplay();
@@ -1715,7 +1725,7 @@ function updateTimerDisplay() {
   } else {
     timerBar.style.background = 'linear-gradient(90deg, #00e096, #ffe500)';
     timerBar.style.boxShadow = '0 0 15px rgba(0,224,150,.5)';
-    timerText.style.color = '#00e096';
+    timerText.style.color = '#00c281';
   }
 }
 
@@ -1727,8 +1737,10 @@ function handleTimeOut() {
 
   // Скрываем таймер
   const timerContainer = document.getElementById('timer-container');
-  if (timerContainer) timerContainer.classList.remove('active');
-
+  if (timerContainer) {
+    timerContainer.classList.remove('active');
+    timerContainer.classList.add('hidden');
+  }
   if (state.lives <= 0) {
     gameOver();
     return;
@@ -1768,6 +1780,11 @@ function handleTimeOut() {
 
 function gameOver() {
   if (state.timerInterval) clearInterval(state.timerInterval);
+  const timerContainer = document.getElementById('timer-container');
+  if (timerContainer) {
+    timerContainer.classList.add('hidden');
+    timerContainer.classList.remove('active');
+  }
   state.timerActive = false;
 
   showScreen('result');
@@ -1798,3 +1815,271 @@ function gameOver() {
   };
 }
 
+// ФИНАЛЬНЫЙ ТЕСТ - ВОПРОСЫ
+const FINAL_TEST_QUESTIONS = [
+  {
+    question: 'Что такое дроппер?',
+    choices: ['Человек, который помогает банку', 'Пособник мошенников, пропускающий краденые деньги через свою карту', 'Сотрудник полиции', 'Инвестор'],
+    correct: 1
+  },
+  {
+    question: 'Можно ли называть код из СМС сотрудникам банка?',
+    choices: ['Да, если они представились', 'Нет, никогда и никому', 'Только если звонят с официального номера', 'Да, для подтверждения личности'],
+    correct: 1
+  },
+  {
+    question: 'Как мошенники чаще всего вербуют подростков?',
+    choices: ['Предлагают легкую работу с высоким доходом', 'Присылают подарки', 'Звонят от имени школы', 'Пишут от имени учителей'],
+    correct: 0
+  },
+  {
+    question: 'Что делать, если незнакомец предлагает перевести деньги через твою карту за процент?',
+    choices: ['Согласиться, это выгодно', 'Отказаться и заблокировать контакт', 'Попробовать один раз', 'Взять карту друга'],
+    correct: 1
+  },
+  {
+    question: 'Какая статья УК РФ грозит дропперам?',
+    choices: ['Статья за кражу', 'Статья 174.1 - легализация преступных доходов', 'Статья за хулиганство', 'Никакая'],
+    correct: 1
+  },
+  {
+    question: 'Как распознать фишинговый сайт?',
+    choices: ['По красивому дизайну', 'По подозрительному URL и просьбе ввести данные', 'По количеству рекламы', 'По скорости загрузки'],
+    correct: 1
+  },
+  {
+    question: 'Что такое социальная инженерия?',
+    choices: ['Строительство домов', 'Манипуляции людьми для получения информации', 'Программирование', 'Научный метод'],
+    correct: 1
+  },
+  {
+    question: 'Как защитить свои персональные данные?',
+    choices: ['Размещать их в открытом доступе', 'Не передавать незнакомцам и использовать сложные пароли', 'Давать только друзьям', 'Хранить в заметках телефона'],
+    correct: 1
+  },
+  {
+    question: 'Что делать при кибербуллинге?',
+    choices: ['Ответить агрессией', 'Заблокировать обидчика и рассказать взрослым', 'Удалить все соцсети', 'Игнорировать и молчать'],
+    correct: 1
+  },
+  {
+    question: 'Как проверить надёжность крипто-проекта?',
+    choices: ['По обещаниям высокой прибыли', 'По отзывам в интернете и официальной информации', 'По количеству рекламы', 'Довериться блогеру'],
+    correct: 1
+  }
+];
+
+// ГЛОБАЛЬНОЕ СОСТОЯНИЕ ДЛЯ ФИНАЛЬНОГО ТЕСТА
+let finalTestState = {
+  currentQuestion: 0,
+  correctCount: 0,
+  timer: 15,
+  timerInterval: null,
+  isTestActive: false
+};
+
+// ФУНКЦИИ ДЛЯ ФИНАЛЬНОГО ТЕСТА
+function openFinalTest() {
+  const completedMissions = state.completedMissions.length;
+  if (completedMissions < 6) {
+    alert(`🎓 Сначала пройди все 6 миссий! Сейчас пройдено: ${completedMissions}/6`);
+    return;
+  }
+  document.getElementById('modal-final-test').classList.add('open');
+}
+
+function closeFinalTest() {
+  document.getElementById('modal-final-test').classList.remove('open');
+}
+
+function startFinalTest() {
+  closeFinalTest();
+  finalTestState = {
+    currentQuestion: 0,
+    correctCount: 0,
+    timer: 15,
+    timerInterval: null,
+    isTestActive: true
+  };
+  showScreen('final-test');
+  renderFinalQuestion();
+}
+
+function renderFinalQuestion() {
+  const q = FINAL_TEST_QUESTIONS[finalTestState.currentQuestion];
+  const container = document.getElementById('final-questions-container');
+
+  // Обновляем прогресс
+  const progressPercent = ((finalTestState.currentQuestion) / FINAL_TEST_QUESTIONS.length) * 100;
+  document.getElementById('final-progress-fill').style.width = `${progressPercent}%`;
+
+  // Обновляем счётчик
+  document.getElementById('final-correct-count').textContent = finalTestState.correctCount;
+
+  // Рендерим вопрос
+  container.innerHTML = `
+    <div class="scene active">
+      <div class="scene-context" style="border-left-color: #00e5ff;">
+        <span>❓ Вопрос ${finalTestState.currentQuestion + 1} из ${FINAL_TEST_QUESTIONS.length}</span>
+      </div>
+      <div class="messages">
+        <div class="msg system">${q.question}</div>
+      </div>
+      <div class="choices">
+        ${q.choices.map((choice, i) => `
+          <button class="choice-btn" onclick="answerFinalQuestion(${i})" id="final-choice-${i}">
+            <span class="choice-letter">${String.fromCharCode(65 + i)}</span>
+            <span>${choice}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="feedback-box" id="final-feedback">
+        <div class="feedback-title" id="final-fb-title"></div>
+        <div class="feedback-text" id="final-fb-text"></div>
+        <button class="btn-next" onclick="nextFinalQuestion()">Далее →</button>
+      </div>
+    </div>
+  `;
+
+  // Запускаем таймер
+  startFinalTimer();
+}
+
+function startFinalTimer() {
+  if (finalTestState.timerInterval) clearInterval(finalTestState.timerInterval);
+
+  finalTestState.timer = 15;
+  finalTestState.timerActive = true;
+
+  updateFinalTimerDisplay();
+
+  finalTestState.timerInterval = setInterval(() => {
+    finalTestState.timer -= 0.1;
+    updateFinalTimerDisplay();
+
+    if (finalTestState.timer <= 0) {
+      clearInterval(finalTestState.timerInterval);
+      finalTestState.timerActive = false;
+      timeUpFinal();
+    }
+  }, 100);
+}
+
+function updateFinalTimerDisplay() {
+  const timerBar = document.getElementById('final-timer-bar');
+  const timerText = document.getElementById('final-timer-text');
+  const timerValue = document.getElementById('final-timer');
+
+  if (!timerBar || !timerText) return;
+
+  const percentage = (finalTestState.timer / 15) * 100;
+  timerBar.style.width = percentage + '%';
+  timerText.textContent = Math.ceil(finalTestState.timer);
+  if (timerValue) timerValue.textContent = Math.ceil(finalTestState.timer);
+
+  // Меняем цвет в зависимости от оставшегося времени (как в обычных миссиях)
+  if (finalTestState.timer <= 5) {
+    timerBar.style.background = 'linear-gradient(90deg, #ff3b6b, #ff7043)';
+    timerBar.style.boxShadow = '0 0 15px rgba(255,59,107,.8)';
+    timerText.style.color = '#ff3b6b';
+  } else if (finalTestState.timer <= 10) {
+    timerBar.style.background = 'linear-gradient(90deg, #ffe500, #ff7043)';
+    timerBar.style.boxShadow = '0 0 15px rgba(255,229,0,.5)';
+    timerText.style.color = '#ffe500';
+  } else {
+    timerBar.style.background = 'linear-gradient(90deg, #00e096, #ffe500)';
+    timerBar.style.boxShadow = '0 0 15px rgba(0,224,150,.5)';
+    timerText.style.color = '#00c281';
+  }
+}
+
+function timeUpFinal() {
+  disableFinalChoices();
+  const fbBox = document.getElementById('final-feedback');
+  fbBox.classList.add('show', 'bad');
+  document.getElementById('final-fb-title').textContent = '⏰ Время вышло!';
+  document.getElementById('final-fb-text').textContent = 'К сожалению, время на ответ истекло.';
+}
+
+function answerFinalQuestion(selectedIndex) {
+  if (!finalTestState.isTestActive) return;
+
+  clearInterval(finalTestState.timerInterval);
+  finalTestState.isTestActive = false;
+
+  const q = FINAL_TEST_QUESTIONS[finalTestState.currentQuestion];
+  const isCorrect = selectedIndex === q.correct;
+
+  disableFinalChoices();
+
+  // Показываем правильный и неправильный ответы
+  const buttons = document.querySelectorAll('#final-questions-container .choice-btn');
+  buttons.forEach((btn, i) => {
+    btn.disabled = true;
+    if (i === q.correct) {
+      btn.classList.add('correct');
+    } else if (i === selectedIndex && !isCorrect) {
+      btn.classList.add('wrong');
+    }
+  });
+
+  // Обновляем счёт
+  if (isCorrect) {
+    finalTestState.correctCount++;
+    document.getElementById('final-correct-count').textContent = finalTestState.correctCount;
+  }
+
+  // Показываем feedback
+  const fbBox = document.getElementById('final-feedback');
+  fbBox.classList.add('show', isCorrect ? 'good' : 'bad');
+  document.getElementById('final-fb-title').textContent = isCorrect ? '✅ Верно!' : '❌ Неверно!';
+  document.getElementById('final-fb-text').textContent = isCorrect
+    ? 'Правильный ответ! Так держать!'
+    : `Правильный ответ: ${q.choices[q.correct]}`;
+}
+
+function disableFinalChoices() {
+  const buttons = document.querySelectorAll('#final-questions-container .choice-btn');
+  buttons.forEach(btn => btn.disabled = true);
+}
+
+function nextFinalQuestion() {
+  finalTestState.currentQuestion++;
+
+  if (finalTestState.currentQuestion >= FINAL_TEST_QUESTIONS.length) {
+    finishFinalTest();
+  } else {
+    finalTestState.isTestActive = true;
+    renderFinalQuestion();
+  }
+}
+
+function finishFinalTest() {
+  showScreen('certificate');
+
+  // Заполняем сертификат данными
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('ru-RU');
+
+  document.getElementById('cert-player-name').textContent = 'Участник';
+  document.getElementById('cert-total-score').textContent = state.totalScore;
+  document.getElementById('cert-final-score').textContent = `${finalTestState.correctCount}/10`;
+  document.getElementById('cert-date').textContent = dateStr;
+
+  // Сохраняем результат в localStorage
+  localStorage.setItem('stopScam_finalTestCompleted', 'true');
+  localStorage.setItem('stopScam_finalTestScore', finalTestState.correctCount.toString());
+  localStorage.setItem('stopScam_certificateDate', dateStr);
+}
+
+function quitFinalTest() {
+  if (confirm('Вы уверены, что хотите выйти из финального теста? Прогресс будет потерян.')) {
+    clearInterval(finalTestState.timerInterval);
+    finalTestState.isTestActive = false;
+    goHome();
+  }
+}
+
+function downloadCertificate() {
+  alert('💾 Функция сохранения сертификата будет доступна в следующей версии! Вы можете сделать скриншот экрана.');
+}

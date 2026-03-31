@@ -38,25 +38,25 @@
             <div class="mission-desc">Дропперство и незаконные переводы</div>
           </div>
           <div class="mission-card" id="card-gosuslugi" style="--card-color:#ffe500" onclick="openModal('gosuslugi')">
-            <div class="mission-icon">🌷</div>
+            <div class="mission-icon">🌸</div>
             <div class="mission-num">Миссия 02</div>
             <div class="mission-name">Цветочный магазин</div>
             <div class="mission-desc">Взлом Госуслуг через доверие</div>
           </div>
           <div class="mission-card" id="card-klad" style="--card-color:#b46fff" onclick="openModal('klad')">
-            <div class="mission-icon">📦</div>
+            <div class="mission-icon">💎</div>
             <div class="mission-num">Миссия 03</div>
             <div class="mission-name">Клад</div>
             <div class="mission-desc">Вербовка через закладки</div>
           </div>
           <div class="mission-card" id="card-terror" style="--card-color:#ff7043" onclick="openModal('terror')">
-            <div class="mission-icon">⚠️</div>
+            <div class="mission-icon">📌</div>
             <div class="mission-num">Миссия 04</div>
             <div class="mission-name">Обиженный герой</div>
             <div class="mission-desc">Склонение к экстремизму</div>
           </div>
           <div class="mission-card" id="card-bully" style="--card-color:#00e5ff" onclick="openModal('bully')">
-            <div class="mission-icon">💬</div>
+            <div class="mission-icon">👑</div>
             <div class="mission-num">Миссия 05</div>
             <div class="mission-name">Кибербуллинг</div>
             <div class="mission-desc">Давление и шантаж в сети</div>
@@ -69,6 +69,7 @@
           </div>
         </div>
         <button class="btn-start" id="btn-start-mission1" onclick="openModal('dropper')">▶ Начать с Миссии 1</button>
+        <button class="btn-final-test" id="btn-final-test" onclick="openFinalTest()">Финальный тест</button>
       </div>
     </div>
 
@@ -117,6 +118,88 @@
         <div class="btn-group">
           <button class="btn-start" onclick="goHome()">Все миссии</button>
           <button class="btn-secondary" id="btn-next-mission" onclick="nextMission()">Следующая миссия →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно финального теста -->
+    <div id="modal-final-test" class="modal-overlay">
+      <div class="modal-box modal-final">
+        <div class="modal-tag" style="color: #00e5ff;">ФИНАЛЬНЫЙ ТЕСТ</div>
+        <div class="modal-title">Проверь свои знания!</div>
+        <div class="modal-desc">Ответь на 10 вопросов по всем миссиям и получи сертификат о прохождении курса "СТОП СКАМ"</div>
+        <div class="modal-meta">
+          <div class="meta-pill">📝 10 вопросов</div>
+          <div class="meta-pill">⏱️ 15 секунд на вопрос</div>
+        </div>
+        <button class="btn-play" id="btn-start-final-test" onclick="startFinalTest()">▶ Начать тест</button>
+        <button class="btn-cancel" onclick="closeFinalTest()">Отмена</button>
+      </div>
+    </div>
+
+    <!-- Экран финального теста -->
+    <div id="screen-final-test" class="screen">
+      <div class="game-topbar" style="background: linear-gradient(135deg, #1a1f3a, #0d1120);">
+        <div>
+          <div class="game-mission-label" style="color: #00e5ff;">🎓 ФИНАЛЬНЫЙ ТЕСТ</div>
+          <div class="game-mission-title">Проверка знаний</div>
+        </div>
+        <div class="score-display">✅ Правильно: <span class="score-num" id="final-correct-count">0</span>/10</div>
+        <div class="lives-display" style="color: #ffe500;">⏱️ <span id="final-timer">15</span></div>
+        <button class="btn-back" onclick="quitFinalTest()">← Выйти</button>
+      </div>
+      <div class="storyboard">
+        <div class="progress-bar">
+          <div class="progress-fill" id="final-progress-fill" style="width:0%"></div>
+        </div>
+        <div class="timer-container" id="final-timer-container">
+          <div class="timer-bar" id="final-timer-bar"></div>
+          <div class="timer-text" id="final-timer-text">15</div>
+        </div>
+        <div id="final-questions-container"></div>
+      </div>
+    </div>
+
+    <!-- Экран сертификата -->
+    <div id="screen-certificate" class="screen">
+      <div class="certificate-inner">
+        <div class="certificate-border">
+          <div class="cert-header">
+            <h1 class="cert-title">СЕРТИФИКАТ</h1>
+            <p class="cert-subtitle">о прохождении курса цифровой безопасности</p>
+          </div>
+          <div class="cert-body">
+            <p class="cert-text">Настоящим подтверждается, что</p>
+            <div class="cert-name" id="cert-player-name">Участник</div>
+            <p class="cert-text">успешно завершил образовательный курс</p>
+            <h2 class="cert-course">«СТОП СКАМ»</h2>
+            <p class="cert-desc">Пройдено 6 миссий и финальный тест</p>
+            <div class="cert-stats">
+              <div class="cert-stat">
+                <span class="cert-stat-value" id="cert-total-score">0</span>
+                <span class="cert-stat-label">Общий счёт</span>
+              </div>
+              <div class="cert-stat">
+                <span class="cert-stat-value" id="cert-final-score">0</span>
+                <span class="cert-stat-label">Финальный тест</span>
+              </div>
+              <div class="cert-stat">
+                <span class="cert-stat-value" id="cert-date">01.01.2024</span>
+                <span class="cert-stat-label">Дата</span>
+              </div>
+            </div>
+          </div>
+          <div class="cert-footer">
+            <div class="cert-signature">
+              <div class="cert-sign-line">_________________</div>
+              <div class="cert-sign-label">Цифровая подпись</div>
+            </div>
+            <div class="cert-seal">🏆</div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn-start" onclick="goHome()">На главную</button>
+          <button class="btn-secondary" onclick="downloadCertificate()">💾 Сохранить сертификат</button>
         </div>
       </div>
     </div>

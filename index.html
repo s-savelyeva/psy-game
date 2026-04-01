@@ -32,44 +32,223 @@
 
         <div class="missions-grid">
           <div class="mission-card" id="card-dropper" style="--card-color:#ff3b6b" onclick="openModal('dropper')">
-            <div class="mission-icon">💸</div>
+            <div class="mission-icon">
+              <svg class="mission-svg-icon" width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+                <ellipse cx="60" cy="108" rx="32" ry="6" fill="#ff3b6b" opacity="0.18"/>
+                <rect x="22" y="52" width="68" height="38" rx="7" fill="#1a2a1a"/>
+                <rect x="22" y="52" width="68" height="38" rx="7" fill="url(#dropper_moneyGrad1)" opacity="0.9"/>
+                <rect x="22" y="52" width="68" height="38" rx="7" stroke="#2a4a2a" stroke-width="1.5"/>
+                <line x1="34" y1="62" x2="86" y2="62" stroke="#3a6a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                <line x1="34" y1="70" x2="86" y2="70" stroke="#3a6a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                <line x1="34" y1="78" x2="86" y2="78" stroke="#3a6a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                <ellipse cx="60" cy="71" rx="12" ry="9" fill="#1e3d1e" stroke="#3a7a3a" stroke-width="1"/>
+                <text x="60" y="75" text-anchor="middle" font-family="monospace" font-size="8" fill="#4aaa4a" font-weight="bold">₽</text>
+                <rect x="20" y="46" width="68" height="38" rx="7" fill="#0f1f0f"/>
+                <rect x="20" y="46" width="68" height="38" rx="7" fill="url(#dropper_moneyGrad2)" opacity="0.9"/>
+                <rect x="20" y="46" width="68" height="38" rx="7" stroke="#2a5a2a" stroke-width="1.5"/>
+                <line x1="32" y1="56" x2="84" y2="56" stroke="#3a7a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                <line x1="32" y1="64" x2="84" y2="64" stroke="#3a7a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                <line x1="32" y1="72" x2="84" y2="72" stroke="#3a7a3a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+                <ellipse cx="54" cy="65" rx="12" ry="9" fill="#142814" stroke="#3a8a3a" stroke-width="1"/>
+                <text x="54" y="69" text-anchor="middle" font-family="monospace" font-size="8" fill="#55cc55" font-weight="bold">₽</text>
+                <circle cx="84" cy="22" r="13" fill="#ff3b6b" opacity="0.15"/>
+                <circle cx="84" cy="22" r="11" fill="#1a0a0f" stroke="#ff3b6b" stroke-width="2"/>
+                <text x="84" y="27" text-anchor="middle" font-family="monospace" font-size="11" fill="#ff3b6b" font-weight="bold">!</text>
+
+                <path d="M84 37 L84 42 L80 38 M84 42 L88 38" stroke="#ff3b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 20 L32 38 L12 38 Z" fill="none" stroke="#ffe500" stroke-width="2" stroke-linejoin="round" opacity="0.8"/>
+                <line x1="22" y1="26" x2="22" y2="32" stroke="#ffe500" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+                <circle cx="22" cy="35" r="1.5" fill="#ffe500" opacity="0.8"/>
+
+                <defs>
+                  <linearGradient id="dropper_moneyGrad1" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1a3d1a"/>
+                    <stop offset="100%" stop-color="#0d250d"/>
+                  </linearGradient>
+                  <linearGradient id="dropper_moneyGrad2" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#1e4a1e"/>
+                    <stop offset="100%" stop-color="#0f2a0f"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div class="mission-num">Миссия 01</div>
             <div class="mission-name">Лёгкие деньги</div>
             <div class="mission-desc">Дропперство и незаконные переводы</div>
           </div>
           <div class="mission-card" id="card-gosuslugi" style="--card-color:#ffe500" onclick="openModal('gosuslugi')">
-            <div class="mission-icon">🌸</div>
+            <div class="mission-icon">
+              <svg class="mission-svg-icon" width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+                <ellipse cx="60" cy="110" rx="30" ry="5" fill="#ffe500" opacity="0.15"/>
+
+                <rect x="34" y="18" width="44" height="76" rx="9" fill="#0d1120" stroke="#ffe500" stroke-width="2"/>
+                <rect x="37" y="24" width="38" height="58" rx="5" fill="#0a1528"/>
+                <rect x="40" y="27" width="32" height="5" rx="2" fill="#1a2a4a"/>
+                <rect x="40" y="35" width="32" height="3" rx="1.5" fill="#ffe500" opacity="0.4"/>
+                <rect x="40" y="41" width="24" height="3" rx="1.5" fill="#6b7394" opacity="0.5"/>
+                <rect x="40" y="47" width="28" height="3" rx="1.5" fill="#6b7394" opacity="0.4"/>
+                <rect x="51" y="56" width="10" height="8" rx="2" fill="#ffe500" opacity="0.9"/>
+                <path d="M53 56 C53 52 59 52 59 56" stroke="#ffe500" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+                <circle cx="56" cy="60" r="1.2" fill="#0a0d14"/>
+                <circle cx="56" cy="72" r="5" fill="#ff3b6b" opacity="0.2"/>
+                <circle cx="56" cy="72" r="4" fill="#ff3b6b" opacity="0.9"/>
+                <line x1="56" y1="69.5" x2="56" y2="73" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="56" cy="75" r="0.8" fill="white"/>
+                <circle cx="22" cy="30" r="5" fill="#ffe500" opacity="0.7"/>
+                <circle cx="16" cy="22" r="4" fill="#ffe500" opacity="0.5"/>
+                <circle cx="28" cy="20" r="4" fill="#ffe500" opacity="0.5"/>
+                <circle cx="14" cy="30" r="4" fill="#ffe500" opacity="0.4"/>
+                <circle cx="22" cy="38" r="4" fill="#ffe500" opacity="0.4"/>
+                <circle cx="22" cy="30" r="3" fill="#ff9900"/>
+                <path d="M22 43 Q18 52 20 60" stroke="#4a7a2a" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M86 50 Q96 42 92 58 Q88 68 98 64" stroke="#ff3b6b" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.8"/>
+                <circle cx="56" cy="87" r="4" fill="#1a2a4a" stroke="#ffe500" stroke-width="1" opacity="0.6"/>
+              </svg>
+            </div>
             <div class="mission-num">Миссия 02</div>
             <div class="mission-name">Цветочный магазин</div>
             <div class="mission-desc">Взлом Госуслуг через доверие</div>
           </div>
           <div class="mission-card" id="card-klad" style="--card-color:#b46fff" onclick="openModal('klad')">
-            <div class="mission-icon">💎</div>
+            <div class="mission-icon">
+              <svg class="mission-svg-icon" width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+                <ellipse cx="60" cy="109" rx="28" ry="5" fill="#b46fff" opacity="0.18"/>
+                <path d="M60 14 C44 14 32 26 32 41 C32 58 60 90 60 90 C60 90 88 58 88 41 C88 26 76 14 60 14 Z" fill="#1a0d2e" stroke="#b46fff" stroke-width="2"/>
+                <path d="M60 14 C44 14 32 26 32 41 C32 58 60 90 60 90 C60 90 88 58 88 41 C88 26 76 14 60 14 Z" fill="url(#klad_pinGrad)" opacity="0.6"/>
+                <circle cx="60" cy="41" r="16" fill="#0d0a1a" stroke="#b46fff" stroke-width="1.5" opacity="0.9"/>
+                <polygon points="60,30 70,40 60,52 50,40" fill="#b46fff" opacity="0.9"/>
+                <polygon points="60,30 70,40 60,40" fill="#d4a0ff" opacity="0.7"/>
+                <polygon points="60,40 70,40 60,52" fill="#7a3fbf" opacity="0.8"/>
+                <polygon points="60,30 50,40 60,40" fill="#c080ff" opacity="0.7"/>
+                <polygon points="60,40 50,40 60,52" fill="#6a2faf" opacity="0.8"/>
+                <circle cx="28" cy="28" r="2" fill="#ffe500" opacity="0.8"/>
+                <circle cx="92" cy="25" r="1.5" fill="#ffe500" opacity="0.6"/>
+                <circle cx="24" cy="55" r="1.5" fill="#b46fff" opacity="0.7"/>
+                <circle cx="95" cy="52" r="2" fill="#b46fff" opacity="0.6"/>
+                <line x1="20" y1="96" x2="100" y2="96" stroke="#b46fff" stroke-width="0.8" opacity="0.25"/>
+                <line x1="20" y1="101" x2="100" y2="101" stroke="#b46fff" stroke-width="0.8" opacity="0.15"/>
+                <line x1="30" y1="88" x2="30" y2="108" stroke="#b46fff" stroke-width="0.8" opacity="0.2"/>
+                <line x1="60" y1="92" x2="60" y2="108" stroke="#b46fff" stroke-width="0.8" opacity="0.2"/>
+                <line x1="90" y1="88" x2="90" y2="108" stroke="#b46fff" stroke-width="0.8" opacity="0.2"/>
+                <circle cx="60" cy="91" r="3" fill="#b46fff" opacity="0.5"/>
+                <circle cx="60" cy="91" r="1.5" fill="#b46fff" opacity="0.9"/>
+
+                <defs>
+                  <linearGradient id="klad_pinGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#b46fff"/>
+                    <stop offset="100%" stop-color="#6a20c0"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div class="mission-num">Миссия 03</div>
             <div class="mission-name">Клад</div>
             <div class="mission-desc">Вербовка через закладки</div>
           </div>
           <div class="mission-card" id="card-terror" style="--card-color:#ff7043" onclick="openModal('terror')">
-            <div class="mission-icon">📌</div>
+            <div class="mission-icon">
+              <svg class="mission-svg-icon" width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+                <ellipse cx="60" cy="110" rx="28" ry="5" fill="#ff7043" opacity="0.15"/>
+                <rect x="14" y="22" width="72" height="52" rx="10" fill="#1a0f08" stroke="#ff7043" stroke-width="2"/>
+                <rect x="14" y="22" width="72" height="52" rx="10" fill="url(#terror_chatGrad)" opacity="0.5"/>
+                <path d="M30 74 L20 88 L46 74 Z" fill="#1a0f08" stroke="#ff7043" stroke-width="1.5" stroke-linejoin="round"/>
+                <rect x="24" y="32" width="52" height="5" rx="2.5" fill="#ff7043" opacity="0.7"/>
+                <rect x="24" y="41" width="40" height="4" rx="2" fill="#6b7394" opacity="0.5"/>
+                <rect x="24" y="49" width="46" height="4" rx="2" fill="#6b7394" opacity="0.4"/>
+                <rect x="24" y="57" width="34" height="4" rx="2" fill="#6b7394" opacity="0.35"/>
+                <rect x="70" y="33" width="2" height="14" rx="1" fill="#ff7043" opacity="0.8"/>
+                <path d="M72 33 L78 36 L72 40 Z" fill="#ff7043" opacity="0.9"/>
+                <ellipse cx="95" cy="32" rx="14" ry="9" fill="#1a0a05" stroke="#ff7043" stroke-width="1.5" opacity="0.9"/>
+                <circle cx="95" cy="32" r="5" fill="#ff7043" opacity="0.3"/>
+                <circle cx="95" cy="32" r="3.5" fill="#0d0a0a" stroke="#ff7043" stroke-width="1"/>
+                <circle cx="96.5" cy="30.5" r="1" fill="#ff7043" opacity="0.6"/>
+                <path d="M52 88 Q52 98 60 100 Q68 102 68 92" stroke="#ff7043" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.7"/>
+                <path d="M60 100 Q60 110 60 114" stroke="#ff7043" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+
+                <defs>
+                  <linearGradient id="terror_chatGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ff7043"/>
+                    <stop offset="100%" stop-color="#8a1a00"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div class="mission-num">Миссия 04</div>
             <div class="mission-name">Обиженный герой</div>
             <div class="mission-desc">Склонение к экстремизму</div>
           </div>
           <div class="mission-card" id="card-bully" style="--card-color:#00e5ff" onclick="openModal('bully')">
-            <div class="mission-icon">👑</div>
+            <div class="mission-icon">
+              <svg class="mission-svg-icon" width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+
+                <ellipse cx="60" cy="110" rx="28" ry="5" fill="#00e5ff" opacity="0.15"/>
+                <path d="M60 10 L90 24 L90 58 Q90 82 60 96 Q30 82 30 58 L30 24 Z" fill="#0a1a2e" stroke="#00e5ff" stroke-width="2"/>
+                <path d="M60 10 L90 24 L90 58 Q90 82 60 96 Q30 82 30 58 L30 24 Z" fill="url(#bully_shieldGrad)" opacity="0.4"/>
+                <path d="M48 28 L56 50 L48 70" stroke="#ff3b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+                <rect x="44" y="56" width="32" height="14" rx="3" fill="#00e5ff" opacity="0.2" stroke="#00e5ff" stroke-width="1"/>
+                <path d="M44 56 L44 46 L52 53 L60 43 L68 53 L76 46 L76 56 Z" fill="#0a1a2e" stroke="#00e5ff" stroke-width="1.5" stroke-linejoin="round"/>
+                <circle cx="52" cy="53" r="2.5" fill="#00e5ff" opacity="0.8"/>
+                <circle cx="60" cy="49" r="3" fill="#ffe500" opacity="0.9"/>
+                <circle cx="68" cy="53" r="2.5" fill="#00e5ff" opacity="0.8"/>
+                <circle cx="23" cy="40" r="8" fill="#ff3b6b" opacity="0.15"/>
+                <circle cx="23" cy="40" r="6.5" fill="#ff3b6b" opacity="0.85"/>
+                <line x1="20" y1="37" x2="26" y2="43" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <line x1="26" y1="37" x2="20" y2="43" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="97" cy="38" r="7" fill="#ff3b6b" opacity="0.15"/>
+                <circle cx="97" cy="38" r="5.5" fill="#ff3b6b" opacity="0.85"/>
+                <text x="97" y="42" text-anchor="middle" font-size="8" fill="white" font-weight="bold" font-family="sans-serif">!</text>
+                <defs>
+                  <linearGradient id="bully_shieldGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#00e5ff"/>
+                    <stop offset="100%" stop-color="#0050a0"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div class="mission-num">Миссия 05</div>
             <div class="mission-name">Кибербуллинг</div>
             <div class="mission-desc">Давление и шантаж в сети</div>
           </div>
           <div class="mission-card" id="card-crypto" style="--card-color:#667eea" onclick="openModal('crypto')">
-            <div class="mission-icon">₿</div>
+            <div class="mission-icon">
+              <svg class="mission-svg-icon" width="64" height="64" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+                <ellipse cx="60" cy="110" rx="30" ry="5" fill="#667eea" opacity="0.18"/>
+                <circle cx="60" cy="54" r="38" fill="#0d0a1a" opacity="0.5"/>
+                <circle cx="60" cy="52" r="36" fill="url(#crypto_coinGrad)"/>
+                <circle cx="60" cy="52" r="36" stroke="#667eea" stroke-width="2" fill="none"/>
+                <circle cx="60" cy="52" r="30" stroke="#667eea" stroke-width="1" fill="none" opacity="0.4"/>
+                <path d="M55 36 L55 68" stroke="#c0b8f0" stroke-width="3" stroke-linecap="round"/>
+                <path d="M55 36 L63 36 Q71 36 71 43 Q71 50 63 50 L55 50" stroke="#c0b8f0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M55 50 L64 50 Q73 50 73 58 Q73 66 64 66 L55 66" stroke="#c0b8f0" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="53" y1="33" x2="53" y2="38" stroke="#c0b8f0" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="57" y1="33" x2="57" y2="38" stroke="#c0b8f0" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="53" y1="65" x2="53" y2="71" stroke="#c0b8f0" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="57" y1="65" x2="57" y2="71" stroke="#c0b8f0" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M80 18 L88 10 M88 10 L96 18 M88 10 L88 26 Q82 32 76 28 Q70 24 74 18" stroke="#ff3b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+                <path d="M12 20 L14 14 L16 20 L22 22 L16 24 L14 30 L12 24 L6 22 Z" fill="#ffe500" opacity="0.7"/>
+                <path d="M96 74 L97.5 70 L99 74 L103 75.5 L99 77 L97.5 81 L96 77 L92 75.5 Z" fill="#ffe500" opacity="0.5"/>
+                <circle cx="16" cy="74" r="8" fill="#0a1428"/>
+                <path d="M12 74 L15 78 L21 70" stroke="#ff3b6b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="11" y1="70" x2="21" y2="78" stroke="#ff3b6b" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+
+                <defs>
+                  <linearGradient id="crypto_coinGrad" x1="0.2" y1="0" x2="0.8" y2="1">
+                    <stop offset="0%" stop-color="#2a1f5a"/>
+                    <stop offset="50%" stop-color="#1a1240"/>
+                    <stop offset="100%" stop-color="#0f0a28"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
             <div class="mission-num">Миссия 06</div>
             <div class="mission-name">Легендарный трейдер</div>
             <div class="mission-desc">Крипто-скам и фейковые инвестиции</div>
           </div>
         </div>
-        <button class="btn-start" id="btn-start-mission1" onclick="openModal('dropper')">▶ Начать с Миссии 1</button>
-        <button class="btn-final-test" id="btn-final-test" onclick="openFinalTest()">Финальный тест</button>
+        <div style="display:flex; flex-direction:column; align-items:center; gap:12px; margin-bottom:20px;">
+          <button class="btn-start" id="btn-start-mission1" onclick="openModal('dropper')">▶ Начать с Миссии 1</button>
+          <button class="btn-start" id="btn-final" onclick="openFinalTest()">Финальный тест</button>
+        </div>
       </div>
     </div>
 
@@ -122,7 +301,6 @@
       </div>
     </div>
 
-    <!-- Модальное окно финального теста -->
     <div id="modal-final-test" class="modal-overlay">
       <div class="modal-box modal-final">
         <div class="modal-tag" style="color: #00e5ff;">ФИНАЛЬНЫЙ ТЕСТ</div>
@@ -137,7 +315,6 @@
       </div>
     </div>
 
-    <!-- Экран финального теста -->
     <div id="screen-final-test" class="screen">
       <div class="game-topbar" style="background: linear-gradient(135deg, #1a1f3a, #0d1120);">
         <div>
@@ -160,7 +337,6 @@
       </div>
     </div>
 
-    <!-- Экран сертификата -->
     <div id="screen-certificate" class="screen">
       <div class="certificate-inner">
         <div class="certificate-border">

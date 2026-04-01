@@ -1525,6 +1525,15 @@ function updateStatsDisplay() {
       btnStart.style.cursor = 'pointer';
     }
   }
+  // Обновляем кнопку "Финальный тест"
+  const btnFinal = document.getElementById('btn-final');
+  if (btnFinal) {
+      btnFinal.disabled = false;
+      btnFinal.style.background = '#00d5ec';
+      btnFinal.style.color = '#fff';
+      btnFinal.textContent = 'Финальный тест';
+      btnFinal.style.cursor = 'pointer';
+  }
 }
 
 // Сброс прогресса
@@ -1882,9 +1891,13 @@ let finalTestState = {
 function openFinalTest() {
   const completedMissions = state.completedMissions.length;
   if (completedMissions < 6) {
-    alert(`🎓 Сначала пройди все 6 миссий! Сейчас пройдено: ${completedMissions}/6`);
+    alert(`Сначала пройди все 6 миссий! Сейчас пройдено: ${completedMissions}/6`);
     return;
   }
+  const playBtn = document.getElementById('btn-start-final-test');
+  playBtn.style.background = '#00e5ff';
+  playBtn.style.color = '#0a0d14';
+  playBtn.style.setProperty('--glow-color', '#00e5ff');
   document.getElementById('modal-final-test').classList.add('open');
 }
 

@@ -155,6 +155,8 @@
     font-weight: 700;
     padding: 16px 40px;
     border: none;
+    width: 350px;
+    height: 50px;
     border-radius: 100px;
     cursor: pointer;
     letter-spacing: .04em;
@@ -889,33 +891,6 @@
     opacity: 1;
     visibility: visible;
   }
-  
-  /* Кнопка финального теста */
-  .btn-final-test {
-    background: var(--accent);
-    color: var(--bg);
-    font-family: var(--font-head);
-    font-size: .9rem;
-    font-weight: 700;
-    padding: 16px 40px;
-    border: none;
-    border-radius: 100px;
-    cursor: pointer;
-    letter-spacing: .04em;
-    transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 40px rgba(0,229,255,.3);
-    animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite;
-    margin-bottom: 20px;
-  }
-  .btn-final-test:hover {
-    transform: scale(1.08) translateY(-2px);
-    filter: brightness(1.15);
-    box-shadow: 0 0 60px currentColor;
-  }
-  .btn-final-test:active {
-    transform: scale(0.98) translateY(0);
-  }
-
 
   /* Модальное окно финального теста */
   .modal-final .modal-tag {
@@ -923,6 +898,15 @@
   }
   .modal-final .btn-play {
     background: linear-gradient(135deg, #00e5ff, #00b8d4);
+    --glow-color: #00e5ff;
+  }
+  .modal-final .btn-play:hover {
+    filter: brightness(1.15);
+    box-shadow: 0 0 40px rgba(0,0,0,.3), 0 0 20px #00e5ff;
+    transform: translateY(-2px);
+  }
+  .modal-final .btn-play:active {
+    transform: translateY(0) scale(0.98);
   }
 
   /* Экран финального теста */
@@ -1119,4 +1103,15 @@
     .cert-seal {
       font-size: 3rem;
     }
+  }
+
+  .mission-svg-icon {
+    display: block;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 8px var(--card-color, #00e5ff));
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+  .mission-card:hover .mission-svg-icon {
+    filter: drop-shadow(0 0 16px var(--card-color, #00e5ff)) brightness(1.2);
+    transform: scale(1.08) rotate(-2deg);
   }

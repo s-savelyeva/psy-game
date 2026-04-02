@@ -1,14 +1,279 @@
-// СВЕТЯЩАЯСЯ ГАЛОЧКА SVG
+// СВЕТЯЩАЯСЯ ГАЛОЧКА
 const CHECKMARK_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #34d399) drop-shadow(0 0 15px #10b981);">
-    <circle cx="12" cy="12" r="10" fill="#34d399" opacity="0.4"/>
-    <path d="M7 12L10.5 15.5L17 8.5" stroke="#6ee7b7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="12" r="10" fill="#34d399" opacity="0.8"/>
+    <path d="M7 12L10.5 15.5L17 8.5" stroke="#b2fddf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
 </span>`;
-const CHECKMARK_SVG_MINI = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-bottom: 5px">
+const CHECKMARK_SVG_MINI = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #34d399) drop-shadow(0 0 15px #10b981);">
-    <circle cx="12" cy="12" r="10" fill="#34d399" opacity="0.4"/>
-    <path d="M7 12L10.5 15.5L17 8.5" stroke="#6ee7b7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="12" r="10" fill="#34d399" opacity="0.8"/>
+    <path d="M7 12L10.5 15.5L17 8.5" stroke="#b2fddf" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</span>`;
+const CHECKMARK_SVG_BIG = CHECKMARK_SVG.replace('width="24" height="24"', 'width="96" height="96"');
+
+
+// СВЕТЯЩИЙСЯ КРЕСТИК
+const CROSS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ce1644) drop-shadow(0 0 15px #be1f47);">
+    <circle cx="12" cy="12" r="10" fill="#ff1c55" opacity="0.8"/>
+    <path d="M8 8L16 16M16 8L8 16" stroke="rgb(253, 153, 178)" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</span>`;
+const CROSS_SVG_MINI = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ce1644) drop-shadow(0 0 15px #be1f47);">
+    <circle cx="12" cy="12" r="10" fill="#ff1c55" opacity="0.8"/>
+    <path d="M8 8L16 16M16 8L8 16" stroke="rgb(253, 153, 178)" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЙСЯ ЖЕЛТЫЙ ЗНАК ВОСКЛИЦАНИЯ
+const WARNING_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M12 3L22 20H2L12 3Z" fill="#ffd700" opacity="0.8"/>
+    <path d="M12 9V14M12 17V17.01" stroke="rgb(116, 98, 0)" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩАЯСЯ СИГНАЛКА
+const ALERT_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <rect x="3" y="17" width="18" height="4" rx="1" fill="#cc0000" opacity="0.8"/>
+    <rect x="6" y="11" width="12" height="7" rx="1" fill="#ff3030" opacity="0.8"/>
+    <path d="M8 11 Q8 5 12 5 Q16 5 16 11Z" fill="#ff3030" opacity="0.8"/>
+    <line x1="5" y1="8" x2="2" y2="6" stroke="#ff6060" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="4" y1="10" x2="1" y2="10" stroke="#ff6060" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="19" y1="8" x2="22" y2="6" stroke="#ff6060" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="20" y1="10" x2="23" y2="10" stroke="#ff6060" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЙСЯ КУБОК
+const TROPHY_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M6 5 Q3 5 3 8 Q3 11 6 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M18 5 Q21 5 21 8 Q21 11 18 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M6 3 H18 Q18 13 12 15 Q6 13 6 3Z" fill="#ffd700" opacity="0.8"/>
+    <rect x="10" y="15" width="4" height="4" fill="#ffd700" opacity="0.8"/>
+    <rect x="7" y="19" width="10" height="2" rx="1" fill="#ffd700" opacity="0.8"/>
+  </svg>
+</span>`;
+const TROPHY_SVG_BIG = TROPHY_SVG.replace('width="24" height="24"', 'width="96" height="96"');
+
+// СВЕТЯЩИЕСЯ ВЕСЫ
+const SCALES_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <rect x="11.5" y="4" width="1.5" height="14" fill="#ffd700" opacity="0.8"/>
+    <rect x="7" y="19" width="10" height="2" rx="1" fill="#ffd700" opacity="0.8"/>
+    <rect x="10" y="17" width="4" height="2" fill="#ffd700" opacity="0.8"/>
+    <rect x="3" y="4" width="18" height="1.5" rx="0.75" fill="#ffd700" opacity="0.8"/>
+    <line x1="5" y1="5.5" x2="5" y2="10" stroke="#ffd700" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="19" y1="5.5" x2="19" y2="10" stroke="#ffd700" stroke-width="1.2" stroke-linecap="round"/>
+    <path d="M2 10 Q5 14 8 10Z" fill="#ffd700" opacity="0.8"/>
+    <path d="M16 10 Q19 14 22 10Z" fill="#ffd700" opacity="0.8"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЕСЯ ЗВУК
+const SOUND_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <path d="M4 9 H7 L12 5 V19 L7 15 H4 Z" fill="#4fc3f7" opacity="0.8"/>
+    <path d="M15 8 Q18 12 15 16" stroke="#4fc3f7" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M17 6 Q21 12 17 18" stroke="#4fc3f7" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+//СВЕТЯЩИЕСЯ ЗВУК ВЫКЛЮЧЕННЫЙ
+const MUTE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff4444) drop-shadow(0 0 15px #cc0000);">
+    <path d="M4 9 H7 L12 5 V19 L7 15 H4 Z" fill="#ff4444" opacity="0.8"/>
+    <line x1="15" y1="9" x2="21" y2="15" stroke="#ff4444" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="21" y1="9" x2="15" y2="15" stroke="#ff4444" stroke-width="2.2" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЕСЯ КРАСНЫЙ ТЕЛЕФОН
+const PHONE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0;">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <path d="M5 3 H9 L11 7 L9 9 Q10 11 13 14 Q15 16 17 15 L19 13 L23 15 V19 Q23 21 20 21 Q10 21 3 8 Q2 5 5 3Z" fill="#fd5d5d" opacity="0.8"/>
+  </svg>
+</span>`;
+const PHONE_SVG_MINI = PHONE_SVG.replace('margin-bottom: 0', 'margin-bottom: 4px');
+
+// СВЕТЯЩИЙСЯ ЦВЕТОЧЕК
+const FLOWER_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f48fb1) drop-shadow(0 0 15px #c2185b);">
+    <ellipse cx="12" cy="6"   rx="2" ry="3.5" fill="#f48fb1" opacity="0.8"/>
+    <ellipse cx="12" cy="18"  rx="2" ry="3.5" fill="#f48fb1" opacity="0.8"/>
+    <ellipse cx="6"  cy="12"  rx="3.5" ry="2" fill="#f48fb1" opacity="0.8"/>
+    <ellipse cx="18" cy="12"  rx="3.5" ry="2" fill="#f48fb1" opacity="0.8"/>
+    <ellipse cx="8"  cy="8"   rx="2" ry="3.5" transform="rotate(45 8 8)"    fill="#f06292" opacity="0.8"/>
+    <ellipse cx="16" cy="8"   rx="2" ry="3.5" transform="rotate(-45 16 8)"  fill="#f06292" opacity="0.8"/>
+    <ellipse cx="8"  cy="16"  rx="2" ry="3.5" transform="rotate(-45 8 16)"  fill="#f06292" opacity="0.8"/>
+    <ellipse cx="16" cy="16"  rx="2" ry="3.5" transform="rotate(45 16 16)"  fill="#f06292" opacity="0.8"/>
+    <ellipse cx="12" cy="7"   rx="1.5" ry="3" transform="rotate(22.5 12 12)"  fill="#f48fb1" opacity="0.7"/>
+    <ellipse cx="12" cy="7"   rx="1.5" ry="3" transform="rotate(67.5 12 12)"  fill="#f48fb1" opacity="0.7"/>
+    <ellipse cx="12" cy="7"   rx="1.5" ry="3" transform="rotate(112.5 12 12)" fill="#f48fb1" opacity="0.7"/>
+    <ellipse cx="12" cy="7"   rx="1.5" ry="3" transform="rotate(157.5 12 12)" fill="#f48fb1" opacity="0.7"/>
+    <circle cx="12" cy="12" r="3" fill="#fff176" opacity="0.9"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЙСЯ ЗАМОК
+const LOCK_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M8 11 V7 Q8 3 12 3 Q16 3 16 7 V11" stroke="#ffd700" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <rect x="5" y="11" width="14" height="10" rx="2" fill="#ffd700" opacity="0.8"/>
+    <circle cx="12" cy="16" r="2" fill="#7a6000" opacity="0.8"/>
+    <rect x="11" y="16" width="2" height="3" fill="#7a6000" opacity="0.8"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЕЙСЯ БАНК
+const BANK_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <path d="M12 2 L22 8 H2 Z" fill="#4fc3f7" opacity="0.8"/>
+    <rect x="2" y="8" width="20" height="2" fill="#4fc3f7" opacity="0.9"/>
+    <rect x="4"  y="10" width="2.5" height="8" fill="#4fc3f7" opacity="0.8"/>
+    <rect x="8"  y="10" width="2.5" height="8" fill="#4fc3f7" opacity="0.8"/>
+    <rect x="12" y="10" width="2.5" height="8" fill="#4fc3f7" opacity="0.8"/>
+    <rect x="17" y="10" width="2.5" height="8" fill="#4fc3f7" opacity="0.8"/>
+    <rect x="2" y="18" width="20" height="2" fill="#4fc3f7" opacity="0.9"/>
+    <rect x="1" y="20" width="22" height="1.5" rx="0.5" fill="#4fc3f7" opacity="0.7"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩАЯСЯ МАШИНА
+const POLICE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #1565c0) drop-shadow(0 0 15px #0d47a1);">
+    <rect x="8" y="3" width="8" height="3" rx="1" fill="#ef5350" opacity="0.9"/>
+    <rect x="8" y="3" width="4" height="3" rx="1" fill="#1e88e5" opacity="0.9"/>
+    <path d="M3 13 Q4 9 7 9 H17 Q20 9 21 13 Z" fill="#1e88e5" opacity="0.8"/>
+    <rect x="3" y="13" width="18" height="5" rx="1" fill="#1e88e5" opacity="0.8"/>
+    <rect x="6" y="10" width="4" height="3" rx="0.5" fill="#90caf9" opacity="0.9"/>
+    <rect x="14" y="10" width="4" height="3" rx="0.5" fill="#90caf9" opacity="0.9"/>
+    <rect x="3" y="14.5" width="18" height="1.5" fill="#ffffff" opacity="0.5"/>
+    <circle cx="7" cy="18.5" r="2.5" fill="#263238" opacity="0.9"/>
+    <circle cx="7" cy="18.5" r="1" fill="#546e7a" opacity="0.9"/>
+    <circle cx="17" cy="18.5" r="2.5" fill="#263238" opacity="0.9"/>
+    <circle cx="17" cy="18.5" r="1" fill="#546e7a" opacity="0.9"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЙСЯ ГРАФИК
+const CHART_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <line x1="3" y1="3" x2="3" y2="20" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="3" y1="20" x2="22" y2="20" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
+    <rect x="5"  y="13" width="3" height="7" fill="#ff5252" opacity="0.8"/>
+    <rect x="10" y="8"  width="3" height="12" fill="#ffd700" opacity="0.9"/>
+    <rect x="15" y="5"  width="3" height="15" fill="#69f0ae" opacity="0.7"/>
+    <rect x="19" y="10" width="3" height="10" fill="#7c4dff" opacity="0.8"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЙСЯ ЛЮДИ
+const USERS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0; margin-top: 0">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <circle cx="9" cy="7" r="3" fill="#ffd700" opacity="0.8"/>
+    <path d="M3 20 Q3 14 9 14 Q15 14 15 20" fill="#ffd700" opacity="0.8"/>
+    <circle cx="16" cy="7" r="3" fill="#ffd700" opacity="0.6"/>
+    <path d="M11 20 Q11 14 17 14 Q23 14 23 20" fill="#ffd700" opacity="0.6"/>
+  </svg>
+</span>`;
+const USERS_SVG_BIG = USERS_SVG.replace('width="20" height="20" margin-bottom: 5px margin-top: 0', 'width="24" height="24" margin-bottom: 0 margin-top: 5px;');
+
+// СВЕТЯЩАЯСЯ ЛАМПОЧКА
+const BULB_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M12 3 Q6 3 6 9 Q6 13 9 15 L9 16 H15 L15 15 Q18 13 18 9 Q18 3 12 3Z" fill="#fff176" opacity="0.9"/>
+    <path d="M12 5 Q8 5 8 9 Q8 11.5 10 13" stroke="#ffffff" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <rect x="9" y="16" width="6" height="1.2" rx="0.3" fill="#bfa000" opacity="0.9"/>
+    <rect x="9" y="17.5" width="6" height="1.2" rx="0.3" fill="#bfa000" opacity="0.9"/>
+    <rect x="9.5" y="19" width="5" height="1.5" rx="0.5" fill="#9e8000" opacity="0.9"/>
+    <line x1="12" y1="0" x2="12" y2="1.5" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="4.5" y1="2.8" x2="5.5" y2="3.8" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="19.5" y1="2.8" x2="18.5" y2="3.8" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="2.5" y1="9" x2="4" y2="9" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="21.5" y1="9" x2="20" y2="9" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЙСЯ ТЕЛЕФОН
+const PHONE_SCREEN_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <!-- корпус телефона -->
+    <rect x="6" y="2" width="12" height="20" rx="2.5" fill="#1e88e5" opacity="0.8"/>
+    <!-- экран -->
+    <rect x="7.5" y="4.5" width="9" height="13" rx="1" fill="#90caf9" opacity="0.6"/>
+    <!-- камера -->
+    <circle cx="12" cy="3.5" r="0.8" fill="#0d47a1" opacity="0.8"/>
+    <!-- кнопка home -->
+    <circle cx="12" cy="20" r="1.2" fill="#0d47a1" opacity="0.6"/>
+    <!-- блик на экране -->
+    <path d="M9 6 Q10 5 11.5 5.5" stroke="#ffffff" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЕСЯ МИШЕНЬ
+const TARGET_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <circle cx="12" cy="12" r="10" fill="#ff3030" opacity="0.8"/>
+    <circle cx="12" cy="12" r="7.5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="12" cy="12" r="5" fill="#ff3030" opacity="0.8"/>
+    <circle cx="12" cy="12" r="2.5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="12" cy="12" r="1" fill="#ff3030" opacity="0.9"/>
+    <line x1="17" y1="7" x2="13" y2="11" stroke="#333333" stroke-width="1.5" stroke-linecap="round"/>
+    <polygon points="17,5 19,9 15,8" fill="#333333" opacity="0.9"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЕСЯ КНИГИ
+const BOOKS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
+  <svg width="96" height="96" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <rect x="2" y="5" width="5" height="14" rx="0.5" fill="#ff5252" opacity="0.9"/>
+    <rect x="2" y="5" width="1.2" height="14" fill="#cc0000" opacity="0.8"/>
+    <rect x="8" y="3" width="5" height="16" rx="0.5" fill="#1e88e5" opacity="0.9"/>
+    <rect x="8" y="3" width="1.2" height="16" fill="#0d47a1" opacity="0.8"/>
+    <rect x="14" y="6" width="5" height="13" rx="0.5" fill="#43a047" opacity="0.9"/>
+    <rect x="14" y="6" width="1.2" height="13" fill="#2e7d32" opacity="0.8"/>
+    <rect x="1" y="19" width="22" height="1.5" rx="0.5" fill="#ffd700" opacity="0.8"/>
+    <line x1="3.5" y1="8"  x2="6.5" y2="8"  stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" opacity="0.5"/>
+    <line x1="3.5" y1="10" x2="6.5" y2="10" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" opacity="0.5"/>
+    <line x1="9.5" y1="6"  x2="12.5" y2="6"  stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" opacity="0.5"/>
+    <line x1="9.5" y1="8"  x2="12.5" y2="8"  stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" opacity="0.5"/>
+    <line x1="15.5" y1="9"  x2="18.5" y2="9"  stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" opacity="0.5"/>
+    <line x1="15.5" y1="11" x2="18.5" y2="11" stroke="#ffffff" stroke-width="0.7" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// СВЕТЯЩИЕСЯ МАСКИ
+const MASKS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-top: 5px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M2 8 Q2 4 7 4 Q12 4 12 8 Q12 13 7 14 Q2 13 2 8Z" fill="#ffd700" opacity="0.9"/>
+    <ellipse cx="5.5" cy="7.5" rx="1" ry="1.3" fill="#7a6000" opacity="0.9"/>
+    <ellipse cx="9" cy="7.5" rx="1" ry="1.3" fill="#7a6000" opacity="0.9"/
+    <path d="M4.5 10.5 Q7 12.5 10 10.5" stroke="#7a6000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <path d="M12 10 Q12 6 17 6 Q22 6 22 10 Q22 15 17 16 Q12 15 12 10Z" fill="#1e88e5" opacity="0.9"/>
+    <ellipse cx="15.5" cy="9.5" rx="1" ry="1.3" fill="#0d47a1" opacity="0.9"/>
+    <ellipse cx="19" cy="9.5" rx="1" ry="1.3" fill="#0d47a1" opacity="0.9"/>
+    <path d="M14.5 13 Q17 11 20 13" stroke="#0d47a1" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+
+// СВЕТЯЩИЙСЯ МЕШОК ДЕНЕГ
+const MONEY_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0 margin-top: 5px;">
+  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #43a047) drop-shadow(0 0 15px #1b5e20);">
+    <path d="M38 28 Q40 18 50 18 Q60 18 62 28" stroke="#2e7d32" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <path d="M35 32 Q50 26 65 32" fill="#2e7d32" opacity="0.9"/>
+    <rect x="35" y="28" width="30" height="8" rx="4" fill="#388e3c" opacity="0.95"/>
+    <path d="M30 40 Q20 50 22 65 Q24 82 50 85 Q76 82 78 65 Q80 50 70 40 Q60 34 50 34 Q40 34 30 40Z" fill="#43a047" opacity="0.9"/>
+    <path d="M30 40 Q22 55 25 68 Q28 80 50 83" stroke="#2e7d32" stroke-width="3" fill="none" opacity="0.4"/>
+    <line x1="50" y1="45" x2="50" y2="78" stroke="#fff176" stroke-width="4" stroke-linecap="round"/>
+    <path d="M40 52 Q50 47 60 52 Q60 59 50 62 Q40 65 40 72 Q40 79 50 80 Q60 79 60 72" stroke="#fff176" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M32 48 Q34 40 42 37" stroke="#a5d6a7" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
   </svg>
 </span>`;
 
@@ -24,15 +289,15 @@ const MISSIONS = {
     desc: 'Незнакомец в интернете предлагает получать деньги просто так, пропуская переводы через свою карту. Звучит легко? Узнай, чем это кончается.',
     scenes: 14, diff: 'Начальный',
     tips: [
-      { icon: '⚖️', text: 'Дроппер – юридически пособник преступника. Уголовная ответственность с 14 лет.' },
-      { icon: '🏦', text: 'Банк заблокирует карту, долг придется возвращать годами.' },
-      { icon: '🚔', text: 'Полиция отслеживает транзакции, вычислить дроппера легко.' },
+      { icon: `${SCALES_SVG}`, text: 'Дроппер – юридически пособник преступника. Уголовная ответственность с 14 лет.' },
+      { icon: `${BANK_SVG}`, text: 'Банк заблокирует карту, долг придется возвращать годами.' },
+      { icon: `${POLICE_SVG}`, text: 'Полиция отслеживает транзакции, вычислить дроппера легко.' },
     ],
     storyboard: [
       {
         type: 'context',
         variant: 'normal',
-        text: '📱 ВКонтакте. Тебе 15 лет. Вечер после школы. Приходит сообщение от незнакомого аккаунта «Антон Бизнес» с синей галочкой.'
+        text: `${PHONE_SCREEN_SVG} ВКонтакте. Тебе 15 лет. Вечер после школы. Приходит сообщение от незнакомого аккаунта «Антон Бизнес» с синей галочкой.`
       },
        // СЦЕНА 2 – первый контакт
       {
@@ -52,15 +317,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Откуда у тебя мой контакт?', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Никогда не общайся с незнакомцами, предлагающими легкие деньги онлайн. Это классическая схема вербовки дроппера. Правильно заблокировать и рассказать взрослым.', fact: '💡 В 2023 году поймано более 20 000 дропперов. Большинство не знали, что совершают преступление' },
-          wrong: { title: '⚠️ Осторожно!', text: 'Ты продолжил общение. Мошенник получил твое внимание, именно это ему и нужно. Посмотрим, что будет дальше...', fact: '💡 Мошенники специально ищут подростков, так как их легче убедить и они меньше знают о законах' }
+          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Никогда не общайся с незнакомцами, предлагающими легкие деньги онлайн. Это классическая схема вербовки дроппера. Правильно заблокировать и рассказать взрослым.', fact: `${BULB_SVG} В 2023 году поймано более 20 000 дропперов. Большинство не знали, что совершают преступление` },
+          wrong: { title: `${WARNING_SVG} Осторожно!`, text: 'Ты продолжил общение. Мошенник получил твое внимание, именно это ему и нужно. Посмотрим, что будет дальше...', fact: `${BULB_SVG} Мошенники специально ищут подростков, так как их легче убедить и они меньше знают о законах` }
         }
       },
       // СЦЕНА 4 – давление
       {
         type: 'context',
         variant: 'warn',
-         text: '⚠️ Ты продолжил разговор. Антон объясняет «работу» и начинает давить.'
+         text: `${WARNING_SVG} Ты продолжил разговор. Антон объясняет «работу» и начинает давить.`
       },
       {
         type: 'messages',
@@ -93,15 +358,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Это сетевой маркетинг', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Ты разгадал схему!`, text: 'Именно! Деньги, которые будут проходить через твою карту, краденые. Ты становишься звеном в преступной цепочке. Даже «незнание» не освобождает от ответственности по закону.', fact: '⚖️ Статья 174.1 УК РФ – легализация преступных доходов. До 7 лет лишения свободы.' },
-          wrong: { title: '❌ Это ловушка!', text: 'Это не работа. Через твою карту будут проходить деньги, украденные у других людей. Ты станешь соучастником мошенничества.', fact: '🚔 Следователи запрашивают данные карты, тебя найдут по первому же переводу' }
+          correct: { title: `${CHECKMARK_SVG} Ты разгадал схему!`, text: 'Именно! Деньги, которые будут проходить через твою карту, краденые. Ты становишься звеном в преступной цепочке. Даже «незнание» не освобождает от ответственности по закону.', fact: `${SCALES_SVG} Статья 174.1 УК РФ – легализация преступных доходов. До 7 лет лишения свободы.` },
+          wrong: { title: `${CROSS_SVG} Это ловушка!`, text: 'Это не работа. Через твою карту будут проходить деньги, украденные у других людей. Ты станешь соучастником мошенничества.', fact: `${POLICE_SVG} Следователи запрашивают данные карты, тебя найдут по первому же переводу` }
         }
       },
       // СЦЕНА 7 – друг втягивается
       {
         type: 'context',
         variant: 'danger',
-        text: '🚨 Твой одноклассник Сережа видит переписку и говорит...'
+        text: `${ALERT_SVG} Твой одноклассник Сережа видит переписку и говорит...`
       },
       {
         type: 'messages',
@@ -122,15 +387,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Предложить попробовать только один раз для проверки', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Правильно!`, text: 'Число «500 человек» невозможно проверить, это обычная уловка. Через карту действительно проходят украденные деньги, и оба станете соучастниками. Лучше потерять «возможность», чем свободу.', fact: '🎭 Мошенники создают иллюзию массовости, на самом деле работает 5-10 человек, остальные жертвы' },
-          wrong: { title: '❌ Это опасно!', text: '«Один раз» не существует. Как только вы согласитесь, вы будете отмечены как склонный к сотрудничеству человек. Банк и полиция будут отслеживать каждую транзакцию.', fact: '👁 Банковские системы мониторинга видят все подозрительные операции в реальном времени' }
+          correct: { title: `${CHECKMARK_SVG} Правильно!`, text: 'Число «500 человек» невозможно проверить, это обычная уловка. Через карту действительно проходят украденные деньги, и оба станете соучастниками. Лучше потерять «возможность», чем свободу.', fact: `${MASKS_SVG} Мошенники создают иллюзию массовости, на самом деле работает 5-10 человек, остальные жертвы` },
+          wrong: { title: `${CROSS_SVG} Это опасно!`, text: '«Один раз» не существует. Как только вы согласитесь, вы будете отмечены как склонный к сотрудничеству человек. Банк и полиция будут отслеживать каждую транзакцию.', fact: '👁 Банковские системы мониторинга видят все подозрительные операции в реальном времени' }
         }
       },
       // СЦЕНА 9 – хроника событий
       {
         type: 'context',
         variant: 'danger',
-        text: '🚨 Что происходит когда ты соглашаешься...'
+        text: `${ALERT_SVG} Что происходит когда ты соглашаешься...`
       },
       {
         type: 'visual',
@@ -164,10 +429,10 @@ const MISSIONS = {
         type: 'visual',
         title: 'ЧТО ТЫ ПОТЕРЯЛ',
         lines: [
-          { text: '❌ Доверие родителей; придется восстанавливать месяцами', hl: 'bad' },
-          { text: '❌ Чистую биографию; запись о проверке полицией остается', hl: 'bad' },
-          { text: '❌ Доступ к банковским услугам; попадание в черный список ЦБ', hl: 'bad' },
-          { text: '❌ 150 000 ₽; придется выплачивать жертвам по суду', hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} Доверие родителей; придется восстанавливать месяцами`, hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} Чистую биографию; запись о проверке полицией остается`, hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} Доступ к банковским услугам; попадание в черный список ЦБ`, hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} 150 000 ₽; придется выплачивать жертвам по суду`, hl: 'bad' },
           { text: `${CHECKMARK_SVG_MINI} Урок: бесплатные деньги всегда имеют цену`, hl: 'good' },
         ]
       },
@@ -182,7 +447,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Именно так!`, text: 'Лучшая защита – не вступать в игру. Первое сообщение с предложением «легких денег» должно быть немедленно заблокировано. Расскажи об этом друзьям, возможно, ты спасешь кого-то от ошибки.', fact: '🛡 95% дропперов вербуются через соцсети и мессенджеры' },
-          wrong: { title: '❌ Это только усугубит!', text: 'Быстрое выведение денег или использование чужой карты – это дополнительные статьи УК РФ. Банковские системы мониторинга видят все.', fact: '👁 Банки используют ИИ для отслеживания подозрительных транзакций в реальном времени' }
+          wrong: { title: `${CROSS_SVG} Это только усугубит!`, text: 'Быстрое выведение денег или использование чужой карты – это дополнительные статьи УК РФ. Банковские системы мониторинга видят все.', fact: '👁 Банки используют ИИ для отслеживания подозрительных транзакций в реальном времени' }
         }
       },
       // СЦЕНА 13 – статистика
@@ -190,10 +455,10 @@ const MISSIONS = {
         type: 'visual',
         title: 'ДРОППЕРСТВО В ЦИФРАХ · 2024',
         lines: [
-          { text: '📊 Более 20 000 дропперов поймано в 2023 году', hl: 'bad' },
-          { text: '👥 78% дропперов несовершеннолетние 14-18 лет', hl: 'bad' },
-          { text: '💰 Средняя сумма ущерба от одного дроппера: 500 000 ₽', hl: 'bad' },
-          { text: '⚖️ Статья 174.1 УК РФ: до 7 лет лишения свободы', hl: 'bad' },
+          { text: `${CHART_SVG} Более 20 000 дропперов поймано в 2023 году`, hl: 'bad' },
+          { text: `${USERS_SVG} 78% дропперов несовершеннолетние 14-18 лет`, hl: 'bad' },
+          { text: `${MONEY_SVG} Средняя сумма ущерба от одного дроппера: 500 000 ₽`, hl: 'bad' },
+          { text: `${SCALES_SVG} Статья 174.1 УК РФ: до 7 лет лишения свободы`, hl: 'bad' },
           { text: `${CHECKMARK_SVG_MINI} Защита: никогда не передавай данные карты незнакомцам`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Сообщить о вербовке: МВД.РФ или Госуслуги`, hl: 'good' },
         ]
@@ -202,7 +467,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'normal',
-        text: '💡 Запомни: если предложение звучит слишком хорошо, чтобы быть правдой, это почти всегда обман. Легких денег не бывает. Твоя финансовая безопасность стоит дороже любых обещаний.'
+        text: `${BULB_SVG} Запомни: если предложение звучит слишком хорошо, чтобы быть правдой, это почти всегда обман. Легких денег не бывает. Твоя финансовая безопасность стоит дороже любых обещаний.`
       }
     ]
   },
@@ -216,16 +481,16 @@ const MISSIONS = {
     desc: 'Звонок из «службы поддержки» Госуслуг. Или не из Госуслуг? Разберись, как мошенники используют невинный повод – доставку цветов, чтобы захватить твой аккаунт.',
     scenes: 12, diff: 'Средний',
     tips: [
-      { icon: '🔐', text: 'Настоящие сотрудники Госуслуг никогда не спрашивают коды из СМС.' },
-      { icon: '📞', text: 'Если сомневаешься, сбрось звонок и перезвони на официальный номер самостоятельно.' },
-      { icon: '🌸', text: 'Схема «цветочный магазин» – реальная мошенническая схема 2022–2024 годов.' },
+      { icon: `${LOCK_SVG}`, text: 'Настоящие сотрудники Госуслуг никогда не спрашивают коды из СМС.' },
+      { icon: `${PHONE_SVG}`, text: 'Если сомневаешься, сбрось звонок и перезвони на официальный номер самостоятельно.' },
+      { icon: `${FLOWER_SVG}`, text: 'Схема «цветочный магазин» – реальная мошенническая схема 2022–2024 годов.' },
     ],
     storyboard: [
       // СЦЕНА 1 – контекст
       {
         type: 'context',
         variant: 'normal',
-        text: '📞 Субботнее утро. Тебе приходит звонок с незнакомого номера +7 (495) 123-45-67. Ты берешь трубку.'
+        text: `${PHONE_SVG} Субботнее утро. Тебе приходит звонок с незнакомого номера +7 (495) 123-45-67. Ты берешь трубку.`
       },
       // СЦЕНА 2 – первый диалог
       {
@@ -260,15 +525,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Прошу подождать и иду спросить у родителей', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Правильно!`, text: 'Код из СМС – это одноразовый пароль. Назвав его незнакомцу, ты отдаешь контроль над своим аккаунтом Госуслуг, к которому привязаны паспорт, СНИЛС, банки и многое другое.', fact: '🌸 Схема «цветочный магазин» – звонок якобы из магазина, чтобы усыпить бдительность' },
-          wrong: { title: '❌ Аккаунт угнан!', text: 'Ты продиктовал код, мошенник вошел в твои Госуслуги. Теперь он может оформить кредит, сменить данные или украсть документы.', fact: '🔐 НИКОГДА не называй коды из СМС, даже «сотрудникам» банка или госслужб' }
+          correct: { title: `${CHECKMARK_SVG} Правильно!`, text: 'Код из СМС – это одноразовый пароль. Назвав его незнакомцу, ты отдаешь контроль над своим аккаунтом Госуслуг, к которому привязаны паспорт, СНИЛС, банки и многое другое.', fact: `${FLOWER_SVG} Схема «цветочный магазин» – звонок якобы из магазина, чтобы усыпить бдительность` },
+          wrong: { title: `${CROSS_SVG} Аккаунт угнан!`, text: 'Ты продиктовал код, мошенник вошел в твои Госуслуги. Теперь он может оформить кредит, сменить данные или украсть документы.', fact: `${LOCK_SVG} НИКОГДА не называй коды из СМС, даже «сотрудникам» банка или госслужб` }
         }
       },
       // СЦЕНА 5 – друг попадаетсья
       {
         type: 'context',
         variant: 'danger',
-        text: '🚨 Твоя подруга Лена рассказывает что ей звонили по такой же схеме...'
+        text: `${ALERT_SVG} Твоя подруга Лена рассказывает что ей звонили по такой же схеме...`
       },
       {
         type: 'messages',
@@ -290,7 +555,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Нужно действовать быстро: смени пароль на gosuslugi.ru, включи двухфакторную аутентификацию, позвони в банк для блокировки счетов, напиши заявление в полицию. Чем быстрее, тем больше шансов вернуть деньги.', fact: '⏱ За первые 24 часа можно заблокировать до 80% мошеннических операций' },
-          wrong: { title: '❌ Время работает против!', text: 'Каждая минута промедления позволяет мошенникам сделать еще больше: оформить кредиты, получить доступ к налоговой, продать данные.', fact: '💸 Среднее время оформления кредита мошенниками: 7-15 минут после входа в аккаунт' }
+          wrong: { title: `${CROSS_SVG} Время работает против!`, text: 'Каждая минута промедления позволяет мошенникам сделать еще больше: оформить кредиты, получить доступ к налоговой, продать данные.', fact: '💸 Среднее время оформления кредита мошенниками: 7-15 минут после входа в аккаунт' }
         }
       },
       // СЦЕНА 7 – разбор схемы
@@ -332,25 +597,25 @@ const MISSIONS = {
           { letter: 'В', text: 'Попросить прислать ссылку для проверки', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Правильный подход!`, text: 'Никогда не доверяй входящим звонкам от «организаций». Положи трубку, найди официальный номер на сайте организации (не в поисковике!) и перезвони сам. Так ты точно попадешь к реальному сотруднику.', fact: '📞 Официальный номер Госуслуг: 8-800-100-70-10 (бесплатно)' },
-          wrong: { title: '❌ Это опасно!', text: 'Ссылки от мошенников ведут на фейковые сайты. Доверие к первому звонку – главная ошибка. Всегда перезванивай сам по официальному номеру.', fact: '🎭 Мошенники используют подменные номера, на экране может отображаться любой номер' }
+          correct: { title: `${CHECKMARK_SVG} Правильный подход!`, text: 'Никогда не доверяй входящим звонкам от «организаций». Положи трубку, найди официальный номер на сайте организации (не в поисковике!) и перезвони сам. Так ты точно попадешь к реальному сотруднику.', fact: `${PHONE_SVG} Официальный номер Госуслуг: 8-800-100-70-10 (бесплатно)` },
+          wrong: { title: `${CROSS_SVG} Это опасно!`, text: 'Ссылки от мошенников ведут на фейковые сайты. Доверие к первому звонку – главная ошибка. Всегда перезванивай сам по официальному номеру.', fact: `${MASKS_SVG} Мошенники используют подменные номера, на экране может отображаться любой номер` }
         }
       },
       // СЦЕНА 10 – последствия для Лены
       {
         type: 'context',
         variant: 'danger',
-        text: '📊 Что потеряла Лена из-за одного звонка:'
+        text: `${CHART_SVG} Что потеряла Лена из-за одного звонка:`
       },
       {
         type: 'visual',
         title: 'ПОСЛЕДСТВИЯ ОДНОГО ЗВОНКА',
         lines: [
-          { text: '❌ 30 000 ₽ – оформленный мошенниками микрозайм', hl: 'bad' },
-          { text: '❌ Доступ к личным данным: паспорт, СНИЛС, ИНН', hl: 'bad' },
-          { text: '❌ Кредитная история испорчена на 5 лет', hl: 'bad' },
-          { text: '❌ Месяцы разбирательств с банками и полицией', hl: 'bad' },
-          { text: '❌ Подорванное доверие родителей', hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} 30 000 ₽ – оформленный мошенниками микрозайм`, hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} Доступ к личным данным: паспорт, СНИЛС, ИНН`, hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} Кредитная история испорчена на 5 лет`, hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} Месяцы разбирательств с банками и полицией`, hl: 'bad' },
+          { text: `${CROSS_SVG_MINI} Подорванное доверие родителей`, hl: 'bad' },
           { text: `${CHECKMARK_SVG_MINI} Урок: код из СМС = пароль, никому не говорить`, hl: 'good' },
         ]
       },
@@ -364,8 +629,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Ждать звонка обратно от этого же человека', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Верные действия!`, text: 'Немедленно: смени пароль на gosuslugi.ru, включи двухфакторную аутентификацию, проверь историю входов в аккаунт. Сообщи родителям и на горячую линию Госуслуг: 8-800-100-70-10.', fact: '📞 Горячая линия Госуслуг: 8-800-100-70-10 (бесплатно)' },
-          wrong: { title: '❌ Каждая минута важна!', text: 'Пока ты ждешь, мошенник уже в твоем аккаунте. Смени пароль прямо сейчас!', fact: '⏱ За несколько минут мошенник может оформить кредит на твое имя' }
+          correct: { title: `${CHECKMARK_SVG} Верные действия!`, text: 'Немедленно: смени пароль на gosuslugi.ru, включи двухфакторную аутентификацию, проверь историю входов в аккаунт. Сообщи родителям и на горячую линию Госуслуг: 8-800-100-70-10.', fact: `${PHONE_SVG} Горячая линия Госуслуг: 8-800-100-70-10 (бесплатно)` },
+          wrong: { title: `${CROSS_SVG} Каждая минута важна!`, text: 'Пока ты ждешь, мошенник уже в твоем аккаунте. Смени пароль прямо сейчас!', fact: '⏱ За несколько минут мошенник может оформить кредит на твое имя' }
         }
       },
       // СЦЕНА 12 – статистика и защита
@@ -373,10 +638,10 @@ const MISSIONS = {
         type: 'visual',
         title: 'ФИШИНГ В ЦИФРАХ · 2024',
         lines: [
-          { text: '📊 Более 2 млн россиян пострадали от фишинга в 2023 году', hl: 'bad' },
+          { text: `${CHART_SVG} Более 2 млн россиян пострадали от фишинга в 2023 году`, hl: 'bad' },
           { text: '💰 Средний ущерб одной жертвы: 45 000 ₽', hl: 'bad' },
-          { text: '📞 67% мошеннических звонков начинаются с «отмены заказа»', hl: 'bad' },
-          { text: '🔐 2FA защищает аккаунт даже если код украден', hl: 'good' },
+          { text: `${PHONE_SVG_MINI} 67% мошеннических звонков начинаются с «отмены заказа»`, hl: 'bad' },
+          { text: `${LOCK_SVG} 2FA защищает аккаунт даже если код украден`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Правило: код из СМС = пароль, никому не говорить`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Сообщить о мошенничестве: Госуслуги → МВД`, hl: 'good' },
         ]
@@ -394,7 +659,7 @@ const MISSIONS = {
     scenes: 12, diff: 'Средний',
     tips: [
       { icon: '🚫', text: 'Раскладка закладок – это соучастие в наркоторговле. Реальный срок от 8 лет.' },
-      { icon: '📱', text: 'Вербовщики ищут жертв в играх, Discord, Telegram – везде, где есть подростки.' },
+      { icon: `${PHONE_SCREEN_SVG}`, text: 'Вербовщики ищут жертв в играх, Discord, Telegram – везде, где есть подростки.' },
       { icon: '🆘', text: 'Если тебя уже втянули, обратись в полицию или на горячую линию 8-800-2000-122.' },
     ],
     storyboard: [
@@ -423,8 +688,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Листовки или промо-товары', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Верно распознал!`, text: 'Схема «закладчик» – человек прячет наркотики в тайниках («закладках»), покупатели находят их по адресам. Вербовщики специально ищут несовершеннолетних, считая, что им дадут меньший срок. Это неправда.', fact: '⚖️ За закладку наркотиков до 15 лет лишения свободы даже для несовершеннолетних' },
-          wrong: { title: '❌ Это ловушка!', text: 'Настоящие курьерские сервисы так не вербуют (через игровые чаты анонимные незнакомцы). Это наркоторговля.', fact: '🚨 Сотни подростков попали за решетку, поверив, что это «просто курьерка»' }
+          correct: { title: `${CHECKMARK_SVG} Верно распознал!`, text: 'Схема «закладчик» – человек прячет наркотики в тайниках («закладках»), покупатели находят их по адресам. Вербовщики специально ищут несовершеннолетних, считая, что им дадут меньший срок. Это неправда.', fact: `${SCALES_SVG} За закладку наркотиков до 15 лет лишения свободы даже для несовершеннолетних` },
+          wrong: { title: `${CROSS_SVG} Это ловушка!`, text: 'Настоящие курьерские сервисы так не вербуют (через игровые чаты анонимные незнакомцы). Это наркоторговля.', fact: `${ALERT_SVG} Сотни подростков попали за решетку, поверив, что это «просто курьерка»` }
         }
       },
       // СЦЕНА 4 – давление
@@ -446,7 +711,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'normal',
-        text: '👥 Ты решаешь посоветоваться с другом Максимом.'
+        text: `${USERS_SVG_BIG} Ты решаешь посоветоваться с другом Максимом.`
       },
       {
         type: 'messages',
@@ -467,8 +732,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Если один раз, наверное пронесет', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Уголовная ответственность за наркотики наступает с 14 лет (ст. 228.1 УК РФ). Несовершеннолетних отправляют в воспитательные колонии. «Один раз» не существует, каждое действие фиксируется.', fact: '📊 В 2023 году более 800 несовершеннолетних осуждены за наркотики' },
-          wrong: { title: '❌ Опасное заблуждение!', text: 'Это главная ложь вербовщиков. С 14 лет – ответственность за тяжкие преступления (наркотики), с 16 за все. Возраст не защита, а мишень для манипуляции.', fact: '⚖️ Статья 228.1 УК РФ: от 8 до 15 лет лишения свободы' }
+          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Уголовная ответственность за наркотики наступает с 14 лет (ст. 228.1 УК РФ). Несовершеннолетних отправляют в воспитательные колонии. «Один раз» не существует, каждое действие фиксируется.', fact: `${CHART_SVG} В 2023 году более 800 несовершеннолетних осуждены за наркотики` },
+          wrong: { title: `${CROSS_SVG} Опасное заблуждение!`, text: 'Это главная ложь вербовщиков. С 14 лет – ответственность за тяжкие преступления (наркотики), с 16 за все. Возраст не защита, а мишень для манипуляции.', fact: `${SCALES_SVG} Статья 228.1 УК РФ: от 8 до 15 лет лишения свободы` }
         }
       },
       // СЦЕНА 7 – разбор схемы
@@ -510,15 +775,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Если всего один раз, наверное безопасно', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Отлично!`, text: 'Миф о "несовершеннолетии как защите" – это приманка. Суды дают реальные сроки. Вербовщик знает это и специально лжет, чтобы ты не боялся. Заблокируй, расскажи взрослым или позвони на горячую линию.', fact: '📞 Горячая линия психологической помощи: 8-800-2000-122 (бесплатно, анонимно)' },
-          wrong: { title: '❌ Это ложь!', text: 'Мошенник использует твой возраст против тебя. Несовершеннолетние получают реальные сроки в воспитательных колониях. «Один раз» не существует, тебя запишут и будут шантажировать.', fact: '📹 Вербовщики фиксируют первую закладку на фото, потом шантажируют' }
+          correct: { title: `${CHECKMARK_SVG} Отлично!`, text: 'Миф о "несовершеннолетии как защите" – это приманка. Суды дают реальные сроки. Вербовщик знает это и специально лжет, чтобы ты не боялся. Заблокируй, расскажи взрослым или позвони на горячую линию.', fact: `${PHONE_SVG} Горячая линия психологической помощи: 8-800-2000-122 (бесплатно, анонимно)` },
+          wrong: { title: `${CROSS_SVG} Это ложь!`, text: 'Мошенник использует твой возраст против тебя. Несовершеннолетние получают реальные сроки в воспитательных колониях. «Один раз» не существует, тебя запишут и будут шантажировать.', fact: '📹 Вербовщики фиксируют первую закладку на фото, потом шантажируют' }
         }
       },
       // СЦЕНА 10 – история жертвы
       {
         type: 'context',
         variant: 'danger',
-        text: '📊 Реальная история одного закладчика:'
+        text: `${CHART_SVG} Реальная история одного закладчика:`
       },
       {
         type: 'visual',
@@ -536,10 +801,10 @@ const MISSIONS = {
         type: 'visual',
         title: 'СТАТИСТИКА ПО ЗАКЛАДКАМ · 2024',
         lines: [
-          { text: '📊 78% закладчиков несовершеннолетние 14-18 лет', hl: 'bad' },
-          { text: '⚖️ Средний срок: 8-12 лет лишения свободы', hl: 'bad' },
+          { text: `${CHART_SVG} 78% закладчиков несовершеннолетние 14-18 лет`, hl: 'bad' },
+          { text: `${SCALES_SVG} Средний срок: 8-12 лет лишения свободы`, hl: 'bad' },
           { text: '💰 «Заработок»: 3000-5000 ₽ за рейс vs 10 лет свободы', hl: 'bad' },
-          { text: '🎯 90% вербовок происходит в соцсетях и мессенджерах', hl: 'bad' },
+          { text: `${TARGET_SVG} 90% вербовок происходит в соцсетях и мессенджерах`, hl: 'bad' },
           { text: `${CHECKMARK_SVG_MINI} Защита: никогда не соглашаться на «раскладку`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Сообщить о вербовке: полиция или 8-800-2000-122`, hl: 'good' },
         ]
@@ -548,7 +813,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'normal',
-        text: '💡 Помни: легальных способов заработать больше чем 3000 ₽ в час для подростка НЕ СУЩЕСТВУЕТ. Любое такое предложение – это обман или преступление. Твоя свобода стоит дороже любых денег.'
+        text: `${BULB_SVG} Помни: легальных способов заработать больше чем 3000 ₽ в час для подростка НЕ СУЩЕСТВУЕТ. Любое такое предложение – это обман или преступление. Твоя свобода стоит дороже любых денег.`
       }
     ]
   },
@@ -593,7 +858,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Хорошая интуиция!`, text: 'Вербовщики деструктивных групп используют технику «ловли на боли»: находят людей в уязвимом состоянии и предлагают «понимание». Закрытое сообщество – это следующий шаг изоляции.', fact: '🧠 Техника называется love bombing – «бомбардировка любовью» для вербовки' },
-          wrong: { title: '⚠️ Будь внимательнее!', text: 'Незнакомец знает твои посты, называет тебя «не одиноким» и зовет в закрытый чат – это классическая схема вербовки. Настоящие друзья так не действуют.', fact: '🚩 «Закрытое сообщество только для избранных» является красным флагом любой секты или экстремистской группы' }
+          wrong: { title: `${WARNING_SVG} Будь внимательнее!`, text: 'Незнакомец знает твои посты, называет тебя «не одиноким» и зовет в закрытый чат – это классическая схема вербовки. Настоящие друзья так не действуют.', fact: '🚩 «Закрытое сообщество только для избранных» является красным флагом любой секты или экстремистской группы' }
         }
       },
       // СЦЕНА 4 – развитие доверия
@@ -634,14 +899,14 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Ты видишь красные флаги!`, text: 'Культовые группы используют язык «семьи» и «избранности» для создания ложного чувства принадлежности. Это первый шаг к полному контролю над сознанием.', fact: '🚩 Термины «братья», «семья», «избранные» используются в 90% вербовочных групп' },
-          wrong: { title: '⚠️ Опасное заблуждение!', text: 'Это не группа поддержки. Это изоляция от общества и подготовка к принятию радикальных идей. Настоящая поддержка не требует отказа от внешнего мира.', fact: '🧠 Изоляция – первый признак деструктивной секты или экстремистской группы' }
+          wrong: { title: `${WARNING_SVG} Опасное заблуждение!`, text: 'Это не группа поддержки. Это изоляция от общества и подготовка к принятию радикальных идей. Настоящая поддержка не требует отказа от внешнего мира.', fact: '🧠 Изоляция – первый признак деструктивной секты или экстремистской группы' }
         }
       },
       // СЦЕНА 7 – эскалация
       {
         type: 'context',
         variant: 'danger',
-        text: '🚨 Прошло еще две недели. Тон переписки резко меняется. Макс начинает говорить о «действиях».'
+        text: `${ALERT_SVG} Прошло еще две недели. Тон переписки резко меняется. Макс начинает говорить о «действиях».`
       },
       {
         type: 'messages',
@@ -684,14 +949,14 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Правильное решение!`, text: 'Это уже склонение к совершению насильственного акта. Немедленно: сохрани скриншоты, выйди из чата, расскажи родителям или учителю, сообщи в полицию или ФСБ. Это не предательство – это спасение жизней, в том числе своей.', fact: '📢 Сообщить анонимно в ФСБ: fsb.ru или 8-800-224-22-22 (бесплатно)' },
-          wrong: { title: '❌ Опасно!', text: 'Уточнение деталей или поход на встречу уже делает тебя потенциально причастным. Не вступай в диалог, выходи и сообщай.', fact: '⚖️ Недонесение о подготовке теракта – это уголовная статья. Сообщить – это твоя защита.' }
+          wrong: { title: `${CROSS_SVG} Опасно!`, text: 'Уточнение деталей или поход на встречу уже делает тебя потенциально причастным. Не вступай в диалог, выходи и сообщай.', fact: `${SCALES_SVG} Недонесение о подготовке теракта – это уголовная статья. Сообщить – это твоя защита.` }
         }
       },
       // СЦЕНА 11 – друг в опасности
       {
         type: 'context',
         variant: 'danger',
-        text: '🚨 Твой друг Кирилл рассказывает, что его тоже зовут в какой-то «закрытый чат».'
+        text: `${ALERT_SVG} Твой друг Кирилл рассказывает, что его тоже зовут в какой-то «закрытый чат».`
       },
       {
         type: 'messages',
@@ -713,7 +978,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Ты настоящий друг!`, text: 'Поддержка и факты работают лучше запретов. Покажи другу реальные доказательства схемы, предложи вместе поговорить с родителями или школьным психологом. Вместе вы сильнее.', fact: '💬 Доверительный разговор снижает риск вербовки на 80%' },
-          wrong: { title: '⚠️ Так не сработает!', text: 'Оскорбления или запреты без объяснений только отдалят друга и заставят его скрывать переписку. Нужен открытый диалог и доказательства.', fact: '🧠 Подростки в 3 раза чаще слушают сверстников, чем взрослых, но нужны факты' }
+          wrong: { title: `${WARNING_SVG} Так не сработает!`, text: 'Оскорбления или запреты без объяснений только отдалят друга и заставят его скрывать переписку. Нужен открытый диалог и доказательства.', fact: '🧠 Подростки в 3 раза чаще слушают сверстников, чем взрослых, но нужны факты' }
         }
       }
     ]
@@ -758,15 +1023,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Просто игнорировать и надеяться, что само прекратится', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Правильный порядок действий!`, text: 'Скриншот = доказательство. Блокировка = защита от дальнейших атак. Взрослый = человек с реальными полномочиями остановить ситуацию. Молчать в одиночестве – худшая стратегия.', fact: '📊 72% жертв кибербуллинга, которые рассказали взрослым, сообщили что ситуация улучшилась' },
-          wrong: { title: '⚠️ Так только хуже!', text: 'Агрессивный ответ дает хулигану то, чего он хочет – реакцию. Молчание не остановит его. Нужны скриншоты и помощь взрослых.', fact: '🚩 Шантаж перепиской – это уже статья 163 УК РФ (вымогательство)' }
+          correct: { title: `${CHECKMARK_SVG} Правильный порядок действий!`, text: 'Скриншот = доказательство. Блокировка = защита от дальнейших атак. Взрослый = человек с реальными полномочиями остановить ситуацию. Молчать в одиночестве – худшая стратегия.', fact: `${CHART_SVG} 72% жертв кибербуллинга, которые рассказали взрослым, сообщили что ситуация улучшилась` },
+          wrong: { title: `${WARNING_SVG} Так только хуже!`, text: 'Агрессивный ответ дает хулигану то, чего он хочет – реакцию. Молчание не остановит его. Нужны скриншоты и помощь взрослых.', fact: '🚩 Шантаж перепиской – это уже статья 163 УК РФ (вымогательство)' }
         }
       },
       // СЦЕНА 4 – эскалация
       {
         type: 'context',
         variant: 'warn',
-        text: '🚨 Ты решил проигнорировать. Но через два дня травля усиливается.'
+        text: `${ALERT_SVG} Ты решил проигнорировать. Но через два дня травля усиливается.`
       },
       {
         type: 'messages',
@@ -800,7 +1065,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Верная стратегия!`, text: 'Оправдания в чате только раззадорят агрессора. Скриншоты — это доказательства для администрации и полиции. Удаление аккаунта не решит проблему, буллинг продолжится.', fact: '📢 Платформы обязаны удалять контент с травлей в течение 24 часов после жалобы' },
-          wrong: { title: '⚠️ Это не поможет!', text: 'Оправдания дают буллеру внимание. Удаление аккаунта — это побег, а не решение. Нужно действовать системно.', fact: '🧠 85% случаев кибербуллинга прекращаются после блокировки агрессора и вмешательства взрослых' }
+          wrong: { title: `${WARNING_SVG} Это не поможет!`, text: 'Оправдания дают буллеру внимание. Удаление аккаунта — это побег, а не решение. Нужно действовать системно.', fact: '🧠 85% случаев кибербуллинга прекращаются после блокировки агрессора и вмешательства взрослых' }
         }
       },
       // СЦЕНА 7 – разговор с родителями
@@ -835,7 +1100,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'warn',
-        text: '📱 Твой друг Андрей пишет тебе после того как узнал о ситуации.'
+        text: `${PHONE_SCREEN_SVG} Твой друг Андрей пишет тебе после того как узнал о ситуации.`
       },
       {
         type: 'messages',
@@ -855,7 +1120,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Обратиться за помощью – это не слабость, это стратегия. Взрослые могут поговорить с родителями хулигана, школой, полицией. У них есть рычаги, которых нет у тебя. Справляться в одиночку с системной травлей лишнее страдание.', fact: '💬 Психологическая помощь подросткам: 8-800-2000-122 (бесплатно, круглосуточно)' },
-          wrong: { title: '❌ Это не так!', text: 'Кибербуллинг – системная проблема, не личная слабость. Молчание и одиночная борьба только усугубляют ситуацию.', fact: '🧠 Без помощи взрослых кибербуллинг прекращается в 5 раз реже' }
+          wrong: { title: `${CROSS_SVG} Это не так!`, text: 'Кибербуллинг – системная проблема, не личная слабость. Молчание и одиночная борьба только усугубляют ситуацию.', fact: '🧠 Без помощи взрослых кибербуллинг прекращается в 5 раз реже' }
         }
       },
       // СЦЕНА 11 – последствия для агрессора
@@ -882,8 +1147,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Нужно просто удалить все соцсети', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Абсолютно верно!`, text: 'Кибербуллинг — это не «детские шалости», а правонарушение с реальными последствиями. Жертва никогда не виновата в том что ее травят. Помощь есть: психологи, учителя, полиция, горячие линии.', fact: '📞 Телефон доверия для детей и подростков: 8-800-2000-122 (бесплатно, анонимно)' },
-          wrong: { title: '⚠️ Опасное заблуждение!', text: 'Игнорирование не останавливает буллеров. Удаление соцсетей — это изоляция себя, а не решение проблемы. Нужно действовать.', fact: '🧠 9 из 10 случаев кибербуллинга требуют вмешательства взрослых для полного прекращения' }
+          correct: { title: `${CHECKMARK_SVG} Абсолютно верно!`, text: 'Кибербуллинг — это не «детские шалости», а правонарушение с реальными последствиями. Жертва никогда не виновата в том что ее травят. Помощь есть: психологи, учителя, полиция, горячие линии.', fact: `${PHONE_SVG} Телефон доверия для детей и подростков: 8-800-2000-122 (бесплатно, анонимно)` },
+          wrong: { title: `${WARNING_SVG} Опасное заблуждение!`, text: 'Игнорирование не останавливает буллеров. Удаление соцсетей — это изоляция себя, а не решение проблемы. Нужно действовать.', fact: '🧠 9 из 10 случаев кибербуллинга требуют вмешательства взрослых для полного прекращения' }
         }
       }
     ]
@@ -899,7 +1164,7 @@ const MISSIONS = {
     scenes: 12, diff: 'Средний',
     tips: [
       { icon: '📉', text: 'Гарантированная доходность выше 20% годовых – признак финансовой пирамиды.' },
-      { icon: '🎭', text: 'Фейковые блогеры используют чужие фото и видео. Проверяй личность.' },
+      { icon: `${MASKS_SVG}`, text: 'Фейковые блогеры используют чужие фото и видео. Проверяй личность.' },
       { icon: '💰', text: 'Настоящие инвестиции идут через лицензированные брокеры, а не в личные кошельки.' },
     ],
     storyboard: [
@@ -907,7 +1172,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'normal',
-        text: '📱 Telegram. Твой друг Артем скидывает тебе ссылку на канал «Crypto King» с сообщением: «Смотри, я уже неделю читаю, реально работает! Хочу вложить накопленные 10 000 ₽».'
+        text: `${PHONE_SCREEN_SVG} Telegram. Твой друг Артем скидывает тебе ссылку на канал «Crypto King» с сообщением: «Смотри, я уже неделю читаю, реально работает! Хочу вложить накопленные 10 000 ₽».`
       },
       // СЦЕНА 2 – диалог с другом
       {
@@ -925,7 +1190,7 @@ const MISSIONS = {
         title: 'СКРИНШОТ КАНАЛА · TELEGRAM',
         lines: [
           { text: '🚀 CRYPTO KING – ТВОЙ ПУТЬ К СВОБОДЕ!', hl: 'warn' },
-          { text: '📊 Мои ученики зарабатывают от 50 000 ₽ в день!', hl: 'bad' },
+          { text: `${CHART_SVG} Мои ученики зарабатывают от 50 000 ₽ в день!`, hl: 'bad' },
           { text: '💎 Закрытый клуб, всего 50 мест по 10 000 ₽', hl: 'bad' },
           { text: '⏰ Через 2 часа цена вырастет до 50 000 ₽! Успей!', hl: 'bad' },
           { text: '💳 Перевод на карту: 2200-ХXXX-XXXX-XXXX (Алексей К.)', hl: 'bad' },
@@ -941,8 +1206,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Цена слишком низкая, настоящее обучение должно стоить дороже', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG}Ты видишь красные флаги!`, text: 'Три главных признака: (1) перевод на личную карту физлица вместо юрлица, (2) искусственный дедлайн «только 2 часа» – давление на импульс, (3) гарантированная доходность математически невозможна без огромного риска.', fact: '📊 Средняя реальная доходность фондового рынка 10–15% годовых. Все что выше высокий риск или скам' },
-          wrong: { title: '❌ Это классическая схема!', text: 'Количество подписчиков легко накрутить, ботов покупают тысячами. Перевод на личную карту, дедлайн «через 2 часа» и нереальные обещания – три главных сигнала тревоги.', fact: '🎭 10 000 ботов-подписчиков в Telegram стоят около 3 000 ₽, меньше твоих сбережений' }
+          correct: { title: `${CHECKMARK_SVG}Ты видишь красные флаги!`, text: 'Три главных признака: (1) перевод на личную карту физлица вместо юрлица, (2) искусственный дедлайн «только 2 часа» – давление на импульс, (3) гарантированная доходность математически невозможна без огромного риска.', fact: `${CHART_SVG} Средняя реальная доходность фондового рынка 10–15% годовых. Все что выше высокий риск или скам` },
+          wrong: { title: `${CROSS_SVG} Это классическая схема!`, text: 'Количество подписчиков легко накрутить, ботов покупают тысячами. Перевод на личную карту, дедлайн «через 2 часа» и нереальные обещания – три главных сигнала тревоги.', fact: `${MASKS_SVG} 10 000 ботов-подписчиков в Telegram стоят около 3 000 ₽, меньше твоих сбережений` }
         }
       },
       // СЦЕНА 5 – давление от Артема
@@ -971,7 +1236,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Правильно мыслишь!`, text: 'В мошеннических каналах «счастливые клиенты» – это боты или подставные аккаунты. Настоящую репутацию ищут на независимых отзовиках (Trustpilot, Banki.ru), проверяют лицензию ЦБ РФ, ищут упоминания в СМИ.', fact: '🤖 80% «положительных отзывов» в крипто-каналах написаны ботами или за вознаграждение' },
-          wrong: { title: '⚠️ Осторожно!', text: '«Алина» – это либо бот, либо соучастник схемы. Прямой контакт с подставным персонажем только убедит Артема перевести деньги. Ищи независимые источники.', fact: '🎭 Мошенники заранее создают десятки аккаунтов «довольных клиентов» для видимости доверия' }
+          wrong: { title: `${WARNING_SVG} Осторожно!`, text: '«Алина» – это либо бот, либо соучастник схемы. Прямой контакт с подставным персонажем только убедит Артема перевести деньги. Ищи независимые источники.', fact: `${MASKS_SVG} Мошенники заранее создают десятки аккаунтов «довольных клиентов» для видимости доверия` }
         }
       },
       // СЦЕНА 7 – проверка информации
@@ -1012,14 +1277,14 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Это правильный алгоритм!`, text: 'Чеклист проверки: (1) лицензия ЦБ РФ на сайте cbr.ru, (2) реальное юрлицо с ИНН, (3) отзывы на независимых площадках, (4) оплата через официальный счет, никогда на личную карту, (5) никаких «гарантий» доходности.', fact: '🔒 Проверить лицензию брокера можно бесплатно на cbr.ru/financial_services_registry' },
-          wrong: { title: '❌ Эти признаки ничего не значат!', text: 'Яхты и часы на фото – это реквизит, арендованный на час. Подписчики накручиваются за копейки. Бесплатная консультация – это еще один крючок для втягивания. Только лицензия ЦБ и юрлицо имеют значение.', fact: '💸 Аренда яхты для фотосессии стоит от 5 000 ₽ в час, небольшие вложения для мошенника' }
+          wrong: { title: `${CROSS_SVG} Эти признаки ничего не значат!`, text: 'Яхты и часы на фото – это реквизит, арендованный на час. Подписчики накручиваются за копейки. Бесплатная консультация – это еще один крючок для втягивания. Только лицензия ЦБ и юрлицо имеют значение.', fact: '💸 Аренда яхты для фотосессии стоит от 5 000 ₽ в час, небольшие вложения для мошенника' }
         }
       },
       // СЦЕНА 10 – неожиданный поворот
       {
         type: 'context',
         variant: 'danger',
-        text: '🚨 Пока вы разбирались, однокласснику Диме написал сам «Алекс» в личку.'
+        text: `${ALERT_SVG} Пока вы разбирались, однокласснику Диме написал сам «Алекс» в личку.`
       },
       {
         type: 'messages',
@@ -1039,8 +1304,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Максимум просто потратит время впустую', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Именно!`, text: 'Реферальная система в финансовой пирамиде делает тебя распространителем мошеннической схемы. Даже без вложений ты вредишь реальным людям. В ряде случаев это квалифицируется как мошенничество (ст. 159 УК РФ). Дима должен заблокировать «Алекса» и предупредить друзей.', fact: '⚖️ Участие в реферальной сети финансовой пирамиды может быть признано соучастием в мошенничестве' },
-          wrong: { title: '❌ Это серьезно!', text: 'Рассылая ссылку, Дима заманивает реальных людей в ловушку. Если те потеряют деньги, он несет моральную и потенциально юридическую ответственность. «Я не знал» – это не защита в суде.', fact: '📢 Жертвы финансовых пирамид вправе подавать иски против всех участников цепочки' }
+          correct: { title: `${CHECKMARK_SVG} Именно!`, text: 'Реферальная система в финансовой пирамиде делает тебя распространителем мошеннической схемы. Даже без вложений ты вредишь реальным людям. В ряде случаев это квалифицируется как мошенничество (ст. 159 УК РФ). Дима должен заблокировать «Алекса» и предупредить друзей.', fact: `${SCALES_SVG} Участие в реферальной сети финансовой пирамиды может быть признано соучастием в мошенничестве` },
+          wrong: { title: `${CROSS_SVG} Это серьезно!`, text: 'Рассылая ссылку, Дима заманивает реальных людей в ловушку. Если те потеряют деньги, он несет моральную и потенциально юридическую ответственность. «Я не знал» – это не защита в суде.', fact: '📢 Жертвы финансовых пирамид вправе подавать иски против всех участников цепочки' }
         }
       },
       // СЦЕНА 12 – статистика
@@ -1049,7 +1314,7 @@ const MISSIONS = {
         title: 'КРИПТО-СКАМ В ЦИФРАХ · 2024',
         lines: [
           { text: '📉 Потери россиян от крипто-скама: более 12 млрд ₽ за год', hl: 'bad' },
-          { text: '👥 Типичная жертва: подросток или молодежь 14–25 лет', hl: 'bad' },
+          { text: `${USERS_SVG} Типичная жертва: подросток или молодежь 14–25 лет`, hl: 'bad' },
           { text: '🎣 89% схем начинаются в Telegram или Instagram', hl: 'bad' },
           { text: '⏱ Среднее время вывода денег мошенниками: 2–4 часа', hl: 'bad' },
           { text: `${CHECKMARK_SVG_MINI} Защита: cbr.ru – проверь лицензию перед любым вложением`, hl: 'good' },
@@ -1137,7 +1402,7 @@ function openModal(missionId) {
     playBtn.disabled = true;
     playBtn.style.background = '#666';
     playBtn.style.color = '#aaa';
-    playBtn.textContent = `${CHECKMARK_SVG} Уже пройдено`;
+    playBtn.innerHTML = `${CHECKMARK_SVG} Уже пройдено`;
     playBtn.style.cursor = 'not-allowed';
   } else {
     playBtn.disabled = false;
@@ -1243,7 +1508,24 @@ function buildScene(scene, idx, mission) {
       <div class="fact-pill" id="fb-fact-${idx}"></div>
       ${idx < mission.storyboard.length - 1
         ? `<button class="btn-next" onclick="advanceScene(${idx + 1}, ${mission.storyboard.length})">Далее →</button>`
-        : `<button class="btn-next" onclick="finishMission('${mission.id}')">Завершить миссию 🏁</button>`
+        : `<button class="btn-next" onclick="finishMission('${mission.id}')">
+          Завершить миссию
+          <!-- ИКОНКА ФЛАГА -->
+          <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 15px #aaaaaa);">
+              <line x1="4" y1="3" x2="4" y2="21" stroke="#aaaaaa" stroke-width="1.5" stroke-linecap="round"/>
+              <rect x="4" y="3" width="16" height="10" rx="0.5" fill="#ffffff" opacity="0.9"/>
+              <rect x="4"  y="3"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+              <rect x="12" y="3"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+              <rect x="8"  y="5.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+              <rect x="16" y="5.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+              <rect x="4"  y="8"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+              <rect x="12" y="8"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+              <rect x="8"  y="10.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+              <rect x="16" y="10.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+            </svg>
+          </span>
+        </button>`
       }
     </div>`;
   }
@@ -1253,7 +1535,24 @@ function buildScene(scene, idx, mission) {
 
 function nextBtn(idx, mission) {
   const isLast = idx === mission.storyboard.length - 1;
-  if (isLast) return `<button class="btn-next" onclick="finishMission('${mission.id}')">Завершить миссию 🏁</button>`;
+  if (isLast) return `<button class="btn-next" onclick="finishMission('${mission.id}')">
+    Завершить миссию
+    <!-- ИКОНКА ФЛАГА -->
+    <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 15px #aaaaaa);">
+        <line x1="4" y1="3" x2="4" y2="21" stroke="#aaaaaa" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="4" y="3" width="16" height="10" rx="0.5" fill="#ffffff" opacity="0.9"/>
+        <rect x="4"  y="3"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="12" y="3"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="8"  y="5.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="16" y="5.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="4"  y="8"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="12" y="8"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="8"  y="10.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="16" y="10.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+      </svg>
+    </span>
+  </button>`;
   return `<button class="btn-next" onclick="advanceScene(${idx + 1}, ${mission.storyboard.length})">Далее →</button>`;
 }
 
@@ -1312,7 +1611,7 @@ function handleChoice(sceneIdx, choiceIdx, isCorrect, missionId) {
     : '';
   document.getElementById(`fb-title-${sceneIdx}`).innerHTML = fb.title;
   document.getElementById(`fb-text-${sceneIdx}`).textContent = fb.text;
-  document.getElementById(`fb-fact-${sceneIdx}`).textContent = fb.fact;
+  document.getElementById(`fb-fact-${sceneIdx}`).innerHTML = fb.fact;
 }
 
 function advanceScene(nextIdx, total) {
@@ -1355,10 +1654,10 @@ function finishMission(missionId) {
   // Сохраняем прогресс после завершения миссии
   saveProgress();
   let emoji, title;
-  if (pct === 100) { emoji = '🏆'; title = 'Мастер безопасности!'; }
-  else if (pct >= 60) { emoji = `${CHECKMARK_SVG}`; title = 'Хорошая работа!'; }
-  else { emoji = '📚'; title = 'Есть что изучить'; }
-  document.getElementById('result-emoji').textContent = emoji;
+  if (pct === 100) { emoji = `${TROPHY_SVG_BIG}`; title = 'Мастер безопасности!'; }
+  else if (pct >= 60) { emoji = `${CHECKMARK_SVG_BIG}`; title = 'Хорошая работа!'; }
+  else { emoji = `${BOOKS_SVG}`; title = 'Есть что изучить'; }
+  document.getElementById('result-emoji').innerHTML = emoji;
   document.getElementById('result-title').textContent = title;
   document.getElementById('result-score-num').textContent = state.totalScore + ' (+' + state.missionScore + ' в этой миссии)';
 
@@ -1382,7 +1681,23 @@ function finishMission(missionId) {
     nextBtn.onclick = nextMission;
   } else {
     nextBtn.style.display = 'inline-block';
-    nextBtn.textContent = '🏁 Итоги игры';
+    nextBtn.innerHTML = `
+    <!-- ИКОНКА ФЛАГА -->
+    <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 15px #aaaaaa);">
+        <line x1="4" y1="3" x2="4" y2="21" stroke="#aaaaaa" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="4" y="3" width="16" height="10" rx="0.5" fill="#ffffff" opacity="0.9"/>
+        <rect x="4"  y="3"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="12" y="3"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="8"  y="5.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="16" y="5.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="4"  y="8"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="12" y="8"  width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="8"  y="10.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+        <rect x="16" y="10.5" width="4" height="2.5" fill="#333333" opacity="0.9"/>
+      </svg>
+    </span>
+    Итоги игры`;
     nextBtn.onclick = showFinalResults;
   }
   showScreen('result');
@@ -1411,7 +1726,7 @@ function showFinalResults() {
   
   let emoji, title, message;
   if (percentage >= 90) { 
-    emoji = '🏆'; 
+    emoji = `${TROPHY_SVG_BIG}`; 
     title = 'ЛЕГЕНДАРНЫЙ ЗАЩИТНИК!'; 
     message = 'Ты прошел все миссии с блестящим результатом! Теперь ты настоящий эксперт по цифровой безопасности.';
   } else if (percentage >= 70) { 
@@ -1423,13 +1738,13 @@ function showFinalResults() {
     title = 'НАЧИНАЮЩИЙ ЗАЩИТНИК'; 
     message = 'Неплохо! Но стоит еще раз пройти некоторые миссии и запомнить правила безопасности.';
   } else { 
-    emoji = '📚'; 
+    emoji = `${BOOKS_SVG}` 
     title = 'УЧИСЬ И ЗАЩИЩАЙСЯ'; 
     message = 'Рекомендуем пройти миссии еще раз. Знания о безопасности могут спасти тебя от реальных мошенников!';
   }
   
-  document.getElementById('result-emoji').textContent = emoji;
-  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-emoji').innerHTML = emoji;
+  document.getElementById('result-title').innerHTML = title;
   
   let breakdownHtml = `<p style="font-size: 1rem; color: var(--text); margin-bottom: 20px;">${message}</p>`;
   breakdownHtml += `<div style="background: var(--surface2); border-radius: 12px; padding: 20px; margin-bottom: 20px;">`;
@@ -1463,7 +1778,7 @@ function showFinalResults() {
   
   const nextBtn = document.getElementById('btn-next-mission');
   nextBtn.style.display = 'inline-block';
-  nextBtn.textContent = '🔄 Пройти заново';
+  nextBtn.innerHTML = '🔄 Пройти заново';
   nextBtn.onclick = resetGame;
   
   showScreen('result');
@@ -1723,10 +2038,10 @@ function addSoundToggle() {
   const toggle = document.createElement('button');
   toggle.className = 'sound-indicator';
   toggle.id = 'sound-toggle';
-  toggle.innerHTML = '🔊';
+  toggle.innerHTML = `${SOUND_SVG}`;
   toggle.onclick = () => {
     const enabled = SoundManager.toggle();
-    toggle.textContent = enabled ? '🔊' : '🔇';
+    toggle.innerHTML = enabled ? `${SOUND_SVG}` : `${MUTE_SVG}`;
     toggle.classList.toggle('muted', !enabled);
   };
   document.body.appendChild(toggle);
@@ -1735,7 +2050,7 @@ function addSoundToggle() {
   const savedSound = localStorage.getItem('stopScamSound');
   if (savedSound === 'off') {
     SoundManager.enabled = false;
-    toggle.textContent = '🔇';
+    toggle.innerHTML = `${MUTE_SVG}`;
     toggle.classList.add('muted');
   }
 }
@@ -1861,7 +2176,7 @@ function handleTimeOut() {
     if (fbBox) {
       fbBox.classList.add('show', 'bad');
       const fb = scene.feedback.wrong;
-      currentScene.querySelector(`#fb-title-${sceneIdx}`).textContent = '⏰ Время вышло!';
+      currentScene.querySelector(`#fb-title-${sceneIdx}`).innerHTML = '⏰ Время вышло!';
       currentScene.querySelector(`#fb-text-${sceneIdx}`).textContent = fb.text;
       currentScene.querySelector(`#fb-fact-${sceneIdx}`).textContent = fb.fact;
     }
@@ -1878,21 +2193,90 @@ function gameOver() {
   state.timerActive = false;
 
   showScreen('result');
-  document.getElementById('result-emoji').textContent = '💔';
+  document.getElementById('result-emoji').innerHTML = `
+    <!-- ИКОНКА РАЗБИТОГО СЕРДЦА -->
+    <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+      <svg width="96" height="96" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+        <path d="M50 80 Q20 60 15 40 Q10 20 30 18 Q42 18 50 32 L44 48 L54 58 Z" fill="#ff3030" opacity="0.9"/>
+        <path d="M50 80 Q80 60 85 40 Q90 20 70 18 Q58 18 50 32 L56 48 L46 58 Z" fill="#ff5252" opacity="0.9"/>
+        <polyline points="50,32 44,48 54,58 48,80" stroke="#7f0000" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M22 32 Q28 22 38 20" stroke="#ff8a80" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </span>
+  `;
   document.getElementById('result-title').textContent = 'Жизни закончились!';
   document.getElementById('result-score-num').textContent = `Счёт: ${state.totalScore}`;
   document.getElementById('result-tips').innerHTML = `
-    <h3>😔 Не сдавайся!</h3>
+    <h3>
+      <!-- ИКОНКА ГРУСТНОГО СМАЙЛИКА -->
+      <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+          <circle cx="12" cy="12" r="10" fill="#4fc3f7" opacity="0.8"/>
+          <circle cx="9" cy="10" r="1.5" fill="#0d47a1" opacity="0.95"/>
+          <circle cx="15" cy="10" r="1.5" fill="#0d47a1" opacity="0.95"/>
+          <path d="M7.5 7.5 Q9 6.5 10.5 7.5" stroke="#0d47a1" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <path d="M13.5 7.5 Q15 6.5 16.5 7.5" stroke="#0d47a1" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+          <path d="M8.5 16 Q12 13.5 15.5 16" stroke="#0d47a1" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </span>
+      Не сдавайся!
+    </h3>
     <div class="tip-item">
-      <span class="tip-icon">💡</span>
+    <!-- ИКОНКА ЛАМПОЧКИ -->
+      <span class="tip-icon">
+        <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+            <path d="M12 3 Q6 3 6 9 Q6 13 9 15 L9 16 H15 L15 15 Q18 13 18 9 Q18 3 12 3Z" fill="#fff176" opacity="0.9"/>
+            <path d="M12 5 Q8 5 8 9 Q8 11.5 10 13" stroke="#ffffff" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.5"/>
+            <rect x="9" y="16" width="6" height="1.2" rx="0.3" fill="#bfa000" opacity="0.9"/>
+            <rect x="9" y="17.5" width="6" height="1.2" rx="0.3" fill="#bfa000" opacity="0.9"/>
+            <rect x="9.5" y="19" width="5" height="1.5" rx="0.5" fill="#9e8000" opacity="0.9"/>
+            <line x1="12" y1="0" x2="12" y2="1.5" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="4.5" y1="2.8" x2="5.5" y2="3.8" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="19.5" y1="2.8" x2="18.5" y2="3.8" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="2.5" y1="9" x2="4" y2="9" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="21.5" y1="9" x2="20" y2="9" stroke="#ffd700" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </span>
       <span>Попробуй ещё раз! С каждым разом ты становишься лучше.</span>
     </div>
     <div class="tip-item">
-      <span class="tip-icon">⏱️</span>
+    <!-- ИКОНКА ТАЙМЕРА -->
+      <span class="tip-icon">
+        <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+            <rect x="10" y="2" width="4" height="1.5" rx="0.75" fill="#4fc3f7" opacity="0.9"/>
+            <rect x="11.25" y="3.5" width="1.5" height="1.5" fill="#4fc3f7" opacity="0.9"/>
+            <circle cx="12" cy="13" r="8" fill="#1e88e5" opacity="0.8"/>
+            <circle cx="12" cy="13" r="7" fill="#1565c0" opacity="0.5"/>
+            <line x1="12" y1="7"  x2="12" y2="8.5" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="17.5" x2="12" y2="19" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="6"  y1="13" x2="7.5" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="16.5" y1="13" x2="18" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+            <line x1="12" y1="13" x2="12" y2="8.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="12" y1="13" x2="15.5" y2="11" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="12" cy="13" r="1" fill="#ffffff" opacity="0.9"/>
+          </svg>
+        </span>
+      </span>
       <span>Обращай внимание на таймер - не трать слишком много времени.</span>
     </div>
     <div class="tip-item">
-      <span class="tip-icon">🎯</span>
+    <!-- ИКОНКА МИШЕНИ -->
+      <span class="tip-icon">
+        <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+            <circle cx="12" cy="12" r="10" fill="#ff3030" opacity="0.8"/>
+            <circle cx="12" cy="12" r="7.5" fill="#ffffff" opacity="0.9"/>
+            <circle cx="12" cy="12" r="5" fill="#ff3030" opacity="0.8"/>
+            <circle cx="12" cy="12" r="2.5" fill="#ffffff" opacity="0.9"/>
+            <circle cx="12" cy="12" r="1" fill="#ff3030" opacity="0.9"/>
+            <line x1="17" y1="7" x2="13" y2="11" stroke="#333333" stroke-width="1.5" stroke-linecap="round"/>
+            <polygon points="17,5 19,9 15,8" fill="#333333" opacity="0.9"/>
+          </svg>
+        </span>
+      </span>
       <span>Внимательно читай вопросы и варианты ответов.</span>
     </div>
   `;
@@ -2093,7 +2477,7 @@ function timeUpFinal() {
   disableFinalChoices();
   const fbBox = document.getElementById('final-feedback');
   fbBox.classList.add('show', 'bad');
-  document.getElementById('final-fb-title').textContent = '⏰ Время вышло!';
+  document.getElementById('final-fb-title').innerHTML = '⏰ Время вышло!';
   document.getElementById('final-fb-text').textContent = 'К сожалению, время на ответ истекло.';
 }
 
@@ -2133,7 +2517,7 @@ function answerFinalQuestion(selectedIndex) {
     ? '<div class="mission-checkmark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(0 0 8px #34d399) drop-shadow(0 0 15px #10b981);"><circle cx="12" cy="12" r="10" fill="#34d399" opacity="0.4"/><path d="M7 12L10.5 15.5L17 8.5" stroke="#6ee7b7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>'
     : '';
 
-  document.getElementById('final-fb-title').innerHTML = isCorrect ? checkmarkSVG + 'Верно!' : '❌ Неверно!';
+  document.getElementById('final-fb-title').innerHTML = isCorrect ? checkmarkSVG + 'Верно!' : `${CROSS_SVG_MINI} Неверно!`;
   document.getElementById('final-fb-text').textContent = isCorrect
     ? 'Правильный ответ! Так держать!'
     : `Правильный ответ: ${q.choices[q.correct]}`;

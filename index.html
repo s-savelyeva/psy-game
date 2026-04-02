@@ -272,8 +272,37 @@
           <div class="game-mission-label" id="topbar-mission-label">Миссия 01</div>
           <div class="game-mission-title" id="topbar-mission-title">Лёгкие деньги</div>
         </div>
-        <div class="score-display">🏆 Общий: <span class="score-num" id="total-score-display">0</span> | ⭐ Миссия: <span class="score-num" id="mission-score-display">0</span></div>
-        <div class="lives-display">❤️ <span id="lives-count">3</span></div>
+        <div class="score-display">
+          <!-- ИКОНКА КУБКА -->
+          <span style="display: inline-flex; align-items: center; vertical-align: middle;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+              <path d="M6 5 Q3 5 3 8 Q3 11 6 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <path d="M18 5 Q21 5 21 8 Q21 11 18 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              <path d="M6 3 H18 Q18 13 12 15 Q6 13 6 3Z" fill="#ffd700" opacity="0.8"/>
+              <rect x="10" y="15" width="4" height="4" fill="#ffd700" opacity="0.8"/>
+              <rect x="7" y="19" width="10" height="2" rx="1" fill="#ffd700" opacity="0.8"/>
+            </svg>
+          </span>
+          Общий: 
+          <span class="score-num" id="total-score-display">0</span>
+          <!-- ИКОНКА ЗВЕЗДЫ -->
+          <span style="display: inline-flex; align-items: center; vertical-align: middle;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+              <path d="M12 3 L14.5 9 L21 9.5 L16 14 L17.5 21 L12 17.5 L6.5 21 L8 14 L3 9.5 L9.5 9 Z" fill="#ffd700" opacity="0.8"/>
+            </svg>
+          </span> 
+          Миссия: 
+          <span class="score-num" id="mission-score-display">0</span>
+        </div>
+        <div class="lives-display">
+          <!-- ИКОНКА СЕРДЕЧКА -->
+          <span style="display: inline-flex; align-items: center; vertical-align: middle;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff1111) drop-shadow(0 0 15px #d60000);">
+              <path d="M12 20 Q4 14 4 9 Q4 5 8 5 Q10 5 12 8 Q14 5 16 5 Q20 5 20 9 Q20 14 12 20Z" fill="#ff3030" opacity="0.9"/>
+            </svg>
+          </span>
+          <span id="lives-count">3</span>
+        </div>
         <button class="btn-back" onclick="goHome()">← На главную</button>
       </div>
       <div class="storyboard">
@@ -290,7 +319,7 @@
 
     <div id="screen-result" class="screen">
       <div class="result-inner">
-        <div class="result-emoji" id="result-emoji">🏆</div>
+        <div class="result-emoji" id="result-emoji"></div>
         <h2 class="result-title" id="result-title">Отличная работа!</h2>
         <div class="result-score">Очки: <span id="result-score-num">0</span></div>
         <div class="result-tips" id="result-tips"></div>
@@ -378,7 +407,18 @@
               <div class="cert-sign-line">_________________</div>
               <div class="cert-sign-label">Цифровая подпись</div>
             </div>
-            <div class="cert-seal">🏆</div>
+            <div class="cert-seal">
+              <!-- ИКОНКА КУБКА -->
+              <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+                  <path d="M6 5 Q3 5 3 8 Q3 11 6 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <path d="M18 5 Q21 5 21 8 Q21 11 18 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                  <path d="M6 3 H18 Q18 13 12 15 Q6 13 6 3Z" fill="#ffd700" opacity="0.8"/>
+                  <rect x="10" y="15" width="4" height="4" fill="#ffd700" opacity="0.8"/>
+                  <rect x="7" y="19" width="10" height="2" rx="1" fill="#ffd700" opacity="0.8"/>
+                </svg>
+              </span>
+            </div>
           </div>
         </div>
         <div class="btn-group">

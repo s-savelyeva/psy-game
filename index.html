@@ -11,7 +11,19 @@
   <body>
     <div id="screen-home" class="screen active">
       <div class="home-inner">
-        <div class="badge">Цифровая безопасность · 6 миссий</div>
+        <div class="badge">
+          <!-- ИКОНКА ЩИТА -->
+          <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+            <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+              <path d="M50 10 L85 25 L85 55 Q85 80 50 92 Q15 80 15 55 L15 25 Z" fill="#4fc3f7" opacity="0.9"/>
+              <path d="M50 10 L85 25 L85 55 Q85 80 50 92 Q15 80 15 55 L15 25 Z" stroke="#0288d1" stroke-width="3" fill="none"/>
+              <path d="M50 20 L78 33 L78 55 Q78 74 50 84 Q22 74 22 55 L22 33 Z" fill="#29b6f6" opacity="0.5"/>
+              <path d="M33 52 L45 64 L68 38" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M25 30 Q30 20 42 17" stroke="#e1f5fe" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+            </svg>
+          </span>
+          Цифровая безопасность · 6 миссий
+        </div>
         <h1 class="home-title">
           СТОП<br>
           <span class="accent-cyan">СКАМ</span><span class="accent-red">!</span>
@@ -336,8 +348,43 @@
         <div class="modal-title">Проверь свои знания!</div>
         <div class="modal-desc">Ответь на 10 вопросов по всем миссиям и получи сертификат о прохождении курса "СТОП СКАМ"</div>
         <div class="modal-meta">
-          <div class="meta-pill">📝 10 вопросов</div>
-          <div class="meta-pill">⏱️ 15 секунд на вопрос</div>
+          <div class="meta-pill">
+            <!-- ИКОНКА ЛИСТКА -->
+            <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+              <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+                <path d="M75 5 L85 20 L75 20 Z" fill="#e6a800" opacity="0.7"/>
+                <path d="M20 5 L75 5 L85 20 L85 92 Q85 95 82 95 L18 95 Q15 95 15 92 L15 8 Q15 5 20 5Z" fill="#ffd700" opacity="0.95"/>
+                <path d="M75 5 L85 20 L75 20 Z" fill="#ffb300" opacity="0.9"/>
+                <rect x="25" y="30" width="45" height="4" rx="2" fill="#7a6000" opacity="0.5"/>
+                <rect x="25" y="42" width="45" height="4" rx="2" fill="#7a6000" opacity="0.5"/>
+                <rect x="25" y="54" width="45" height="4" rx="2" fill="#7a6000" opacity="0.5"/>
+                <rect x="25" y="66" width="30" height="4" rx="2" fill="#7a6000" opacity="0.5"/>
+                <rect x="55" y="68" width="8" height="28" rx="2" transform="rotate(-45 55 68)" fill="#ff7043" opacity="0.95"/>
+                <rect x="55" y="68" width="8" height="8" rx="1" transform="rotate(-45 55 68)" fill="#ffccbc" opacity="0.95"/>
+                <path d="M72 82 L78 88 L68 90 Z" fill="#ffd600" opacity="0.95" transform="rotate(-45 72 82)"/>
+              </svg>
+            </span>
+            10 вопросов
+          </div>
+          <div class="meta-pill">
+            <!-- ИКОНКА ТАЙМЕРА -->
+            <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+                <rect x="10" y="2" width="4" height="1.5" rx="0.75" fill="#4fc3f7" opacity="0.9"/>
+                <rect x="11.25" y="3.5" width="1.5" height="1.5" fill="#4fc3f7" opacity="0.9"/>
+                <circle cx="12" cy="13" r="8" fill="#1e88e5" opacity="0.8"/>
+                <circle cx="12" cy="13" r="7" fill="#1565c0" opacity="0.5"/>
+                <line x1="12" y1="7"  x2="12" y2="8.5" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="12" y1="17.5" x2="12" y2="19" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="6"  y1="13" x2="7.5" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="16.5" y1="13" x2="18" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+                <line x1="12" y1="13" x2="12" y2="8.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="12" y1="13" x2="15.5" y2="11" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="12" cy="13" r="1" fill="#ffffff" opacity="0.9"/>
+              </svg>
+            </span>
+            15 секунд на вопрос
+          </div>
         </div>
         <button class="btn-play" id="btn-start-final-test" onclick="startFinalTest()">▶ Начать тест</button>
         <button class="btn-cancel" onclick="closeFinalTest()">Отмена</button>
@@ -359,7 +406,25 @@
           </div>
           Правильно: <span class="score-num" id="final-correct-count">0</span>/10
         </div>
-        <div class="lives-display" style="color: #ffe500;">⏱️ <span id="final-timer">15</span></div>
+        <div class="lives-display" style="color: #ffe500;">
+          <!-- ИКОНКА ТАЙМЕРА -->
+          <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+              <rect x="10" y="2" width="4" height="1.5" rx="0.75" fill="#4fc3f7" opacity="0.9"/>
+              <rect x="11.25" y="3.5" width="1.5" height="1.5" fill="#4fc3f7" opacity="0.9"/>
+              <circle cx="12" cy="13" r="8" fill="#1e88e5" opacity="0.8"/>
+              <circle cx="12" cy="13" r="7" fill="#1565c0" opacity="0.5"/>
+              <line x1="12" y1="7"  x2="12" y2="8.5" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="12" y1="17.5" x2="12" y2="19" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="6"  y1="13" x2="7.5" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="16.5" y1="13" x2="18" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="12" y1="13" x2="12" y2="8.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+              <line x1="12" y1="13" x2="15.5" y2="11" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="12" cy="13" r="1" fill="#ffffff" opacity="0.9"/>
+            </svg>
+            </span>
+          <span id="final-timer">15</span>
+        </div>
         <button class="btn-back" onclick="quitFinalTest()">← Выйти</button>
       </div>
       <div class="storyboard">
@@ -410,7 +475,7 @@
             <div class="cert-seal">
               <!-- ИКОНКА КУБКА -->
               <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
                   <path d="M6 5 Q3 5 3 8 Q3 11 6 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                   <path d="M18 5 Q21 5 21 8 Q21 11 18 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                   <path d="M6 3 H18 Q18 13 12 15 Q6 13 6 3Z" fill="#ffd700" opacity="0.8"/>
@@ -418,6 +483,7 @@
                   <rect x="7" y="19" width="10" height="2" rx="1" fill="#ffd700" opacity="0.8"/>
                 </svg>
               </span>
+              
             </div>
           </div>
         </div>

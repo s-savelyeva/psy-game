@@ -1,4 +1,4 @@
-// СВЕТЯЩАЯСЯ ГАЛОЧКА
+// ИКОНКА ГАЛОЧКА
 const CHECKMARK_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #34d399) drop-shadow(0 0 15px #10b981);">
     <circle cx="12" cy="12" r="10" fill="#34d399" opacity="0.8"/>
@@ -13,8 +13,7 @@ const CHECKMARK_SVG_MINI = `<span style="display: inline-flex; align-items: cent
 </span>`;
 const CHECKMARK_SVG_BIG = CHECKMARK_SVG.replace('width="24" height="24"', 'width="96" height="96"');
 
-
-// СВЕТЯЩИЙСЯ КРЕСТИК
+// ИКОНКА КРЕСТИК
 const CROSS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ce1644) drop-shadow(0 0 15px #be1f47);">
     <circle cx="12" cy="12" r="10" fill="#ff1c55" opacity="0.8"/>
@@ -28,7 +27,7 @@ const CROSS_SVG_MINI = `<span style="display: inline-flex; align-items: center; 
   </svg>
 </span>`;
 
-// СВЕТЯЩИЙСЯ ЖЕЛТЫЙ ЗНАК ВОСКЛИЦАНИЯ
+// ИКОНКА ЖЕЛТЫЙ ЗНАК ВОСКЛИЦАНИЯ
 const WARNING_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
     <path d="M12 3L22 20H2L12 3Z" fill="#ffd700" opacity="0.8"/>
@@ -36,7 +35,7 @@ const WARNING_SVG = `<span style="display: inline-flex; align-items: center; ver
   </svg>
 </span>`;
 
-// СВЕТЯЩАЯСЯ СИГНАЛКА
+// ИКОНКА СИГНАЛКА
 const ALERT_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
     <rect x="3" y="17" width="18" height="4" rx="1" fill="#cc0000" opacity="0.8"/>
@@ -49,7 +48,7 @@ const ALERT_SVG = `<span style="display: inline-flex; align-items: center; verti
   </svg>
 </span>`;
 
-// СВЕТЯЩИЙСЯ КУБОК
+// ИКОНКА КУБОК
 const TROPHY_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
     <path d="M6 5 Q3 5 3 8 Q3 11 6 11" stroke="#ffd700" stroke-width="1.5" fill="none" stroke-linecap="round"/>
@@ -61,7 +60,7 @@ const TROPHY_SVG = `<span style="display: inline-flex; align-items: center; vert
 </span>`;
 const TROPHY_SVG_BIG = TROPHY_SVG.replace('width="24" height="24"', 'width="96" height="96"');
 
-// СВЕТЯЩИЕСЯ ВЕСЫ
+// ИКОНКА ВЕСЫ
 const SCALES_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
     <rect x="11.5" y="4" width="1.5" height="14" fill="#ffd700" opacity="0.8"/>
@@ -75,7 +74,7 @@ const SCALES_SVG = `<span style="display: inline-flex; align-items: center; vert
   </svg>
 </span>`;
 
-// СВЕТЯЩИЕСЯ ЗВУК
+// ИКОНКА ЗВУК
 const SOUND_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
     <path d="M4 9 H7 L12 5 V19 L7 15 H4 Z" fill="#4fc3f7" opacity="0.8"/>
@@ -84,7 +83,7 @@ const SOUND_SVG = `<span style="display: inline-flex; align-items: center; verti
   </svg>
 </span>`;
 
-//СВЕТЯЩИЕСЯ ЗВУК ВЫКЛЮЧЕННЫЙ
+//ИКОНКА ЗВУК ВЫКЛЮЧЕННЫЙ
 const MUTE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff4444) drop-shadow(0 0 15px #cc0000);">
     <path d="M4 9 H7 L12 5 V19 L7 15 H4 Z" fill="#ff4444" opacity="0.8"/>
@@ -93,15 +92,16 @@ const MUTE_SVG = `<span style="display: inline-flex; align-items: center; vertic
   </svg>
 </span>`;
 
-// СВЕТЯЩИЕСЯ КРАСНЫЙ ТЕЛЕФОН
+// ИКОНКА КРАСНЫЙ ТЕЛЕФОН
 const PHONE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0;">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
-    <path d="M5 3 H9 L11 7 L9 9 Q10 11 13 14 Q15 16 17 15 L19 13 L23 15 V19 Q23 21 20 21 Q10 21 3 8 Q2 5 5 3Z" fill="#fd5d5d" opacity="0.8"/>
+  <svg width="18" height="18" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <path d="M20 10 H42 L52 32 L38 42 Q42 52 52 62 Q62 72 72 68 L82 54 L104 64 V82 Q104 92 90 92 Q45 92 12 35 Q5 20 20 10Z" fill="#ff3030" opacity="0.95"/>
+    <path d="M22 15 Q32 10 40 11" stroke="#ff8a80" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
   </svg>
 </span>`;
 const PHONE_SVG_MINI = PHONE_SVG.replace('margin-bottom: 0', 'margin-bottom: 4px');
 
-// СВЕТЯЩИЙСЯ ЦВЕТОЧЕК
+// ИКОНКА ЦВЕТОЧЕК
 const FLOWER_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f48fb1) drop-shadow(0 0 15px #c2185b);">
     <ellipse cx="12" cy="6"   rx="2" ry="3.5" fill="#f48fb1" opacity="0.8"/>
@@ -120,7 +120,7 @@ const FLOWER_SVG = `<span style="display: inline-flex; align-items: center; vert
   </svg>
 </span>`;
 
-// СВЕТЯЩИЙСЯ ЗАМОК
+// ИКОНКА ЗАМОК
 const LOCK_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
     <path d="M8 11 V7 Q8 3 12 3 Q16 3 16 7 V11" stroke="#ffd700" stroke-width="2" fill="none" stroke-linecap="round"/>
@@ -130,7 +130,7 @@ const LOCK_SVG = `<span style="display: inline-flex; align-items: center; vertic
   </svg>
 </span>`;
 
-// СВЕТЯЩИЕЙСЯ БАНК
+// ИКОНКА БАНК
 const BANK_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
     <path d="M12 2 L22 8 H2 Z" fill="#4fc3f7" opacity="0.8"/>
@@ -144,7 +144,7 @@ const BANK_SVG = `<span style="display: inline-flex; align-items: center; vertic
   </svg>
 </span>`;
 
-// СВЕТЯЩАЯСЯ МАШИНА
+// ИКОНКА МАШИНА
 const POLICE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #1565c0) drop-shadow(0 0 15px #0d47a1);">
     <rect x="8" y="3" width="8" height="3" rx="1" fill="#ef5350" opacity="0.9"/>
@@ -161,8 +161,8 @@ const POLICE_SVG = `<span style="display: inline-flex; align-items: center; vert
   </svg>
 </span>`;
 
-// СВЕТЯЩИЙСЯ ГРАФИК
-const CHART_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px">
+// ИКОНКА ГРАФИК
+const CHART_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
     <line x1="3" y1="3" x2="3" y2="20" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
     <line x1="3" y1="20" x2="22" y2="20" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
@@ -173,8 +173,8 @@ const CHART_SVG = `<span style="display: inline-flex; align-items: center; verti
   </svg>
 </span>`;
 
-// СВЕТЯЩИЙСЯ ЛЮДИ
-const USERS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0; margin-top: 0">
+// ИКОНКА ЛЮДИ
+const USERS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0; margin-top: 0;">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
     <circle cx="9" cy="7" r="3" fill="#ffd700" opacity="0.8"/>
     <path d="M3 20 Q3 14 9 14 Q15 14 15 20" fill="#ffd700" opacity="0.8"/>
@@ -182,9 +182,9 @@ const USERS_SVG = `<span style="display: inline-flex; align-items: center; verti
     <path d="M11 20 Q11 14 17 14 Q23 14 23 20" fill="#ffd700" opacity="0.6"/>
   </svg>
 </span>`;
-const USERS_SVG_BIG = USERS_SVG.replace('width="20" height="20" margin-bottom: 5px margin-top: 0', 'width="24" height="24" margin-bottom: 0 margin-top: 5px;');
+const USERS_SVG_BIG = USERS_SVG.replace('width="20" height="20"', 'width="24" height="24"').replace('margin-bottom: 5px; margin-top: 0', 'margin-bottom: 0; margin-top: 5px;');
 
-// СВЕТЯЩАЯСЯ ЛАМПОЧКА
+// ИКОНКА ЛАМПОЧКА
 const BULB_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
     <path d="M12 3 Q6 3 6 9 Q6 13 9 15 L9 16 H15 L15 15 Q18 13 18 9 Q18 3 12 3Z" fill="#fff176" opacity="0.9"/>
@@ -200,23 +200,23 @@ const BULB_SVG = `<span style="display: inline-flex; align-items: center; vertic
   </svg>
 </span>`;
 
-// СВЕТЯЩИЙСЯ ТЕЛЕФОН
+// ИКОНКА ТЕЛЕФОН
 const PHONE_SCREEN_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
-    <!-- корпус телефона -->
-    <rect x="6" y="2" width="12" height="20" rx="2.5" fill="#1e88e5" opacity="0.8"/>
-    <!-- экран -->
-    <rect x="7.5" y="4.5" width="9" height="13" rx="1" fill="#90caf9" opacity="0.6"/>
-    <!-- камера -->
-    <circle cx="12" cy="3.5" r="0.8" fill="#0d47a1" opacity="0.8"/>
-    <!-- кнопка home -->
-    <circle cx="12" cy="20" r="1.2" fill="#0d47a1" opacity="0.6"/>
-    <!-- блик на экране -->
-    <path d="M9 6 Q10 5 11.5 5.5" stroke="#ffffff" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <rect x="22" y="5" width="56" height="90" rx="10" fill="#4fc3f7" opacity="0.95"/>
+    <rect x="27" y="18" width="46" height="62" rx="4" fill="#0d47a1" opacity="0.95"/>
+    <circle cx="50" cy="11" r="4" fill="#0288d1" opacity="0.9"/>
+    <circle cx="50" cy="11" r="2" fill="#01579b" opacity="0.9"/>
+    <circle cx="50" cy="90" r="5" fill="#0288d1" opacity="0.9"/>
+    <rect x="32" y="24" width="36" height="5" rx="2" fill="#4fc3f7" opacity="0.5"/>
+    <rect x="32" y="34" width="28" height="3" rx="1" fill="#4fc3f7" opacity="0.3"/>
+    <rect x="32" y="40" width="32" height="3" rx="1" fill="#4fc3f7" opacity="0.3"/>
+    <rect x="32" y="46" width="24" height="3" rx="1" fill="#4fc3f7" opacity="0.3"/>
+    <path d="M28 12 Q35 6 48 5" stroke="#e1f5fe" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
   </svg>
 </span>`;
 
-// СВЕТЯЩИЕСЯ МИШЕНЬ
+// ИКОНКА МИШЕНЬ
 const TARGET_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
     <circle cx="12" cy="12" r="10" fill="#ff3030" opacity="0.8"/>
@@ -229,7 +229,7 @@ const TARGET_SVG = `<span style="display: inline-flex; align-items: center; vert
   </svg>
 </span>`;
 
-// СВЕТЯЩИЕСЯ КНИГИ
+// ИКОНКА КНИГИ
 const BOOKS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
   <svg width="96" height="96" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
     <rect x="2" y="5" width="5" height="14" rx="0.5" fill="#ff5252" opacity="0.9"/>
@@ -248,24 +248,27 @@ const BOOKS_SVG = `<span style="display: inline-flex; align-items: center; verti
   </svg>
 </span>`;
 
-// СВЕТЯЩИЕСЯ МАСКИ
+// ИКОНКА МАСКИ
 const MASKS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-top: 5px;">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
-    <path d="M2 8 Q2 4 7 4 Q12 4 12 8 Q12 13 7 14 Q2 13 2 8Z" fill="#ffd700" opacity="0.9"/>
-    <ellipse cx="5.5" cy="7.5" rx="1" ry="1.3" fill="#7a6000" opacity="0.9"/>
-    <ellipse cx="9" cy="7.5" rx="1" ry="1.3" fill="#7a6000" opacity="0.9"/
-    <path d="M4.5 10.5 Q7 12.5 10 10.5" stroke="#7a6000" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-    <path d="M12 10 Q12 6 17 6 Q22 6 22 10 Q22 15 17 16 Q12 15 12 10Z" fill="#1e88e5" opacity="0.9"/>
-    <ellipse cx="15.5" cy="9.5" rx="1" ry="1.3" fill="#0d47a1" opacity="0.9"/>
-    <ellipse cx="19" cy="9.5" rx="1" ry="1.3" fill="#0d47a1" opacity="0.9"/>
-    <path d="M14.5 13 Q17 11 20 13" stroke="#0d47a1" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M8 35 Q8 12 30 12 Q52 12 52 35 Q52 58 30 62 Q8 58 8 35Z" fill="#ffd700" opacity="0.9"/>
+    <ellipse cx="22" cy="30" rx="4" ry="5" fill="#7a6000" opacity="0.9"/>
+    <ellipse cx="38" cy="30" rx="4" ry="5" fill="#7a6000" opacity="0.9"/>
+    <path d="M18 44 Q30 54 42 44" stroke="#7a6000" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M14 18 Q20 12 30 11" stroke="#fff176" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+    <path d="M48 45 Q48 22 70 22 Q92 22 92 45 Q92 68 70 72 Q48 68 48 45Z" fill="#1e88e5" opacity="0.9"/>
+    <ellipse cx="62" cy="40" rx="4" ry="5" fill="#0d47a1" opacity="0.9"/>
+    <ellipse cx="78" cy="40" rx="4" ry="5" fill="#0d47a1" opacity="0.9"/>
+    <path d="M58 58 Q70 48 82 58" stroke="#0d47a1" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M62 46 Q61 52 63 54 Q65 52 64 46Z" fill="#90caf9" opacity="0.8"/>
+    <path d="M54 28 Q62 20 72 20" stroke="#90caf9" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
   </svg>
 </span>`;
 
-
-// СВЕТЯЩИЙСЯ МЕШОК ДЕНЕГ
-const MONEY_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0 margin-top: 5px;">
-  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #43a047) drop-shadow(0 0 15px #1b5e20);">
+// ИКОНКА МЕШОК ДЕНЕГ
+const MONEY_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
+  <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #43a047) drop-shadow(0 0 15px #1b5e20);">
     <path d="M38 28 Q40 18 50 18 Q60 18 62 28" stroke="#2e7d32" stroke-width="5" fill="none" stroke-linecap="round"/>
     <path d="M35 32 Q50 26 65 32" fill="#2e7d32" opacity="0.9"/>
     <rect x="35" y="28" width="30" height="8" rx="4" fill="#388e3c" opacity="0.95"/>
@@ -276,6 +279,469 @@ const MONEY_SVG = `<span style="display: inline-flex; align-items: center; verti
     <path d="M32 48 Q34 40 42 37" stroke="#a5d6a7" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
   </svg>
 </span>`;
+
+// ИКОНКА ЩИТ
+const SHIELD_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #1e88e5) drop-shadow(0 0 15px #0d47a1);">
+    <path d="M50 10 L85 25 L85 55 Q85 80 50 92 Q15 80 15 55 L15 25 Z" fill="#1e88e5" opacity="0.9"/>
+    <path d="M50 10 L85 25 L85 55 Q85 80 50 92 Q15 80 15 55 L15 25 Z" stroke="#0d47a1" stroke-width="3" fill="none"/>
+    <path d="M50 20 L78 33 L78 55 Q78 74 50 84 Q22 74 22 55 L22 33 Z" fill="#1565c0" opacity="0.5"/>
+    <path d="M33 52 L45 64 L68 38" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M25 30 Q30 20 42 17" stroke="#90caf9" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ГЛАЗА
+const EYE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <path d="M10 50 Q30 20 50 20 Q70 20 90 50 Q70 80 50 80 Q30 80 10 50Z" fill="#ffffff" opacity="0.95"/>
+    <circle cx="50" cy="50" r="18" fill="#1e88e5" opacity="0.9"/>
+    <circle cx="50" cy="50" r="10" fill="#0d1a2e" opacity="0.95"/>
+    <circle cx="44" cy="44" r="4" fill="#ffffff" opacity="0.8"/>
+    <circle cx="56" cy="42" r="2" fill="#ffffff" opacity="0.4"/>
+    <path d="M10 50 Q30 20 50 20 Q70 20 90 50" stroke="#0288d1" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M10 50 Q30 80 50 80 Q70 80 90 50" stroke="#0288d1" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// ИКОНКА БУДИЛЬНИКА (ЧАСЫ)
+const ALARM_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <line x1="33" y1="88" x2="25" y2="98" stroke="#ffd700" stroke-width="4" stroke-linecap="round"/>
+    <line x1="67" y1="88" x2="75" y2="98" stroke="#ffd700" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="22" cy="28" r="10" fill="#ffd700" opacity="0.9"/>
+    <circle cx="78" cy="28" r="10" fill="#ffd700" opacity="0.9"/>
+    <circle cx="50" cy="58" r="36" fill="#ffd700" opacity="0.9"/>
+    <circle cx="50" cy="58" r="30" fill="#ffb300" opacity="0.5"/>
+    <line x1="50" y1="25" x2="50" y2="32" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="50" y1="84" x2="50" y2="91" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="17" y1="58" x2="24" y2="58" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="76" y1="58" x2="83" y2="58" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="50" y1="58" x2="50" y2="35" stroke="#3e2000" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="50" y1="58" x2="68" y2="50" stroke="#3e2000" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="50" cy="58" r="4" fill="#3e2000" opacity="0.9"/>
+    <path d="M28 40 Q33 30 44 27" stroke="#fff176" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+const ALARM_SVG_MINI = ALARM_SVG.replace('width="24" height="24"', 'width="20" height="20"').replace('margin-bottom: 0;', 'margin-bottom: 5px;');
+
+// ИКОНКА ДЕНЕГ
+const FLYING_MONEY_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #43a047) drop-shadow(0 0 15px #1b5e20);">
+    <rect x="14" y="28" width="74" height="44" rx="4" fill="#2e7d32" opacity="0.5"/>
+    <rect x="10" y="32" width="74" height="44" rx="4" fill="#43a047" opacity="0.95"/>
+    <rect x="15" y="37" width="64" height="34" rx="2" fill="none" stroke="#a5d6a7" stroke-width="1.5" opacity="0.7"/>
+    <ellipse cx="47" cy="54" rx="12" ry="12" fill="#2e7d32" opacity="0.6"/>
+    <line x1="47" y1="44" x2="47" y2="64" stroke="#fff176" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M41 48 Q47 45 53 48 Q53 54 47 55 Q41 56 41 62 Q41 67 47 68 Q53 66 53 62" stroke="#fff176" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="22" cy="54" r="6" fill="#2e7d32" opacity="0.7"/>
+    <circle cx="72" cy="54" r="6" fill="#2e7d32" opacity="0.7"/>
+    <path d="M18 40 Q25 35 38 34" stroke="#c8e6c9" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ТАЙМЕРА
+const TIMER_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 0;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <rect x="10" y="2" width="4" height="1.5" rx="0.75" fill="#4fc3f7" opacity="0.9"/>
+    <rect x="11.25" y="3.5" width="1.5" height="1.5" fill="#4fc3f7" opacity="0.9"/>
+    <circle cx="12" cy="13" r="8" fill="#1e88e5" opacity="0.8"/>
+    <circle cx="12" cy="13" r="7" fill="#1565c0" opacity="0.5"/>
+    <line x1="12" y1="7"  x2="12" y2="8.5" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="12" y1="17.5" x2="12" y2="19" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="6"  y1="13" x2="7.5" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="16.5" y1="13" x2="18" y2="13" stroke="#4fc3f7" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="12" y1="13" x2="12" y2="8.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="12" y1="13" x2="15.5" y2="11" stroke="#4fc3f7" stroke-width="1.5" stroke-linecap="round"/>
+    <circle cx="12" cy="13" r="1" fill="#ffffff" opacity="0.9"/>
+  </svg>
+</span>`;
+const TIMER_SVG_MINI = TIMER_SVG.replace('width="24" height="24"', 'width="20" height="20"').replace('margin-bottom: 0;', 'margin-bottom: 5px;');
+
+// ИКОНКА НЕЛЬЗЯ
+const FORBIDDEN_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <circle cx="50" cy="50" r="44" fill="#ff3030" opacity="0.9"/>
+    <circle cx="50" cy="50" r="44" stroke="#ffffff" stroke-width="6" fill="none"/>
+    <rect x="8" y="38" width="84" height="24" rx="4" fill="#ffffff" opacity="0.95"/>
+    <path d="M18 28 Q28 16 44 13" stroke="#ff8a80" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+</span>`;
+
+// ИКОНКА СОС
+const SOS_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <rect x="5" y="5" width="90" height="90" rx="18" fill="#ff3030" opacity="0.9"/>
+    <rect x="5" y="5" width="90" height="90" rx="18" stroke="#ffffff" stroke-width="4" fill="none"/>
+    <path d="M14 38 Q14 28 24 28 Q34 28 34 36 Q34 44 24 46 Q14 48 14 58 Q14 68 24 68 Q34 68 34 58" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <rect x="38" y="28" width="24" height="40" rx="12" fill="none" stroke="#ffffff" stroke-width="6"/>
+    <path d="M66 38 Q66 28 76 28 Q86 28 86 36 Q86 44 76 46 Q66 48 66 58 Q66 68 76 68 Q86 68 86 58" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ДЖОСТИКА
+const GAMEPAD_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #7c4dff) drop-shadow(0 0 15px #4527a0);">
+    <path d="M15 35 Q10 35 8 50 Q5 70 15 75 Q25 80 35 65 L65 65 Q75 80 85 75 Q95 70 92 50 Q90 35 85 35 Z" fill="#7c4dff" opacity="0.9"/>
+    <rect x="22" y="42" width="16" height="6" rx="2" fill="#ffffff" opacity="0.9"/>
+    <rect x="27" y="37" width="6" height="16" rx="2" fill="#ffffff" opacity="0.9"/>
+    <circle cx="68" cy="42" r="4" fill="#ff5252" opacity="0.9"/>
+    <circle cx="78" cy="48" r="4" fill="#ffeb3b" opacity="0.9"/>
+    <circle cx="68" cy="54" r="4" fill="#69f0ae" opacity="0.9"/>
+    <circle cx="58" cy="48" r="4" fill="#40c4ff" opacity="0.9"/>
+    <rect x="42" y="43" width="8" height="5" rx="2" fill="#ffffff" opacity="0.5"/>
+    <rect x="52" y="43" width="8" height="5" rx="2" fill="#ffffff" opacity="0.5"/>
+    <path d="M18 40 Q25 34 38 33" stroke="#b388ff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ГАЗЕТЫ
+const CAMERA_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #60a5fa) drop-shadow(0 0 15px #3b82f6);">
+    <rect x="3" y="7" width="14" height="10" rx="2" fill="#60a5fa" opacity="0.8"/>
+    <circle cx="10" cy="12" r="3.5" fill="#1e3a8a" opacity="0.9"/>
+    <circle cx="10" cy="12" r="2" fill="#93c5fd" opacity="0.6"/>
+    <path d="M17 9L21 7V17L17 15V9Z" fill="#60a5fa" opacity="0.8"/>
+    <rect x="5" y="5" width="4" height="2" rx="0.5" fill="#60a5fa" opacity="0.8"/>
+    <circle cx="15" cy="10" r="1" fill="#ef4444" opacity="0.9"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ВОПРОСА
+const QUESTION_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <circle cx="12" cy="12" r="10" fill="#ffd700" opacity="0.8"/>
+    <path d="M9.5 9.5 C9.5 8 10.5 7 12 7 C13.5 7 14.5 8 14.5 9.5 C14.5 11 12 11.5 12 13" stroke="#7a6000" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <circle cx="12" cy="16.5" r="1" fill="#7a6000" opacity="0.9"/>
+  </svg>
+</span>`;
+
+// ИКОНКА МОЗГА
+const BRAIN_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f48fb1) drop-shadow(0 0 15px #c2185b);">
+    <path d="M50 20 Q35 18 28 25 Q18 32 18 42 Q16 50 20 56 Q16 62 20 70 Q24 78 34 80 Q42 82 50 78 Z" fill="#f48fb1" opacity="0.9"/>
+    <path d="M50 20 Q65 18 72 25 Q82 32 82 42 Q84 50 80 56 Q84 62 80 70 Q76 78 66 80 Q58 82 50 78 Z" fill="#f06292" opacity="0.9"/>
+    <line x1="50" y1="20" x2="50" y2="78" stroke="#c2185b" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M26 38 Q32 33 38 38 Q44 43 38 48" stroke="#c2185b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M22 54 Q28 48 36 52 Q42 56 38 62" stroke="#c2185b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M26 68 Q33 63 40 67" stroke="#c2185b" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M74 38 Q68 33 62 38 Q56 43 62 48" stroke="#ad1457" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M78 54 Q72 48 64 52 Q58 56 62 62" stroke="#ad1457" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M74 68 Q67 63 60 67" stroke="#ad1457" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M24 30 Q30 22 40 20" stroke="#f8bbd0" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+  </svg>
+</span>`;
+
+// ИКОНКА КРАСНОГО ФЛАГА
+const FLAG_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <line x1="20" y1="10" x2="20" y2="95" stroke="#aaaaaa" stroke-width="4" stroke-linecap="round"/>
+    <path d="M20 12 L80 25 L20 48 Z" fill="#ff3030" opacity="0.9"/>
+    <path d="M22 16 Q40 18 55 24" stroke="#ff8a80" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ГРОМКОГОВОРИТЕЛЯ
+const MEGAPHONE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M55 30 L88 12 L88 72 L55 55 Z" fill="#ffb300" opacity="0.9"/>
+    <rect x="18" y="33" width="37" height="28" rx="4" fill="#ffd700" opacity="0.95"/>
+    <rect x="26" y="61" width="14" height="22" rx="5" fill="#ffb300" opacity="0.95"/>
+    <line x1="55" y1="30" x2="55" y2="60" stroke="#e6a800" stroke-width="2"/>
+    <path d="M91 28 Q98 42 91 56" stroke="#ffd700" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.8"/>
+    <path d="M94 20 Q103 42 94 64" stroke="#ffd700" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+    <path d="M60 18 Q70 13 80 11" stroke="#fff176" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА СООБЩЕНИЯ
+const CHAT_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <path d="M10 15 Q10 10 15 10 L85 10 Q90 10 90 15 L90 60 Q90 65 85 65 L35 65 L20 82 L20 65 L15 65 Q10 65 10 60 Z" fill="#4fc3f7" opacity="0.9"/>
+    <circle cx="32" cy="38" r="6" fill="#ffffff" opacity="0.9"/>
+    <circle cx="50" cy="38" r="6" fill="#ffffff" opacity="0.9"/>
+    <circle cx="68" cy="38" r="6" fill="#ffffff" opacity="0.9"/>
+    <path d="M18 18 Q30 12 50 12" stroke="#e1f5fe" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ЧАСОВ
+const CLOCK_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <circle cx="50" cy="50" r="42" fill="#ffd700" opacity="0.9"/>
+    <circle cx="50" cy="50" r="42" stroke="#e6a800" stroke-width="3" fill="none"/>
+    <circle cx="50" cy="50" r="35" fill="#ffb300" opacity="0.3"/>
+    <line x1="50" y1="12" x2="50" y2="20" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="50" y1="80" x2="50" y2="88" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="12" y1="50" x2="20" y2="50" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="80" y1="50" x2="88" y2="50" stroke="#7a6000" stroke-width="3" stroke-linecap="round"/>
+    <line x1="21" y1="21" x2="27" y2="27" stroke="#7a6000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="73" y1="21" x2="79" y2="27" stroke="#7a6000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="21" y1="79" x2="27" y2="73" stroke="#7a6000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="73" y1="79" x2="79" y2="73" stroke="#7a6000" stroke-width="2" stroke-linecap="round"/>
+    <line x1="50" y1="50" x2="68" y2="26" stroke="#3e2000" stroke-width="4" stroke-linecap="round"/>
+    <line x1="50" y1="50" x2="50" y2="20" stroke="#3e2000" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="50" cy="50" r="4" fill="#3e2000" opacity="0.9"/>
+    <path d="M20 28 Q28 16 44 13" stroke="#fff176" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ФОТОАПАРАТА
+const PHOTO_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 10px #4fc3f7) drop-shadow(0 0 20px #0288d1) drop-shadow(0 0 30px #01579b);">
+    <path d="M55 8 L45 28 L55 28 L42 48 L65 22 L52 22 Z" fill="#ffd700" opacity="0.95"/>
+    <rect x="10" y="35" width="75" height="50" rx="8" fill="#4fc3f7" opacity="0.95"/>
+    <rect x="28" y="25" width="30" height="14" rx="4" fill="#29b6f6" opacity="0.95"/>
+    <circle cx="47" cy="62" r="20" fill="#0d47a1" opacity="0.95"/>
+    <circle cx="47" cy="62" r="14" fill="#1565c0" opacity="0.9"/>
+    <circle cx="47" cy="62" r="8" fill="#0a1929" opacity="0.95"/>
+    <circle cx="42" cy="57" r="3.5" fill="#ffffff" opacity="0.5"/>
+    <circle cx="76" cy="45" r="6" fill="#0288d1" opacity="0.95"/>
+    <rect x="15" y="42" width="14" height="8" rx="2" fill="#fff176" opacity="0.9"/>
+    <path d="M15 40 Q25 34 40 33" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+</span>`;
+
+// ИКОНКА 
+const BELL_OFF_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <path d="M50 10 Q30 10 25 30 Q20 45 20 60 L80 60 Q80 45 75 30 Q70 10 50 10Z" fill="#ff3030" opacity="0.9"/>
+    <rect x="18" y="60" width="64" height="8" rx="4" fill="#ff3030" opacity="0.9"/>
+    <ellipse cx="50" cy="74" rx="8" ry="5" fill="#ff3030" opacity="0.9"/>
+    <line x1="15" y1="15" x2="85" y2="85" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+    <line x1="15" y1="15" x2="85" y2="85" stroke="#cc0000" stroke-width="4" stroke-linecap="round"/>
+    <path d="M28 22 Q34 14 44 12" stroke="#ff8a80" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ДОМИКА
+const HOUSE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M50 10 L90 45 L10 45 Z" fill="#ff7043" opacity="0.9"/>
+    <rect x="65" y="18" width="8" height="18" rx="2" fill="#bf360c" opacity="0.9"/>
+    <rect x="18" y="45" width="64" height="45" rx="2" fill="#ffd700" opacity="0.9"/>
+    <rect x="40" y="65" width="20" height="25" rx="3" fill="#ff7043" opacity="0.9"/>
+    <circle cx="56" cy="78" r="2.5" fill="#ffd700" opacity="0.9"/>
+    <rect x="22" y="52" width="16" height="16" rx="2" fill="#90caf9" opacity="0.8"/>
+    <line x1="30" y1="52" x2="30" y2="68" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+    <line x1="22" y1="60" x2="38" y2="60" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+    <rect x="62" y="52" width="16" height="16" rx="2" fill="#90caf9" opacity="0.8"/>
+    <line x1="70" y1="52" x2="70" y2="68" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+    <line x1="62" y1="60" x2="78" y2="60" stroke="#ffffff" stroke-width="1.5" opacity="0.6"/>
+    <path d="M25 42 Q35 25 48 14" stroke="#ffccbc" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ГАЗЕТЫ
+const NEWSPAPER_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #90a4ae) drop-shadow(0 0 15px #455a64);">
+    <rect x="18" y="12" width="68" height="80" rx="4" fill="#546e7a" opacity="0.4"/>
+    <rect x="12" y="8" width="68" height="80" rx="4" fill="#eceff1" opacity="0.95"/>
+    <rect x="18" y="15" width="56" height="10" rx="2" fill="#37474f" opacity="0.9"/>
+    <rect x="18" y="30" width="34" height="24" rx="2" fill="#90a4ae" opacity="0.7"/>
+    <path d="M18 54 L28 38 L38 50 L44 42 L52 54Z" fill="#607d8b" opacity="0.6"/>
+    <rect x="56" y="30" width="18" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+    <rect x="56" y="36" width="18" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+    <rect x="56" y="42" width="14" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+    <rect x="56" y="48" width="18" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+    <rect x="18" y="60" width="56" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+    <rect x="18" y="66" width="56" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+    <rect x="18" y="72" width="40" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+    <rect x="18" y="78" width="56" height="3" rx="1" fill="#90a4ae" opacity="0.7"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ПАДАЮЩИЙ ГРАФИК
+const CHART_DOWN_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff2020) drop-shadow(0 0 15px #cc0000);">
+    <line x1="10" y1="10" x2="10" y2="82" stroke="#ff5252" stroke-width="3" stroke-linecap="round"/>
+    <line x1="10" y1="82" x2="92" y2="82" stroke="#ff5252" stroke-width="3" stroke-linecap="round"/>
+    <polyline points="15,25 35,35 55,55 75,65 88,75" stroke="#ff3030" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15 25 L35 35 L55 55 L75 65 L88 75 L88 82 L15 82 Z" fill="#ff3030" opacity="0.2"/>
+    <polyline points="78,58 88,75 72,72" stroke="#ff3030" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</span>`;
+const CHART_DOWN_SVG_MINI = CHART_DOWN_SVG.replace('width="24" height="24"', 'width="20" height="20"');
+
+// ИКОНКА ЛУПЫ
+const SEARCH_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <circle cx="42" cy="42" r="28" fill="#1e88e5" opacity="0.8"/>
+    <circle cx="42" cy="42" r="28" stroke="#4fc3f7" stroke-width="5" fill="none"/>
+    <circle cx="42" cy="42" r="20" fill="#0d47a1" opacity="0.5"/>
+    <path d="M26 28 Q32 20 42 18" stroke="#90caf9" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <line x1="63" y1="63" x2="88" y2="88" stroke="#4fc3f7" stroke-width="8" stroke-linecap="round"/>
+  </svg>
+</span>`;
+
+// ИКОНКА РАКЕТЫ
+const ROCKET_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
+  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #7c4dff) drop-shadow(0 0 15px #4527a0);">
+    <path d="M38 78 Q40 95 50 92 Q60 95 62 78 Q55 85 50 82 Q45 85 38 78Z" fill="#ff6d00" opacity="0.9"/>
+    <path d="M42 75 Q45 88 50 85 Q55 88 58 75 Q53 80 50 78 Q47 80 42 75Z" fill="#ffd600" opacity="0.9"/>
+    <path d="M28 65 L18 82 L38 72 Z" fill="#5c6bc0" opacity="0.9"/>
+    <path d="M72 65 L82 82 L62 72 Z" fill="#5c6bc0" opacity="0.9"/>
+    <path d="M35 70 Q30 50 50 15 Q70 50 65 70 Z" fill="#7c4dff" opacity="0.95"/>
+    <path d="M50 15 Q38 35 35 50 Q50 45 65 50 Q62 35 50 15Z" fill="#9c6dff" opacity="0.8"/>
+    <circle cx="50" cy="52" r="10" fill="#1a237e" opacity="0.9"/>
+    <circle cx="50" cy="52" r="7" fill="#283593" opacity="0.9"/>
+    <circle cx="46" cy="48" r="3" fill="#ffffff" opacity="0.3"/>
+    <path d="M40 30 Q42 20 50 15" stroke="#b388ff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА БРИЛЛИАНТА
+const DIAMOND_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
+  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 10px #4fc3f7) drop-shadow(0 0 25px #00b0ff) drop-shadow(0 0 40px #0288d1);">
+    <polygon points="50,8 92,50 50,92 8,50" fill="#29b6f6" opacity="0.9"/>
+    <polygon points="50,8 92,50 50,50" fill="#81d4fa" opacity="0.9"/>
+    <polygon points="50,8 8,50 50,50" fill="#4fc3f7" opacity="0.85"/>
+    <polygon points="8,50 50,92 50,50" fill="#0277bd" opacity="0.9"/>
+    <polygon points="92,50 50,92 50,50" fill="#01579b" opacity="0.95"/>
+    <line x1="8" y1="50" x2="92" y2="50" stroke="#e1f5fe" stroke-width="1" opacity="0.3"/>
+    <line x1="50" y1="8" x2="50" y2="92" stroke="#e1f5fe" stroke-width="1" opacity="0.2"/>
+    <polygon points="50,8 65,30 50,38 35,30" fill="#ffffff" opacity="0.25"/>
+    <circle cx="38" cy="32" r="4" fill="#ffffff" opacity="0.4"/>
+    <circle cx="34" cy="26" r="2" fill="#ffffff" opacity="0.6"/>
+  </svg>
+</span>`;
+
+// ИКОНКА КАРТЫ БАНКОВСКОЙ
+const CARD_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #7c4dff) drop-shadow(0 0 15px #4527a0);">
+    <rect x="8" y="22" width="84" height="56" rx="6" fill="#4527a0" opacity="0.4"/>
+    <rect x="5" y="18" width="84" height="56" rx="6" fill="#7c4dff" opacity="0.95"/>
+    <rect x="5" y="30" width="84" height="14" fill="#4527a0" opacity="0.8"/>
+    <rect x="14" y="50" width="18" height="14" rx="3" fill="#ffd700" opacity="0.9"/>
+    <line x1="14" y1="57" x2="32" y2="57" stroke="#e6a800" stroke-width="1.5" opacity="0.7"/>
+    <line x1="23" y1="50" x2="23" y2="64" stroke="#e6a800" stroke-width="1.5" opacity="0.7"/>
+    <rect x="38" y="52" width="8" height="5" rx="1" fill="#ffffff" opacity="0.6"/>
+    <rect x="50" y="52" width="8" height="5" rx="1" fill="#ffffff" opacity="0.6"/>
+    <rect x="62" y="52" width="8" height="5" rx="1" fill="#ffffff" opacity="0.6"/>
+    <rect x="74" y="52" width="8" height="5" rx="1" fill="#ffffff" opacity="0.6"/>
+    <path d="M12 22 Q25 16 45 16" stroke="#b388ff" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА РОБОТА
+const ROBOT_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <line x1="50" y1="8" x2="50" y2="18" stroke="#4fc3f7" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="50" cy="6" r="4" fill="#ff5252" opacity="0.9"/>
+    <rect x="20" y="18" width="60" height="40" rx="8" fill="#37474f" opacity="0.95"/>
+    <rect x="28" y="28" width="16" height="12" rx="3" fill="#4fc3f7" opacity="0.95"/>
+    <rect x="56" y="28" width="16" height="12" rx="3" fill="#4fc3f7" opacity="0.95"/>
+    <circle cx="36" cy="34" r="4" fill="#ffffff" opacity="0.9"/>
+    <circle cx="64" cy="34" r="4" fill="#ffffff" opacity="0.9"/>
+    <rect x="28" y="46" width="44" height="6" rx="3" fill="#546e7a" opacity="0.9"/>
+    <rect x="30" y="47" width="6" height="4" rx="1" fill="#69f0ae" opacity="0.9"/>
+    <rect x="40" y="47" width="6" height="4" rx="1" fill="#69f0ae" opacity="0.9"/>
+    <rect x="50" y="47" width="6" height="4" rx="1" fill="#69f0ae" opacity="0.9"/>
+    <rect x="60" y="47" width="6" height="4" rx="1" fill="#69f0ae" opacity="0.9"/>
+    <rect x="42" y="58" width="16" height="6" rx="2" fill="#455a64" opacity="0.9"/>
+    <rect x="18" y="64" width="64" height="30" rx="6" fill="#455a64" opacity="0.95"/>
+    <circle cx="35" cy="76" r="5" fill="#ff5252" opacity="0.9"/>
+    <circle cx="50" cy="76" r="5" fill="#ffd700" opacity="0.9"/>
+    <circle cx="65" cy="76" r="5" fill="#69f0ae" opacity="0.9"/>
+    <rect x="25" y="86" width="50" height="4" rx="2" fill="#37474f" opacity="0.7"/>
+    <path d="M25 22 Q35 16 50 16" stroke="#78909c" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ЗАМКА ЗАКРЫТОГО
+const LOCK2_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <path d="M28 45 L28 30 Q28 12 50 12 Q72 12 72 30 L72 45" stroke="#ffd700" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <rect x="15" y="45" width="70" height="50" rx="8" fill="#ffd700" opacity="0.9"/>
+    <rect x="15" y="45" width="70" height="50" rx="8" fill="#ffb300" opacity="0.3"/>
+    <circle cx="50" cy="64" r="10" fill="#7a6000" opacity="0.9"/>
+    <rect x="46" y="64" width="8" height="14" rx="3" fill="#7a6000" opacity="0.9"/>
+    <path d="M22 52 Q30 44 44 43" stroke="#fff176" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА РЫБАЛКИ
+const FISHING_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
+  <svg width="20" height="20" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <line x1="10" y1="90" x2="75" y2="10" stroke="#8d6e63" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="22" cy="76" r="7" fill="#5d4037" opacity="0.9"/>
+    <circle cx="22" cy="76" r="4" fill="#795548" opacity="0.9"/>
+    <path d="M75 10 Q95 10 90 40 Q88 60 70 75" stroke="#e0e0e0" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    <path d="M70 75 Q75 85 68 90 Q60 95 58 88" stroke="#90a4ae" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <line x1="58" y1="88" x2="64" y2="86" stroke="#90a4ae" stroke-width="3" stroke-linecap="round"/>
+    <ellipse cx="85" cy="48" rx="4" ry="8" fill="#ff3030" opacity="0.9"/>
+    <ellipse cx="85" cy="44" rx="4" ry="4" fill="#ffffff" opacity="0.9"/>
+    <path d="M45 82 Q55 76 60 82 Q55 88 45 82Z" fill="#4fc3f7" opacity="0.9"/>
+    <path d="M45 82 L38 78 L38 86 Z" fill="#4fc3f7" opacity="0.9"/>
+    <circle cx="57" cy="81" r="1.5" fill="#0d47a1" opacity="0.9"/>
+  </svg>
+</span>`;
+
+// ИКОНКА СМЕЮЩИЕСЯ СМАЙЛИК
+const LOL_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+    <circle cx="50" cy="50" r="44" fill="#ffd700" opacity="0.9"/>
+    <circle cx="50" cy="50" r="44" stroke="#f0b90b" stroke-width="2" fill="none"/>
+    <path d="M24 35 Q32 28 40 35" stroke="#7a6000" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M60 35 Q68 28 76 35" stroke="#7a6000" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M22 55 Q50 85 78 55" fill="#7a6000" opacity="0.9"/>
+    <path d="M22 55 Q50 85 78 55 Q60 62 50 62 Q40 62 22 55Z" fill="#c62828" opacity="0.9"/>
+    <rect x="34" y="55" width="32" height="10" rx="3" fill="#ffffff" opacity="0.95"/>
+    <line x1="50" y1="55" x2="50" y2="65" stroke="#e0e0e0" stroke-width="1.5" opacity="0.7"/>
+    <path d="M18 42 Q12 52 16 60 Q20 52 18 42Z" fill="#4fc3f7" opacity="0.9"/>
+    <path d="M82 42 Q88 52 84 60 Q80 52 82 42Z" fill="#4fc3f7" opacity="0.9"/>
+    <path d="M22 28 Q32 18 46 16" stroke="#fff176" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ОГОНЕК
+const FIRE_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px; margin-bottom: 5px;">
+  <svg width="22" height="22" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff6d00) drop-shadow(0 0 15px #ff3d00) drop-shadow(0 0 25px #dd2c00);">
+    <path d="M50 8 Q65 25 68 38 Q75 28 72 18 Q85 35 85 52 Q85 75 50 92 Q15 75 15 52 Q15 35 28 18 Q25 28 32 38 Q35 25 50 8Z" fill="#ff6d00" opacity="0.95"/>
+    <path d="M50 22 Q60 36 62 48 Q67 38 65 30 Q74 44 74 56 Q74 72 50 84 Q26 72 26 56 Q26 44 35 30 Q33 38 38 48 Q40 36 50 22Z" fill="#ff9800" opacity="0.9"/>
+    <path d="M50 38 Q56 48 57 57 Q62 50 60 44 Q66 53 66 60 Q66 72 50 80 Q34 72 34 60 Q34 53 40 44 Q38 50 43 57 Q44 48 50 38Z" fill="#ffd600" opacity="0.9"/>
+    <path d="M50 55 Q54 60 54 65 Q54 72 50 75 Q46 72 46 65 Q46 60 50 55Z" fill="#ffffff" opacity="0.7"/>
+  </svg>
+</span>`;
+
+// ИКОНКА ЗАНОВО
+const REFRESH_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+  <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #4fc3f7) drop-shadow(0 0 15px #0288d1);">
+    <path d="M50 15 Q75 15 82 35" stroke="#4fc3f7" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <polygon points="82,18 92,38 72,38" fill="#4fc3f7" opacity="0.95"/>
+    <path d="M50 85 Q25 85 18 65" stroke="#4fc3f7" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <polygon points="18,82 8,62 28,62" fill="#4fc3f7" opacity="0.95"/>
+  </svg>
+</span>`;
+
+// ИКОНКА 2 МЕСТО
+const SILVER_MEDAL_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
+  <svg width="96" height="96" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #b0bec5) drop-shadow(0 0 15px #78909c);">
+    <rect x="38" y="5" width="10" height="32" rx="2" fill="#1565c0" opacity="0.9"/>
+    <rect x="52" y="5" width="10" height="32" rx="2" fill="#1e88e5" opacity="0.9"/>
+    <rect x="38" y="5" width="24" height="8" rx="2" fill="#1e88e5" opacity="0.9"/>
+    <circle cx="50" cy="68" r="30" fill="#78909c" opacity="0.9"/>
+    <circle cx="50" cy="68" r="30" stroke="#cfd8dc" stroke-width="4" fill="none"/>
+    <circle cx="50" cy="68" r="22" fill="#b0bec5" opacity="0.95"/>
+    <path d="M38 60 Q38 50 50 50 Q62 50 62 58 Q62 65 50 70 L38 80 L62 80" stroke="#37474f" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28 55 Q34 46 44 44" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
+// ИКОНКА 3 МЕСТО
+const BRONZE_MEDAL_SVG = `<span style="display: inline-flex; align-items: center; vertical-align: middle;">
+  <svg width="96" height="96" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #ff8f00) drop-shadow(0 0 15px #e65100);">
+    <rect x="38" y="5" width="10" height="32" rx="2" fill="#e65100" opacity="0.9"/>
+    <rect x="52" y="5" width="10" height="32" rx="2" fill="#ef6c00" opacity="0.9"/>
+    <rect x="38" y="5" width="24" height="8" rx="2" fill="#ef6c00" opacity="0.9"/>
+    <circle cx="50" cy="68" r="30" fill="#ff8f00" opacity="0.9"/>
+    <circle cx="50" cy="68" r="30" stroke="#ffb300" stroke-width="4" fill="none"/>
+    <circle cx="50" cy="68" r="22" fill="#ffcc02" opacity="0.95"/>
+    <path d="M38 58 Q38 50 50 50 Q62 50 62 58 Q62 64 50 66 Q62 68 62 76 Q62 84 50 84 Q38 84 38 76" stroke="#e65100" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M28 55 Q34 46 44 44" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </svg>
+</span>`;
+
 
 // МИССИИ
 const MISSIONS = {
@@ -388,7 +854,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Правильно!`, text: 'Число «500 человек» невозможно проверить, это обычная уловка. Через карту действительно проходят украденные деньги, и оба станете соучастниками. Лучше потерять «возможность», чем свободу.', fact: `${MASKS_SVG} Мошенники создают иллюзию массовости, на самом деле работает 5-10 человек, остальные жертвы` },
-          wrong: { title: `${CROSS_SVG} Это опасно!`, text: '«Один раз» не существует. Как только вы согласитесь, вы будете отмечены как склонный к сотрудничеству человек. Банк и полиция будут отслеживать каждую транзакцию.', fact: '👁 Банковские системы мониторинга видят все подозрительные операции в реальном времени' }
+          wrong: { title: `${CROSS_SVG} Это опасно!`, text: '«Один раз» не существует. Как только вы согласитесь, вы будете отмечены как склонный к сотрудничеству человек. Банк и полиция будут отслеживать каждую транзакцию.', fact: `${EYE_SVG} Банковские системы мониторинга видят все подозрительные операции в реальном времени` }
         }
       },
       // СЦЕНА 9 – хроника событий
@@ -423,7 +889,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'warn',
-        text: '🔍 Ты понимаешь что произошло. Антон исчез, его аккаунт удален.'
+        text: `${SEARCH_SVG} Ты понимаешь что произошло. Антон исчез, его аккаунт удален.`
       },
       {
         type: 'visual',
@@ -446,8 +912,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Использовать чужую карту вместо своей', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Именно так!`, text: 'Лучшая защита – не вступать в игру. Первое сообщение с предложением «легких денег» должно быть немедленно заблокировано. Расскажи об этом друзьям, возможно, ты спасешь кого-то от ошибки.', fact: '🛡 95% дропперов вербуются через соцсети и мессенджеры' },
-          wrong: { title: `${CROSS_SVG} Это только усугубит!`, text: 'Быстрое выведение денег или использование чужой карты – это дополнительные статьи УК РФ. Банковские системы мониторинга видят все.', fact: '👁 Банки используют ИИ для отслеживания подозрительных транзакций в реальном времени' }
+          correct: { title: `${CHECKMARK_SVG} Именно так!`, text: 'Лучшая защита – не вступать в игру. Первое сообщение с предложением «легких денег» должно быть немедленно заблокировано. Расскажи об этом друзьям, возможно, ты спасешь кого-то от ошибки.', fact: `${SHIELD_SVG} 95% дропперов вербуются через соцсети и мессенджеры` },
+          wrong: { title: `${CROSS_SVG} Это только усугубит!`, text: 'Быстрое выведение денег или использование чужой карты – это дополнительные статьи УК РФ. Банковские системы мониторинга видят все.', fact: `${EYE_SVG} Банки используют ИИ для отслеживания подозрительных транзакций в реальном времени` }
         }
       },
       // СЦЕНА 13 – статистика
@@ -506,7 +972,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'warn',
-        text: '⏰ Звонящий начинает торопить тебя.'
+        text: `${ALARM_SVG} Звонящий начинает торопить тебя.`
       },
       {
         type: 'messages',
@@ -554,15 +1020,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Удалить приложение Госуслуг и забыть об этом', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Нужно действовать быстро: смени пароль на gosuslugi.ru, включи двухфакторную аутентификацию, позвони в банк для блокировки счетов, напиши заявление в полицию. Чем быстрее, тем больше шансов вернуть деньги.', fact: '⏱ За первые 24 часа можно заблокировать до 80% мошеннических операций' },
-          wrong: { title: `${CROSS_SVG} Время работает против!`, text: 'Каждая минута промедления позволяет мошенникам сделать еще больше: оформить кредиты, получить доступ к налоговой, продать данные.', fact: '💸 Среднее время оформления кредита мошенниками: 7-15 минут после входа в аккаунт' }
+          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Нужно действовать быстро: смени пароль на gosuslugi.ru, включи двухфакторную аутентификацию, позвони в банк для блокировки счетов, напиши заявление в полицию. Чем быстрее, тем больше шансов вернуть деньги.', fact: `${TIMER_SVG} За первые 24 часа можно заблокировать до 80% мошеннических операций` },
+          wrong: { title: `${CROSS_SVG} Время работает против!`, text: 'Каждая минута промедления позволяет мошенникам сделать еще больше: оформить кредиты, получить доступ к налоговой, продать данные.', fact: `${FLYING_MONEY_SVG} Среднее время оформления кредита мошенниками: 7-15 минут после входа в аккаунт` },
         }
       },
       // СЦЕНА 7 – разбор схемы
       {
         type: 'context',
         variant: 'warn',
-        text: '🔍 Разберем, как работает эта схема изнутри.'
+        text: `${SEARCH_SVG} Разберем, как работает эта схема изнутри.`
       },
       {
         type: 'visual',
@@ -630,7 +1096,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Верные действия!`, text: 'Немедленно: смени пароль на gosuslugi.ru, включи двухфакторную аутентификацию, проверь историю входов в аккаунт. Сообщи родителям и на горячую линию Госуслуг: 8-800-100-70-10.', fact: `${PHONE_SVG} Горячая линия Госуслуг: 8-800-100-70-10 (бесплатно)` },
-          wrong: { title: `${CROSS_SVG} Каждая минута важна!`, text: 'Пока ты ждешь, мошенник уже в твоем аккаунте. Смени пароль прямо сейчас!', fact: '⏱ За несколько минут мошенник может оформить кредит на твое имя' }
+          wrong: { title: `${CROSS_SVG} Каждая минута важна!`, text: 'Пока ты ждешь, мошенник уже в твоем аккаунте. Смени пароль прямо сейчас!', fact: `${TIMER_SVG} За несколько минут мошенник может оформить кредит на твое имя` }
         }
       },
       // СЦЕНА 12 – статистика и защита
@@ -639,7 +1105,7 @@ const MISSIONS = {
         title: 'ФИШИНГ В ЦИФРАХ · 2024',
         lines: [
           { text: `${CHART_SVG} Более 2 млн россиян пострадали от фишинга в 2023 году`, hl: 'bad' },
-          { text: '💰 Средний ущерб одной жертвы: 45 000 ₽', hl: 'bad' },
+          { text: `${MONEY_SVG} Средний ущерб одной жертвы: 45 000 ₽`, hl: 'bad' },
           { text: `${PHONE_SVG_MINI} 67% мошеннических звонков начинаются с «отмены заказа»`, hl: 'bad' },
           { text: `${LOCK_SVG} 2FA защищает аккаунт даже если код украден`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Правило: код из СМС = пароль, никому не говорить`, hl: 'good' },
@@ -658,16 +1124,16 @@ const MISSIONS = {
     desc: 'В интернете предлагают хорошо заплатить за «раскладку посылок». Это выглядит безобидно, пока не понимаешь, что именно ты раскладываешь.',
     scenes: 12, diff: 'Средний',
     tips: [
-      { icon: '🚫', text: 'Раскладка закладок – это соучастие в наркоторговле. Реальный срок от 8 лет.' },
+      { icon: `${FORBIDDEN_SVG}`, text: 'Раскладка закладок – это соучастие в наркоторговле. Реальный срок от 8 лет.' },
       { icon: `${PHONE_SCREEN_SVG}`, text: 'Вербовщики ищут жертв в играх, Discord, Telegram – везде, где есть подростки.' },
-      { icon: '🆘', text: 'Если тебя уже втянули, обратись в полицию или на горячую линию 8-800-2000-122.' },
+      { icon: `${SOS_SVG}`, text: 'Если тебя уже втянули, обратись в полицию или на горячую линию 8-800-2000-122.' },
     ],
     storyboard: [
       // СЦЕНА 1 – контекст
       {
         type: 'context',
         variant: 'normal',
-        text: '🎮 Вечер пятницы. Ты играешь в онлайн-игру. В Discord-сервере игры тебе пишет новый участник с ником Stranger228.'
+        text: `${GAMEPAD_SVG} Вечер пятницы. Ты играешь в онлайн-игру. В Discord-сервере игры тебе пишет новый участник с ником Stranger228.`
       },
       // СЦЕНА 2 – первый контакт
       {
@@ -696,7 +1162,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'warn',
-        text: '⏰ Stranger228 начинает давить, видя твое сомнение.'
+        text: `${ALARM_SVG} Stranger228 начинает давить, видя твое сомнение.`
       },
       {
         type: 'messages',
@@ -740,7 +1206,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'danger',
-        text: '🔍 Как работает схема вербовки закладчиков:'
+        text: `${SEARCH_SVG} Как работает схема вербовки закладчиков:`
       },
       {
         type: 'visual',
@@ -776,7 +1242,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Отлично!`, text: 'Миф о "несовершеннолетии как защите" – это приманка. Суды дают реальные сроки. Вербовщик знает это и специально лжет, чтобы ты не боялся. Заблокируй, расскажи взрослым или позвони на горячую линию.', fact: `${PHONE_SVG} Горячая линия психологической помощи: 8-800-2000-122 (бесплатно, анонимно)` },
-          wrong: { title: `${CROSS_SVG} Это ложь!`, text: 'Мошенник использует твой возраст против тебя. Несовершеннолетние получают реальные сроки в воспитательных колониях. «Один раз» не существует, тебя запишут и будут шантажировать.', fact: '📹 Вербовщики фиксируют первую закладку на фото, потом шантажируют' }
+          wrong: { title: `${CROSS_SVG} Это ложь!`, text: 'Мошенник использует твой возраст против тебя. Несовершеннолетние получают реальные сроки в воспитательных колониях. «Один раз» не существует, тебя запишут и будут шантажировать.', fact: `${CAMERA_SVG} Вербовщики фиксируют первую закладку на фото, потом шантажируют` }
         }
       },
       // СЦЕНА 10 – история жертвы
@@ -803,7 +1269,7 @@ const MISSIONS = {
         lines: [
           { text: `${CHART_SVG} 78% закладчиков несовершеннолетние 14-18 лет`, hl: 'bad' },
           { text: `${SCALES_SVG} Средний срок: 8-12 лет лишения свободы`, hl: 'bad' },
-          { text: '💰 «Заработок»: 3000-5000 ₽ за рейс vs 10 лет свободы', hl: 'bad' },
+          { text: `${MONEY_SVG} «Заработок»: 3000-5000 ₽ за рейс vs 10 лет свободы`, hl: 'bad' },
           { text: `${TARGET_SVG} 90% вербовок происходит в соцсетях и мессенджерах`, hl: 'bad' },
           { text: `${CHECKMARK_SVG_MINI} Защита: никогда не соглашаться на «раскладку`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Сообщить о вербовке: полиция или 8-800-2000-122`, hl: 'good' },
@@ -827,16 +1293,16 @@ const MISSIONS = {
     desc: 'Кто-то в сети понимает тебя лучше всех. Жалеет. Называет героем. Но постепенно разговоры становятся опаснее...',
     scenes: 12, diff: 'Сложный',
     tips: [
-      { icon: '🧠', text: 'Вербовщики в деструктивные группы сначала «дружат», потом медленно меняют взгляды.' },
-      { icon: '🚩', text: 'Красные флаги: «только мы понимаем тебя», «обычные люди – это враги», «ты избранный».' },
-      { icon: '📢', text: 'Если тебя или друга склоняют к насилию, сообщи в ФСБ: fsb.ru или 8 (800) 224-22-22.' },
+      { icon: `${BRAIN_SVG}`, text: 'Вербовщики в деструктивные группы сначала «дружат», потом медленно меняют взгляды.' },
+      { icon: `${FLAG_SVG}`, text: 'Красные флаги: «только мы понимаем тебя», «обычные люди – это враги», «ты избранный».' },
+      { icon: `${MEGAPHONE_SVG}`, text: 'Если тебя или друга склоняют к насилию, сообщи в ФСБ: fsb.ru или 8 (800) 224-22-22.' },
     ],
     storyboard: [
       // СЦЕНА 1 – контекст
       {
         type: 'context',
         variant: 'normal',
-        text: '💬 Telegram. Тебе 16 лет. После серьезного конфликта в школе ты выложил грустный пост в соцсетях. Вечером приходит сообщение от незнакомца.'
+        text: `${CHAT_SVG} Telegram. Тебе 16 лет. После серьезного конфликта в школе ты выложил грустный пост в соцсетях. Вечером приходит сообщение от незнакомца.`
       },
       // СЦЕНА 2 – первый контакт
       {
@@ -857,15 +1323,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Он говорит слишком правильно, наверное это бот', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Хорошая интуиция!`, text: 'Вербовщики деструктивных групп используют технику «ловли на боли»: находят людей в уязвимом состоянии и предлагают «понимание». Закрытое сообщество – это следующий шаг изоляции.', fact: '🧠 Техника называется love bombing – «бомбардировка любовью» для вербовки' },
-          wrong: { title: `${WARNING_SVG} Будь внимательнее!`, text: 'Незнакомец знает твои посты, называет тебя «не одиноким» и зовет в закрытый чат – это классическая схема вербовки. Настоящие друзья так не действуют.', fact: '🚩 «Закрытое сообщество только для избранных» является красным флагом любой секты или экстремистской группы' }
+          correct: { title: `${CHECKMARK_SVG} Хорошая интуиция!`, text: 'Вербовщики деструктивных групп используют технику «ловли на боли»: находят людей в уязвимом состоянии и предлагают «понимание». Закрытое сообщество – это следующий шаг изоляции.', fact: `${BRAIN_SVG} Техника называется love bombing – «бомбардировка любовью» для вербовки` },
+          wrong: { title: `${WARNING_SVG} Будь внимательнее!`, text: 'Незнакомец знает твои посты, называет тебя «не одиноким» и зовет в закрытый чат – это классическая схема вербовки. Настоящие друзья так не действуют.', fact: `${FLAG_SVG} «Закрытое сообщество только для избранных» является красным флагом любой секты или экстремистской группы` }
         }
       },
       // СЦЕНА 4 – развитие доверия
       {
         type: 'context',
         variant: 'warn',
-        text: '🕐 Ты решил посмотреть, куда приведет этот разговор. Прошла неделя ежедневного общения.'
+        text: `${CLOCK_SVG} Ты решил посмотреть, куда приведет этот разговор. Прошла неделя ежедневного общения.`
       },
       {
         type: 'messages',
@@ -898,8 +1364,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Слишком много участников, наверное это просто популярный чат', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Ты видишь красные флаги!`, text: 'Культовые группы используют язык «семьи» и «избранности» для создания ложного чувства принадлежности. Это первый шаг к полному контролю над сознанием.', fact: '🚩 Термины «братья», «семья», «избранные» используются в 90% вербовочных групп' },
-          wrong: { title: `${WARNING_SVG} Опасное заблуждение!`, text: 'Это не группа поддержки. Это изоляция от общества и подготовка к принятию радикальных идей. Настоящая поддержка не требует отказа от внешнего мира.', fact: '🧠 Изоляция – первый признак деструктивной секты или экстремистской группы' }
+          correct: { title: `${CHECKMARK_SVG} Ты видишь красные флаги!`, text: 'Культовые группы используют язык «семьи» и «избранности» для создания ложного чувства принадлежности. Это первый шаг к полному контролю над сознанием.', fact: `${FLAG_SVG} Термины «братья», «семья», «избранные» используются в 90% вербовочных групп` },
+          wrong: { title: `${WARNING_SVG} Опасное заблуждение!`, text: 'Это не группа поддержки. Это изоляция от общества и подготовка к принятию радикальных идей. Настоящая поддержка не требует отказа от внешнего мира.', fact: `${BRAIN_SVG} Изоляция – первый признак деструктивной секты или экстремистской группы` }
         }
       },
       // СЦЕНА 7 – эскалация
@@ -948,7 +1414,7 @@ const MISSIONS = {
           { letter: 'В', text: 'Пойти на встречу, чтобы разобраться что происходит', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Правильное решение!`, text: 'Это уже склонение к совершению насильственного акта. Немедленно: сохрани скриншоты, выйди из чата, расскажи родителям или учителю, сообщи в полицию или ФСБ. Это не предательство – это спасение жизней, в том числе своей.', fact: '📢 Сообщить анонимно в ФСБ: fsb.ru или 8-800-224-22-22 (бесплатно)' },
+          correct: { title: `${CHECKMARK_SVG} Правильное решение!`, text: 'Это уже склонение к совершению насильственного акта. Немедленно: сохрани скриншоты, выйди из чата, расскажи родителям или учителю, сообщи в полицию или ФСБ. Это не предательство – это спасение жизней, в том числе своей.', fact: `${MEGAPHONE_SVG} Сообщить анонимно в ФСБ: fsb.ru или 8-800-224-22-22 (бесплатно)` },
           wrong: { title: `${CROSS_SVG} Опасно!`, text: 'Уточнение деталей или поход на встречу уже делает тебя потенциально причастным. Не вступай в диалог, выходи и сообщай.', fact: `${SCALES_SVG} Недонесение о подготовке теракта – это уголовная статья. Сообщить – это твоя защита.` }
         }
       },
@@ -977,8 +1443,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Просто запретить ему общаться, без объяснений', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Ты настоящий друг!`, text: 'Поддержка и факты работают лучше запретов. Покажи другу реальные доказательства схемы, предложи вместе поговорить с родителями или школьным психологом. Вместе вы сильнее.', fact: '💬 Доверительный разговор снижает риск вербовки на 80%' },
-          wrong: { title: `${WARNING_SVG} Так не сработает!`, text: 'Оскорбления или запреты без объяснений только отдалят друга и заставят его скрывать переписку. Нужен открытый диалог и доказательства.', fact: '🧠 Подростки в 3 раза чаще слушают сверстников, чем взрослых, но нужны факты' }
+          correct: { title: `${CHECKMARK_SVG} Ты настоящий друг!`, text: 'Поддержка и факты работают лучше запретов. Покажи другу реальные доказательства схемы, предложи вместе поговорить с родителями или школьным психологом. Вместе вы сильнее.', fact: `${CHAT_SVG} Доверительный разговор снижает риск вербовки на 80%` },
+          wrong: { title: `${WARNING_SVG} Так не сработает!`, text: 'Оскорбления или запреты без объяснений только отдалят друга и заставят его скрывать переписку. Нужен открытый диалог и доказательства.', fact: `${BRAIN_SVG} Подростки в 3 раза чаще слушают сверстников, чем взрослых, но нужны факты` }
         }
       }
     ]
@@ -993,24 +1459,24 @@ const MISSIONS = {
     desc: 'Бывший одноклассник начинает давить, угрожать и распространять слухи. Что делать, когда травля переходит в онлайн?',
     scenes: 12, diff: 'Начальный',
     tips: [
-      { icon: '📸', text: 'Всегда делай скриншоты угроз, это доказательства.' },
-      { icon: '🔕', text: 'Блокировка хулигана – не слабость, а защита своих границ.' },
-      { icon: '💬', text: 'Кибербуллинг – это не норма. Расскажи взрослым или психологу.' },
+      { icon: `${PHOTO_SVG}`, text: 'Всегда делай скриншоты угроз, это доказательства.' },
+      { icon: `${BELL_OFF_SVG}`, text: 'Блокировка хулигана – не слабость, а защита своих границ.' },
+      { icon: `${CHAT_SVG}`, text: 'Кибербуллинг – это не норма. Расскажи взрослым или психологу.' },
     ],
     storyboard: [
       // СЦЕНА 1 – контекст
       {
         type: 'context',
         variant: 'normal',
-        text: '📸 Instagram. Тебе 15 лет. После ссоры с бывшим одноклассником Денисом ты замечаешь странные комментарии под своими фотографиями.'
+        text: `${PHOTO_SVG} Instagram. Тебе 15 лет. После ссоры с бывшим одноклассником Денисом ты замечаешь странные комментарии под своими фотографиями.`
       },
       // СЦЕНА 2 – первые оскорбления
       {
         type: 'messages',
         msgs: [
-          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'хаха смотрите какой лузер появился. все знают что ты нытик. твои фоточки полное позорище 😂' },
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: `хаха смотрите какой лузер появился. все знают что ты нытик. твои фоточки полное позорище ${LOL_SVG}` },
           { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Что за... Откуда он пишет? И почему столько лайков под его комментарием?' },
-          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'если ответишь, скину всем твою переписку с *** 😂 молчи и может оставлю в покое' },
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: `если ответишь, скину всем твою переписку с *** ${LOL_SVG} молчи и может оставлю в покое` },
         ]
       },
       // СЦЕНА 3 – первый выбор
@@ -1024,7 +1490,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Правильный порядок действий!`, text: 'Скриншот = доказательство. Блокировка = защита от дальнейших атак. Взрослый = человек с реальными полномочиями остановить ситуацию. Молчать в одиночестве – худшая стратегия.', fact: `${CHART_SVG} 72% жертв кибербуллинга, которые рассказали взрослым, сообщили что ситуация улучшилась` },
-          wrong: { title: `${WARNING_SVG} Так только хуже!`, text: 'Агрессивный ответ дает хулигану то, чего он хочет – реакцию. Молчание не остановит его. Нужны скриншоты и помощь взрослых.', fact: '🚩 Шантаж перепиской – это уже статья 163 УК РФ (вымогательство)' }
+          wrong: { title: `${WARNING_SVG} Так только хуже!`, text: 'Агрессивный ответ дает хулигану то, чего он хочет – реакцию. Молчание не остановит его. Нужны скриншоты и помощь взрослых.', fact: `${FLAG_SVG} Шантаж перепиской – это уже статья 163 УК РФ (вымогательство)` }
         }
       },
       // СЦЕНА 4 – эскалация
@@ -1037,7 +1503,7 @@ const MISSIONS = {
         type: 'messages',
         msgs: [
           { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'вижу ты меня игнорируешь. думаешь это поможет?' },
-          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: 'я создал чат «позор дня» куда скидываю твои фотки. там уже 50 человек из школы 😂' },
+          { cls: 'scam', sender: 'Denis_666', senderCls: 'bad', text: `я создал чат «позор дня» куда скидываю твои фотки. там уже 50 человек из школы ${LOL_SVG}` },
           { cls: 'me', sender: 'Ты (думаешь)', senderCls: 'neutral', text: 'Чат?! Это становится серьезнее. Мне страшно...' },
           { cls: 'them', sender: 'Подруга Маша', senderCls: 'neutral', text: 'Привет! Ты видела этот чат? Мне так жаль... Денис перешел все границы.' },
         ]
@@ -1047,7 +1513,7 @@ const MISSIONS = {
         type: 'visual',
         title: 'СКРИНШОТ ЧАТА · «Позор дня»',
         lines: [
-          { text: 'Denis_666: Всем смотреть! Новый мем дня 🔥', hl: 'bad' },
+          { text: `Denis_666: Всем смотреть! Новый мем дня ${FIRE_SVG}`, hl: 'bad' },
           { text: 'User123: хахаха смешно!', hl: 'warn' },
           { text: 'AnonGirl: Денис, может хватит? Это уже слишком...', hl: 'good' },
           { text: 'Denis_666: кто не с нами, тот против нас', hl: 'bad' },
@@ -1064,15 +1530,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Удалить свой аккаунт и исчезнуть', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Верная стратегия!`, text: 'Оправдания в чате только раззадорят агрессора. Скриншоты — это доказательства для администрации и полиции. Удаление аккаунта не решит проблему, буллинг продолжится.', fact: '📢 Платформы обязаны удалять контент с травлей в течение 24 часов после жалобы' },
-          wrong: { title: `${WARNING_SVG} Это не поможет!`, text: 'Оправдания дают буллеру внимание. Удаление аккаунта — это побег, а не решение. Нужно действовать системно.', fact: '🧠 85% случаев кибербуллинга прекращаются после блокировки агрессора и вмешательства взрослых' }
+          correct: { title: `${CHECKMARK_SVG} Верная стратегия!`, text: 'Оправдания в чате только раззадорят агрессора. Скриншоты — это доказательства для администрации и полиции. Удаление аккаунта не решит проблему, буллинг продолжится.', fact: `${MEGAPHONE_SVG} Платформы обязаны удалять контент с травлей в течение 24 часов после жалобы` },
+          wrong: { title: `${WARNING_SVG} Это не поможет!`, text: 'Оправдания дают буллеру внимание. Удаление аккаунта — это побег, а не решение. Нужно действовать системно.', fact: `${BRAIN_SVG} 85% случаев кибербуллинга прекращаются после блокировки агрессора и вмешательства взрослых` }
         }
       },
       // СЦЕНА 7 – разговор с родителями
       {
         type: 'context',
         variant: 'danger',
-        text: '🏠 Ты решаешься рассказать родителям. Вечерний разговор на кухне.'
+        text: `${HOUSE_SVG} Ты решаешься рассказать родителям. Вечерний разговор на кухне.`
       },
       {
         type: 'messages',
@@ -1119,15 +1585,15 @@ const MISSIONS = {
           { letter: 'В', text: 'Лучше вообще ничего не делать', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Обратиться за помощью – это не слабость, это стратегия. Взрослые могут поговорить с родителями хулигана, школой, полицией. У них есть рычаги, которых нет у тебя. Справляться в одиночку с системной травлей лишнее страдание.', fact: '💬 Психологическая помощь подросткам: 8-800-2000-122 (бесплатно, круглосуточно)' },
-          wrong: { title: `${CROSS_SVG} Это не так!`, text: 'Кибербуллинг – системная проблема, не личная слабость. Молчание и одиночная борьба только усугубляют ситуацию.', fact: '🧠 Без помощи взрослых кибербуллинг прекращается в 5 раз реже' }
+          correct: { title: `${CHECKMARK_SVG} Верно!`, text: 'Обратиться за помощью – это не слабость, это стратегия. Взрослые могут поговорить с родителями хулигана, школой, полицией. У них есть рычаги, которых нет у тебя. Справляться в одиночку с системной травлей лишнее страдание.', fact: `${CHAT_SVG} Психологическая помощь подросткам: 8-800-2000-122 (бесплатно, круглосуточно)` },
+          wrong: { title: `${CROSS_SVG} Это не так!`, text: 'Кибербуллинг – системная проблема, не личная слабость. Молчание и одиночная борьба только усугубляют ситуацию.', fact: `${BRAIN_SVG} Без помощи взрослых кибербуллинг прекращается в 5 раз реже` }
         }
       },
       // СЦЕНА 11 – последствия для агрессора
       {
         type: 'context',
         variant: 'normal',
-        text: '📰 Через неделю после обращения в школу и полицию.'
+        text: `${NEWSPAPER_SVG} Через неделю после обращения в школу и полицию.`
       },
       {
         type: 'messages',
@@ -1148,7 +1614,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Абсолютно верно!`, text: 'Кибербуллинг — это не «детские шалости», а правонарушение с реальными последствиями. Жертва никогда не виновата в том что ее травят. Помощь есть: психологи, учителя, полиция, горячие линии.', fact: `${PHONE_SVG} Телефон доверия для детей и подростков: 8-800-2000-122 (бесплатно, анонимно)` },
-          wrong: { title: `${WARNING_SVG} Опасное заблуждение!`, text: 'Игнорирование не останавливает буллеров. Удаление соцсетей — это изоляция себя, а не решение проблемы. Нужно действовать.', fact: '🧠 9 из 10 случаев кибербуллинга требуют вмешательства взрослых для полного прекращения' }
+          wrong: { title: `${WARNING_SVG} Опасное заблуждение!`, text: 'Игнорирование не останавливает буллеров. Удаление соцсетей — это изоляция себя, а не решение проблемы. Нужно действовать.', fact: `${BRAIN_SVG} 9 из 10 случаев кибербуллинга требуют вмешательства взрослых для полного прекращения` }
         }
       }
     ]
@@ -1163,9 +1629,9 @@ const MISSIONS = {
     desc: 'В Telegram появился канал «Crypto King», блогер с 800 000 подписчиков, дорогие часы, яхта. Обещает научить зарабатывать на крипте. Твой друг Артем уже готов перевести деньги. Разберись, что здесь не так.',
     scenes: 12, diff: 'Средний',
     tips: [
-      { icon: '📉', text: 'Гарантированная доходность выше 20% годовых – признак финансовой пирамиды.' },
+      { icon: `${CHART_DOWN_SVG}`, text: 'Гарантированная доходность выше 20% годовых – признак финансовой пирамиды.' },
       { icon: `${MASKS_SVG}`, text: 'Фейковые блогеры используют чужие фото и видео. Проверяй личность.' },
-      { icon: '💰', text: 'Настоящие инвестиции идут через лицензированные брокеры, а не в личные кошельки.' },
+      { icon: `${MONEY_SVG}`, text: 'Настоящие инвестиции идут через лицензированные брокеры, а не в личные кошельки.' },
     ],
     storyboard: [
       // СЦЕНА 1 – контекст
@@ -1189,11 +1655,11 @@ const MISSIONS = {
         type: 'visual',
         title: 'СКРИНШОТ КАНАЛА · TELEGRAM',
         lines: [
-          { text: '🚀 CRYPTO KING – ТВОЙ ПУТЬ К СВОБОДЕ!', hl: 'warn' },
+          { text: `${ROCKET_SVG} CRYPTO KING – ТВОЙ ПУТЬ К СВОБОДЕ!`, hl: 'warn' },
           { text: `${CHART_SVG} Мои ученики зарабатывают от 50 000 ₽ в день!`, hl: 'bad' },
-          { text: '💎 Закрытый клуб, всего 50 мест по 10 000 ₽', hl: 'bad' },
-          { text: '⏰ Через 2 часа цена вырастет до 50 000 ₽! Успей!', hl: 'bad' },
-          { text: '💳 Перевод на карту: 2200-ХXXX-XXXX-XXXX (Алексей К.)', hl: 'bad' },
+          { text: `${DIAMOND_SVG} Закрытый клуб, всего 50 мест по 10 000 ₽`, hl: 'bad' },
+          { text: `${ALARM_SVG_MINI} Через 2 часа цена вырастет до 50 000 ₽! Успей!`, hl: 'bad' },
+          { text: `${CARD_SVG} Перевод на карту: 2200-ХXXX-XXXX-XXXX (Алексей К.)`, hl: 'bad' },
         ]
       },
       // СЦЕНА 4 – вопрос по каналу
@@ -1214,7 +1680,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'warn',
-        text: '⏰ Артем нервничает – таймер обратного отсчета в канале уже показывает 1:45:00.'
+        text: `${ALARM_SVG} Артем нервничает – таймер обратного отсчета в канале уже показывает 1:45:00.`
       },
       {
         type: 'messages',
@@ -1222,7 +1688,7 @@ const MISSIONS = {
           { cls: 'them', sender: 'Артем', senderCls: 'neutral', text: 'Ну че ты, думаешь слишком долго! Таймер уже тикает, осталось меньше двух часов!' },
           { cls: 'me', sender: 'Ты', senderCls: 'neutral', text: 'Именно поэтому я и не тороплюсь. Когда тебя торопят – это плохой знак.' },
           { cls: 'them', sender: 'Артем', senderCls: 'neutral', text: 'Ну а вдруг реально работает? Отзывы же есть, люди пишут что зарабатывают!' },
-          { cls: 'scam', sender: 'Crypto King', senderCls: 'bad', text: '🔥 Осталось 3 места! Алина только что вошла в клуб и уже получила первые 8 000 ₽ сигнал работает! Кто следующий?' },
+          { cls: 'scam', sender: 'Crypto King', senderCls: 'bad', text: `${FIRE_SVG} Осталось 3 места! Алина только что вошла в клуб и уже получила первые 8 000 ₽ сигнал работает! Кто следующий?` },
         ]
       },
       // СЦЕНА 6 – вопрос про давление
@@ -1235,7 +1701,7 @@ const MISSIONS = {
           { letter: 'В', text: 'Надо написать напрямую «Алине» и спросить ее', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Правильно мыслишь!`, text: 'В мошеннических каналах «счастливые клиенты» – это боты или подставные аккаунты. Настоящую репутацию ищут на независимых отзовиках (Trustpilot, Banki.ru), проверяют лицензию ЦБ РФ, ищут упоминания в СМИ.', fact: '🤖 80% «положительных отзывов» в крипто-каналах написаны ботами или за вознаграждение' },
+          correct: { title: `${CHECKMARK_SVG} Правильно мыслишь!`, text: 'В мошеннических каналах «счастливые клиенты» – это боты или подставные аккаунты. Настоящую репутацию ищут на независимых отзовиках (Trustpilot, Banki.ru), проверяют лицензию ЦБ РФ, ищут упоминания в СМИ.', fact: `${ROBOT_SVG} 80% «положительных отзывов» в крипто-каналах написаны ботами или за вознаграждение` },
           wrong: { title: `${WARNING_SVG} Осторожно!`, text: '«Алина» – это либо бот, либо соучастник схемы. Прямой контакт с подставным персонажем только убедит Артема перевести деньги. Ищи независимые источники.', fact: `${MASKS_SVG} Мошенники заранее создают десятки аккаунтов «довольных клиентов» для видимости доверия` }
         }
       },
@@ -1243,7 +1709,7 @@ const MISSIONS = {
       {
         type: 'context',
         variant: 'normal',
-        text: '🔍 Ты решаете проверить «Алекса Волкова» вместе с Артемом. Открываете поиск по фото и реестр ЦБ РФ.'
+        text: `${SEARCH_SVG} Ты решаете проверить «Алекса Волкова» вместе с Артемом. Открываете поиск по фото и реестр ЦБ РФ.`
       },
       {
         type: 'visual',
@@ -1276,8 +1742,8 @@ const MISSIONS = {
           { letter: 'В', text: 'Попросить сначала маленькую бесплатную консультацию', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Это правильный алгоритм!`, text: 'Чеклист проверки: (1) лицензия ЦБ РФ на сайте cbr.ru, (2) реальное юрлицо с ИНН, (3) отзывы на независимых площадках, (4) оплата через официальный счет, никогда на личную карту, (5) никаких «гарантий» доходности.', fact: '🔒 Проверить лицензию брокера можно бесплатно на cbr.ru/financial_services_registry' },
-          wrong: { title: `${CROSS_SVG} Эти признаки ничего не значат!`, text: 'Яхты и часы на фото – это реквизит, арендованный на час. Подписчики накручиваются за копейки. Бесплатная консультация – это еще один крючок для втягивания. Только лицензия ЦБ и юрлицо имеют значение.', fact: '💸 Аренда яхты для фотосессии стоит от 5 000 ₽ в час, небольшие вложения для мошенника' }
+          correct: { title: `${CHECKMARK_SVG} Это правильный алгоритм!`, text: 'Чеклист проверки: (1) лицензия ЦБ РФ на сайте cbr.ru, (2) реальное юрлицо с ИНН, (3) отзывы на независимых площадках, (4) оплата через официальный счет, никогда на личную карту, (5) никаких «гарантий» доходности.', fact: `${LOCK2_SVG} Проверить лицензию брокера можно бесплатно на cbr.ru/financial_services_registry` },
+          wrong: { title: `${CROSS_SVG} Эти признаки ничего не значат!`, text: 'Яхты и часы на фото – это реквизит, арендованный на час. Подписчики накручиваются за копейки. Бесплатная консультация – это еще один крючок для втягивания. Только лицензия ЦБ и юрлицо имеют значение.', fact: `${FLYING_MONEY_SVG} Аренда яхты для фотосессии стоит от 5 000 ₽ в час, небольшие вложения для мошенника` }
         }
       },
       // СЦЕНА 10 – неожиданный поворот
@@ -1305,7 +1771,7 @@ const MISSIONS = {
         ],
         feedback: {
           correct: { title: `${CHECKMARK_SVG} Именно!`, text: 'Реферальная система в финансовой пирамиде делает тебя распространителем мошеннической схемы. Даже без вложений ты вредишь реальным людям. В ряде случаев это квалифицируется как мошенничество (ст. 159 УК РФ). Дима должен заблокировать «Алекса» и предупредить друзей.', fact: `${SCALES_SVG} Участие в реферальной сети финансовой пирамиды может быть признано соучастием в мошенничестве` },
-          wrong: { title: `${CROSS_SVG} Это серьезно!`, text: 'Рассылая ссылку, Дима заманивает реальных людей в ловушку. Если те потеряют деньги, он несет моральную и потенциально юридическую ответственность. «Я не знал» – это не защита в суде.', fact: '📢 Жертвы финансовых пирамид вправе подавать иски против всех участников цепочки' }
+          wrong: { title: `${CROSS_SVG} Это серьезно!`, text: 'Рассылая ссылку, Дима заманивает реальных людей в ловушку. Если те потеряют деньги, он несет моральную и потенциально юридическую ответственность. «Я не знал» – это не защита в суде.', fact: `${MEGAPHONE_SVG} Жертвы финансовых пирамид вправе подавать иски против всех участников цепочки` }
         }
       },
       // СЦЕНА 12 – статистика
@@ -1313,10 +1779,10 @@ const MISSIONS = {
         type: 'visual',
         title: 'КРИПТО-СКАМ В ЦИФРАХ · 2024',
         lines: [
-          { text: '📉 Потери россиян от крипто-скама: более 12 млрд ₽ за год', hl: 'bad' },
+          { text: `${CHART_DOWN_SVG_MINI} Потери россиян от крипто-скама: более 12 млрд ₽ за год`, hl: 'bad' },
           { text: `${USERS_SVG} Типичная жертва: подросток или молодежь 14–25 лет`, hl: 'bad' },
-          { text: '🎣 89% схем начинаются в Telegram или Instagram', hl: 'bad' },
-          { text: '⏱ Среднее время вывода денег мошенниками: 2–4 часа', hl: 'bad' },
+          { text: `${FISHING_SVG} 89% схем начинаются в Telegram или Instagram`, hl: 'bad' },
+          { text: `${TIMER_SVG_MINI} Среднее время вывода денег мошенниками: 2–4 часа`, hl: 'bad' },
           { text: `${CHECKMARK_SVG_MINI} Защита: cbr.ru – проверь лицензию перед любым вложением`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Заявление о мошенничестве: МВД.РФ или Госуслуги`, hl: 'good' },
         ]
@@ -1493,7 +1959,20 @@ function buildScene(scene, idx, mission) {
     // Перемешиваем варианты ответов при каждом рендеринге сцены
     const shuffledChoices = shuffleChoices(scene.choices);
 
-    html += `<div class="messages"><div class="msg system">❓ ${scene.question}</div></div>`;
+    html += `
+    <div class="messages">
+      <div class="msg system">
+      <!-- ИКОНКА ЗНАКА ВОПРОСА -->
+        <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+            <circle cx="12" cy="12" r="10" fill="#ffd700" opacity="0.8"/>
+            <path d="M9.5 9.5 C9.5 8 10.5 7 12 7 C13.5 7 14.5 8 14.5 9.5 C14.5 11 12 11.5 12 13" stroke="#7a6000" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="12" cy="16.5" r="1" fill="#7a6000" opacity="0.9"/>
+          </svg>
+        </span>
+        ${scene.question}
+      </div>
+    </div>`;
     html += `<div class="choices" id="choices-${idx}">`;
     shuffledChoices.forEach((c, ci) => {
       html += `<button class="choice-btn" onclick="handleChoice(${idx}, ${ci}, ${c.correct}, '${mission.id}')" id="choice-${idx}-${ci}">
@@ -1662,7 +2141,19 @@ function finishMission(missionId) {
   document.getElementById('result-score-num').textContent = state.totalScore + ' (+' + state.missionScore + ' в этой миссии)';
 
   const tipsHtml = `
-    <h3>🛡 Запомни на будущее</h3>
+    <h3>
+    <!-- ИКОНКА ЩИТА -->
+      <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+        <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #1e88e5) drop-shadow(0 0 15px #0d47a1);">
+          <path d="M50 10 L85 25 L85 55 Q85 80 50 92 Q15 80 15 55 L15 25 Z" fill="#1e88e5" opacity="0.9"/>
+          <path d="M50 10 L85 25 L85 55 Q85 80 50 92 Q15 80 15 55 L15 25 Z" stroke="#0d47a1" stroke-width="3" fill="none"/>
+          <path d="M50 20 L78 33 L78 55 Q78 74 50 84 Q22 74 22 55 L22 33 Z" fill="#1565c0" opacity="0.5"/>
+          <path d="M33 52 L45 64 L68 38" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M25 30 Q30 20 42 17" stroke="#90caf9" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+        </svg>
+      </span>
+      Запомни на будущее
+    </h3>
     ${mission.tips.map(t => `
       <div class="tip-item">
         <span class="tip-icon">${t.icon}</span>
@@ -1730,11 +2221,11 @@ function showFinalResults() {
     title = 'ЛЕГЕНДАРНЫЙ ЗАЩИТНИК!'; 
     message = 'Ты прошел все миссии с блестящим результатом! Теперь ты настоящий эксперт по цифровой безопасности.';
   } else if (percentage >= 70) { 
-    emoji = '🥈'; 
+    emoji = `${SILVER_MEDAL_SVG}`; 
     title = 'ОПЫТНЫЙ БОЕЦ!'; 
     message = 'Отличная работа! Ты хорошо разбираешься в основах безопасности, но есть куда расти.';
   } else if (percentage >= 50) { 
-    emoji = '🥉'; 
+    emoji = `${BRONZE_MEDAL_SVG}`; 
     title = 'НАЧИНАЮЩИЙ ЗАЩИТНИК'; 
     message = 'Неплохо! Но стоит еще раз пройти некоторые миссии и запомнить правила безопасности.';
   } else { 
@@ -1778,7 +2269,7 @@ function showFinalResults() {
   
   const nextBtn = document.getElementById('btn-next-mission');
   nextBtn.style.display = 'inline-block';
-  nextBtn.innerHTML = '🔄 Пройти заново';
+  nextBtn.innerHTML = `${REFRESH_SVG} Пройти заново`;
   nextBtn.onclick = resetGame;
   
   showScreen('result');
@@ -2176,7 +2667,7 @@ function handleTimeOut() {
     if (fbBox) {
       fbBox.classList.add('show', 'bad');
       const fb = scene.feedback.wrong;
-      currentScene.querySelector(`#fb-title-${sceneIdx}`).innerHTML = '⏰ Время вышло!';
+      currentScene.querySelector(`#fb-title-${sceneIdx}`).innerHTML = `${ALARM_SVG} Время вышло!`;
       currentScene.querySelector(`#fb-text-${sceneIdx}`).textContent = fb.text;
       currentScene.querySelector(`#fb-fact-${sceneIdx}`).textContent = fb.fact;
     }
@@ -2293,52 +2784,52 @@ function gameOver() {
 const FINAL_TEST_QUESTIONS = [
   {
     question: 'Что такое дроппер?',
-    choices: ['Человек, который помогает банку', 'Пособник мошенников, пропускающий краденые деньги через свою карту', 'Сотрудник полиции', 'Инвестор'],
+    choices: ['Сотрудник банка, проверяющий транзакции', 'Пособник мошенников, пропускающий краденые деньги через свою карту', 'Человек, который инвестирует в криптовалюту', 'Специалист по финансовой безопасности'],
     correct: 1
   },
   {
     question: 'Можно ли называть код из СМС сотрудникам банка?',
-    choices: ['Да, если они представились', 'Нет, никогда и никому', 'Только если звонят с официального номера', 'Да, для подтверждения личности'],
+    choices: ['Да, если они представились сотрудником безопасности', 'Нет, никогда и никому', 'Можно, если звонок с официального номера банка', 'Да, для подтверждения операции по вкладу'],
     correct: 1
   },
   {
     question: 'Как мошенники чаще всего вербуют подростков?',
-    choices: ['Предлагают легкую работу с высоким доходом', 'Присылают подарки', 'Звонят от имени школы', 'Пишут от имени учителей'],
+    choices: ['Предлагают легкую работу с высоким доходом', 'Рассылают приглашения на бесплатные курсы', 'Звонят от имени учебного центра', 'Пишут с предложением пройти стажировку'],
     correct: 0
   },
   {
     question: 'Что делать, если незнакомец предлагает перевести деньги через твою карту за процент?',
-    choices: ['Согласиться, это выгодно', 'Отказаться и заблокировать контакт', 'Попробовать один раз', 'Взять карту друга'],
+    choices: ['Согласиться, если процент больше 10%', 'Отказаться и заблокировать контакт', 'Попробовать один раз с небольшой суммой', 'Взять карту друга, чтобы не рисковать своей'],
     correct: 1
   },
   {
     question: 'Какая статья УК РФ грозит дропперам?',
-    choices: ['Статья за кражу', 'Статья 174.1 - легализация преступных доходов', 'Статья за хулиганство', 'Никакая'],
+    choices: ['Статья 159 - мошенничество', 'Статья 174.1 - легализация преступных доходов', 'Статья 163 - вымогательство', 'Административная ответственность'],
     correct: 1
   },
   {
     question: 'Как распознать фишинговый сайт?',
-    choices: ['По красивому дизайну', 'По подозрительному URL и просьбе ввести данные', 'По количеству рекламы', 'По скорости загрузки'],
+    choices: ['По отсутствию раздела «О компании»', 'По подозрительному URL и просьбе ввести данные', 'По медленной загрузке страниц', 'По большому количеству всплывающих окон'],
     correct: 1
   },
   {
     question: 'Что такое социальная инженерия?',
-    choices: ['Строительство домов', 'Манипуляции людьми для получения информации', 'Программирование', 'Научный метод'],
+    choices: ['Метод обучения сотрудников компаний', 'Манипуляции людьми для получения информации', 'Раздел программирования ИИ', 'Способ защиты от вирусов'],
     correct: 1
   },
   {
     question: 'Как защитить свои персональные данные?',
-    choices: ['Размещать их в открытом доступе', 'Не передавать незнакомцам и использовать сложные пароли', 'Давать только друзьям', 'Хранить в заметках телефона'],
+    choices: ['Регулярно менять номер телефона', 'Не передавать незнакомцам и использовать сложные пароли', 'Хранить данные только в облачных сервисах', 'Давать информацию только проверенным сайтам'],
     correct: 1
   },
   {
     question: 'Что делать при кибербуллинге?',
-    choices: ['Ответить агрессией', 'Заблокировать обидчика и рассказать взрослым', 'Удалить все соцсети', 'Игнорировать и молчать'],
+    choices: ['Ответить обидчику тем же', 'Заблокировать обидчика и рассказать взрослым', 'Удалить аккаунт навсегда', 'Написать жалобу в полицию самостоятельно'],
     correct: 1
   },
   {
     question: 'Как проверить надёжность крипто-проекта?',
-    choices: ['По обещаниям высокой прибыли', 'По отзывам в интернете и официальной информации', 'По количеству рекламы', 'Довериться блогеру'],
+    choices: ['Изучить обещания доходности на сайте', 'По отзывам в интернете и официальной информации', 'Посмотреть рекламу у популярных блогеров', 'Проверить наличие красивого дизайна сайта'],
     correct: 1
   }
 ];
@@ -2400,7 +2891,16 @@ function renderFinalQuestion() {
   container.innerHTML = `
     <div class="scene active">
       <div class="scene-context" style="border-left-color: #00e5ff;">
-        <span>❓ Вопрос ${finalTestState.currentQuestion + 1} из ${FINAL_TEST_QUESTIONS.length}</span>
+        <span>
+          <span style="display: inline-flex; align-items: center; vertical-align: middle; margin-right: 8px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0; filter: drop-shadow(0 0 8px #f5c518) drop-shadow(0 0 15px #f0b90b);">
+              <circle cx="12" cy="12" r="10" fill="#ffd700" opacity="0.8"/>
+              <path d="M9.5 9.5 C9.5 8 10.5 7 12 7 C13.5 7 14.5 8 14.5 9.5 C14.5 11 12 11.5 12 13" stroke="#7a6000" stroke-width="2" stroke-linecap="round" fill="none"/>
+              <circle cx="12" cy="16.5" r="1" fill="#7a6000" opacity="0.9"/>
+            </svg>
+          </span>
+          Вопрос ${finalTestState.currentQuestion + 1} из ${FINAL_TEST_QUESTIONS.length}
+        </span>
       </div>
       <div class="messages">
         <div class="msg system">${q.question}</div>
@@ -2477,7 +2977,7 @@ function timeUpFinal() {
   disableFinalChoices();
   const fbBox = document.getElementById('final-feedback');
   fbBox.classList.add('show', 'bad');
-  document.getElementById('final-fb-title').innerHTML = '⏰ Время вышло!';
+  document.getElementById('final-fb-title').innerHTML = `${ALARM_SVG} Время вышло!`;
   document.getElementById('final-fb-text').textContent = 'К сожалению, время на ответ истекло.';
 }
 
@@ -2487,7 +2987,7 @@ function answerFinalQuestion(selectedIndex) {
   clearInterval(finalTestState.timerInterval);
   finalTestState.isTestActive = false;
 
-  const q = FINAL_TEST_QUESTIONS[finalTestState.currentQuestion];
+  const q = shuffledFinalQuestions[finalTestState.currentQuestion];
   const isCorrect = selectedIndex === q.correct;
 
   disableFinalChoices();

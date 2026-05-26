@@ -2297,6 +2297,9 @@ function loadProgress() {
       state.completedMissions = data.completedMissions || [];
     } catch (e) {
       console.error('Ошибка загрузки прогресса:', e);
+      // Если данные повреждены, сбрасываем прогресс
+      state.totalScore = 0;
+      state.completedMissions = [];
     }
   }
   updateStatsDisplay();

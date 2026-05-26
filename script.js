@@ -1271,7 +1271,7 @@ const MISSIONS = {
           { text: `${SCALES_SVG} Средний срок: 8-12 лет лишения свободы`, hl: 'bad' },
           { text: `${MONEY_SVG} «Заработок»: 3000-5000 ₽ за рейс vs 10 лет свободы`, hl: 'bad' },
           { text: `${TARGET_SVG} 90% вербовок происходит в соцсетях и мессенджерах`, hl: 'bad' },
-          { text: `${CHECKMARK_SVG_MINI} Защита: никогда не соглашаться на «раскладку`, hl: 'good' },
+          { text: `${CHECKMARK_SVG_MINI} Защита: никогда не соглашаться на «раскладку»`, hl: 'good' },
           { text: `${CHECKMARK_SVG_MINI} Сообщить о вербовке: полиция или 8-800-2000-122`, hl: 'good' },
         ]
       },
@@ -1414,7 +1414,7 @@ const MISSIONS = {
           { letter: 'В', text: 'Пойти на встречу, чтобы разобраться что происходит', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG} Правильное решение!`, text: 'Это уже склонение к совершению насильственного акта. Немедленно: сохрани скриншоты, выйди из чата, расскажи родителям или учителю, сообщи в полицию или ФСБ. Это не предательство – это спасение жизней, в том числе своей.', fact: `${MEGAPHONE_SVG} Сообщить анонимно в ФСБ: fsb.ru или 8-800-224-22-22 (бесплатно)` },
+          correct: { title: `${CHECKMARK_SVG} Правильное решение!`, text: 'Это уже склонение к совершению насильственного акта. Немедленно: сохрани скриншоты, выйди из чата, расскажи родителям или учителю, сообщи в полицию или ФСБ. Это не предательство – это спасение жизней, в том числе своей.', fact: `${MEGAPHONE_SVG} Сообщить анонимно в ФСБ: fsb.ru или 8 (800) 224-22-22 (бесплатно)` },
           wrong: { title: `${CROSS_SVG} Опасно!`, text: 'Уточнение деталей или поход на встречу уже делает тебя потенциально причастным. Не вступай в диалог, выходи и сообщай.', fact: `${SCALES_SVG} Недонесение о подготовке теракта – это уголовная статья. Сообщить – это твоя защита.` }
         }
       },
@@ -1672,7 +1672,7 @@ const MISSIONS = {
           { letter: 'В', text: 'Цена слишком низкая, настоящее обучение должно стоить дороже', correct: false },
         ],
         feedback: {
-          correct: { title: `${CHECKMARK_SVG}Ты видишь красные флаги!`, text: 'Три главных признака: (1) перевод на личную карту физлица вместо юрлица, (2) искусственный дедлайн «только 2 часа» – давление на импульс, (3) гарантированная доходность математически невозможна без огромного риска.', fact: `${CHART_SVG} Средняя реальная доходность фондового рынка 10–15% годовых. Все что выше высокий риск или скам` },
+          correct: { title: `${CHECKMARK_SVG} Ты видишь красные флаги!`, text: 'Три главных признака: (1) перевод на личную карту физлица вместо юрлица, (2) искусственный дедлайн «только 2 часа» – давление на импульс, (3) гарантированная доходность математически невозможна без огромного риска.', fact: `${CHART_SVG} Средняя реальная доходность фондового рынка 10–15% годовых. Все что выше высокий риск или скам` },
           wrong: { title: `${CROSS_SVG} Это классическая схема!`, text: 'Количество подписчиков легко накрутить, ботов покупают тысячами. Перевод на личную карту, дедлайн «через 2 часа» и нереальные обещания – три главных сигнала тревоги.', fact: `${MASKS_SVG} 10 000 ботов-подписчиков в Telegram стоят около 3 000 ₽, меньше твоих сбережений` }
         }
       },
@@ -2338,18 +2338,35 @@ function updateStatsDisplay() {
   // Обновляем кнопку "Начать с Миссии 1"
   const btnStart = document.getElementById('btn-start-mission1');
   if (btnStart) {
-    if (state.completedMissions.includes('dropper')) {
+    // Найти первую непройденную миссию
+    const nextMissionId = MISSION_ORDER.find(id => !state.completedMissions.includes(id));
+    
+    if (!nextMissionId) {
+      // Все миссии пройдены
       btnStart.disabled = true;
       btnStart.style.background = '#0090a0';
       btnStart.style.color = '#c4c4c4';
-      btnStart.textContent = 'Миссия 1 уже пройдена';
+      btnStart.textContent = 'Все миссии пройдены ✓';
       btnStart.style.cursor = 'not-allowed';
+      btnStart.onclick = null;
     } else {
+      const missionIndex = MISSION_ORDER.indexOf(nextMissionId) + 1;
+      const missionName = MISSIONS[nextMissionId].title;
+      
       btnStart.disabled = false;
       btnStart.style.background = '#00d5ec';
       btnStart.style.color = '#fff';
-      btnStart.textContent = '▶ Начать с Миссии 1';
       btnStart.style.cursor = 'pointer';
+      
+      if (state.completedMissions.length === 0) {
+        // Ни одной миссии не пройдено — оригинальный текст
+        btnStart.textContent = '▶ Начать с Миссии 1';
+      } else {
+        // Есть пройденные — показываем следующую
+        btnStart.textContent = `▶ Миссия ${missionIndex}: ${missionName}`;
+      }
+      
+      btnStart.onclick = () => openModal(nextMissionId);
     }
   }
   // Обновляем кнопку "Финальный тест"
